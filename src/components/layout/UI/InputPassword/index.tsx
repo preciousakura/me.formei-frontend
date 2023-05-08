@@ -31,7 +31,6 @@ export function InputPassword({ label }: InputPasswordProps) {
             size={4}
             ml="2"
             color="#2C3333"
-            right={3}
           />
         }
       />
