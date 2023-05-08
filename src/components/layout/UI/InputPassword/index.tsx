@@ -1,7 +1,8 @@
 import { Input, FormControl, Icon } from "native-base";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 import { H5 } from "../../../shared/subtitle";
+import { useState } from "react";
 
 const { Label } = FormControl;
 
@@ -10,6 +11,7 @@ interface InputPasswordProps {
 }
 
 export function InputPassword({ label }: InputPasswordProps) {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <Label>
@@ -20,12 +22,13 @@ export function InputPassword({ label }: InputPasswordProps) {
       <Input
         borderBottomColor="#277BC0"
         variant="underlined"
-        type="password"
+        type={!showPassword ? "password" : "text"}
         InputRightElement={
           <Icon
+            onPress={() => setShowPassword(!showPassword)}
             as={Ionicons}
-            name="eye"
-            size={3}
+            name={!showPassword ? "eye" : "eye-off"}
+            size={4}
             ml="2"
             color="#2C3333"
             right={3}
