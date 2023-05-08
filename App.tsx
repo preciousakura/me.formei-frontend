@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 
 import * as SplashScreen from "expo-splash-screen";
 import { GlobalStyle } from "./src/styles/themes/global";
+import { NativeBaseProvider } from "native-base";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,11 +28,13 @@ export default function App() {
     return null;
   }
   return (
-    <GlobalStyle onLayout={onLayoutRootView}>
-      <ThemeProvider theme={themes.light}>
-        <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-        <Routes />
-      </ThemeProvider>
-    </GlobalStyle>
+    <NativeBaseProvider>
+      <GlobalStyle onLayout={onLayoutRootView}>
+        <ThemeProvider theme={themes.light}>
+          <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
+          <Routes />
+        </ThemeProvider>
+      </GlobalStyle>
+    </NativeBaseProvider>
   );
 }

@@ -10,14 +10,14 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{ headerShown: false }}
-        />
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
