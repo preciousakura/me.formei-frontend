@@ -4,14 +4,15 @@ export const Container = styled.ScrollView`
   flex: 1;
   background: ${(theme) => theme.theme.color.primaryColor};
 `;
-export const ContainerTop = styled.View`
-  flex: 1;
-`;
-export const ContainerForm = styled.View`
-  flex: 10;
+
+export const ContentForm = styled.View`
+  flex: 2;
   background: ${(theme) => theme.theme.color.white};
-  border-top-right-radius: 40px;
-  border-top-left-radius: 40px;
-  align-items: center;
-  justify-content: center;
+  padding: 50px;  
+  z-index: 1;
+  
+  
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
 `;
+

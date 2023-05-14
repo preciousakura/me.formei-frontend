@@ -1,6 +1,9 @@
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+const dimensions = Dimensions.get('window')
+
+export const Container = styled.ScrollView`
   flex: 1;
   background: ${(theme) => theme.theme.color.primaryColor};
 `;
@@ -18,4 +21,5 @@ export const ContainerLogo = styled.View`
   align-items: center;
   justify-content: center;
   z-index: 2;
+  height: ${dimensions.height/2.9}px;
 `;

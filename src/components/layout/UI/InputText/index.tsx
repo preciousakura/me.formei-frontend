@@ -1,14 +1,16 @@
 import { Input, FormControl } from "native-base";
 import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
 import { H5 } from "../../../shared/subtitle";
+import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 
 const { Label } = FormControl;
 
 interface InputTextProps {
-    label: string;
+  label: string;
+  config?: IInputProps;
 }
 
-export function InputText({label}: InputTextProps) {
+export function InputText({ label, config }: InputTextProps) {
   return (
     <>
       <Label>
@@ -16,7 +18,7 @@ export function InputText({label}: InputTextProps) {
           {label}
         </H5>
       </Label>
-      <Input borderBottomColor="#277BC0" variant="underlined" />
+      <Input focusOutlineColor="#277BC0" variant="underlined" {...config} />
     </>
   );
 }
