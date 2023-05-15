@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "./styles";
-import { Subtitle } from "../../shared/subtitle";
+import { Subtitle } from "../../shared/text";
 import { Icon, IconButton, View } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";

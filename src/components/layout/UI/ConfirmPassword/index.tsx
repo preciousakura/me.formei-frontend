@@ -1,7 +1,7 @@
 import { Input, FormControl, Icon, View } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-import { H5 } from "../../../shared/subtitle";
+import { H5 } from "../../../shared/text";
 import { useState } from "react";
 
 const { Label } = FormControl;

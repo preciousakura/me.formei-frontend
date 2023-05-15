@@ -1,15 +1,16 @@
 import { Button, FormControl, VStack } from "native-base";
-import { H5, Subtitle } from "../../components/shared/subtitle";
+import { H5, Subtitle } from "../../components/shared/text";
 import { Container, ContentForm, ContainerLogo } from "./styles";
 import { StatusBar, Image } from "react-native";
 import { InputPassword, InputText } from "../../components/layout/UI";
 import { useNavigation } from "@react-navigation/native";
-import { HomeScreenNavigationProp } from "../../types/types";
+import { UserLoginNavigationProp } from "../../types/types";
 import * as yup from "yup";
 import { Formik } from "formik";
 
 export default function Login() {
-  const navigation = useNavigation<HomeScreenNavigationProp>();
+  const navigation = useNavigation<UserLoginNavigationProp>();
+  
   let loginValidationSchema = yup.object().shape({
     user: yup.string().required("O usuário é obrigatório"),
     password: yup
@@ -88,7 +89,7 @@ export default function Login() {
             <H5 color="#2C3333">
               Ainda não tem uma conta?{" "}
               <H5
-                onPress={() => navigation.navigate("Register")}
+                onPress={() => navigation.navigate("AccountInfo")}
                 color="#277BC0"
               >
                 Registre-se!

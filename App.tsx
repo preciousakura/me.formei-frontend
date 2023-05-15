@@ -16,6 +16,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("./src/assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Regular": require("./src/assets/fonts/Nunito-Regular.ttf"),
+    "Nunito-ExtraBold": require("./src/assets/fonts/Nunito-ExtraBold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

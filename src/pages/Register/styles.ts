@@ -16,3 +16,7 @@ export const ContentForm = styled.View`
   border-top-left-radius: 50px;
 `;
 
+export const DateGroup = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`

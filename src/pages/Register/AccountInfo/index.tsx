@@ -1,11 +1,15 @@
 import { StatusBar } from "react-native";
-import { Container, ContentForm } from "./styles";
-import { Header } from "../../components/layout/Header";
+import { Container, ContentForm } from "../styles";
+import { Header } from "../../../components/layout/Header";
 import { Button, FormControl, VStack } from "native-base";
-import { ConfirmPassword, InputText } from "../../components/layout/UI";
-import { H5, Subtitle } from "../../components/shared/subtitle";
+import { ConfirmPassword, InputText } from "../../../components/layout/UI";
+import { H5, Subtitle } from "../../../components/shared/text";
+import { useNavigation } from "@react-navigation/native";
+import { UserLoginNavigationProp } from "../../../types/types";
 
-export default function Register() {
+export default function AccountInfo() {
+  const navigation = useNavigation<UserLoginNavigationProp>();
+
   return (
     <Container showsVerticalScrollIndicator={false}>
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
@@ -39,8 +43,13 @@ export default function Register() {
 
           <ConfirmPassword />
 
-          <Button marginTop={30} backgroundColor="#277BC0" mt="5">
-            <H5>Criar</H5>
+          <Button
+            onPress={() => navigation.navigate("GeneralInfo")}
+            marginTop={30}
+            backgroundColor="#277BC0"
+            mt="5"
+          >
+            <H5>Próximo</H5>
           </Button>
         </VStack>
       </ContentForm>

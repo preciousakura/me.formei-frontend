@@ -1,6 +1,5 @@
 import { Input, FormControl } from "native-base";
-import { NativeSyntheticEvent, TextInputChangeEventData } from "react-native";
-import { H5 } from "../../../shared/subtitle";
+import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 
 const { Label } = FormControl;
