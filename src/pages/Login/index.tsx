@@ -80,7 +80,7 @@ export default function Login() {
               <Button
                 marginTop={30}
                 backgroundColor="#277BC0"
-                onPress={() => handleSubmit}
+                onPress={() => handleSubmit()}
               >
                 <H5>Entrar</H5>
               </Button>
