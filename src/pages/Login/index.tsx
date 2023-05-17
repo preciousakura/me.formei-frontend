@@ -20,7 +20,7 @@ export default function Login() {
   });
 
   return (
-    <Container>
+    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
 
       <ContainerLogo>

@@ -8,7 +8,7 @@ import { UserLoginNavigationProp } from "../../../../types/types";
 
 export function FailedRegister() {
   const navigation = useNavigation<UserLoginNavigationProp>();
-  
+
   return (
     <Container>
       <StatusBar backgroundColor="#C02727" barStyle="dark-content" />
@@ -22,7 +22,7 @@ export function FailedRegister() {
           sistema.
         </Subtitle>
         <Button
-            onPress={() => navigation.navigate("Login")}
+          onPress={() => navigation.navigate("Login")}
           borderRadius={10}
           backgroundColor="#C02727"
           width={100}

@@ -10,10 +10,10 @@ import { UserLoginNavigationProp } from "../../../types/types";
 export default function GeneralInfo() {
   const navigation = useNavigation<UserLoginNavigationProp>();
   return (
-    <Container showsVerticalScrollIndicator={false}>
+    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
       <Header backButton />
-      <ContentForm>
+      <ContentForm> 
         <Subtitle>Informações gerais</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>
           <FormControl>

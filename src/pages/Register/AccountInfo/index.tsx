@@ -11,7 +11,7 @@ export default function AccountInfo() {
   const navigation = useNavigation<UserLoginNavigationProp>();
 
   return (
-    <Container showsVerticalScrollIndicator={false}>
+    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
       <Header backButton />
       <ContentForm>
