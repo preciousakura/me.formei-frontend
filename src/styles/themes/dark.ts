@@ -3,6 +3,7 @@ export default {
     white: "#ffffff",
     dark: "#000000",
     primaryColor: "#277BC0",
-    errorColor: "#C02727"
+    errorColor: "#C02727",
+    gray: "#F4F4F4"
   }
 };

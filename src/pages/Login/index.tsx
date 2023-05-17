@@ -10,7 +10,7 @@ import { Formik } from "formik";
 
 export default function Login() {
   const navigation = useNavigation<UserLoginNavigationProp>();
-  
+
   let loginValidationSchema = yup.object().shape({
     user: yup.string().required("O usuário é obrigatório"),
     password: yup
@@ -20,7 +20,10 @@ export default function Login() {
   });
 
   return (
-    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
+    <Container
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
 
       <ContainerLogo>
@@ -36,7 +39,7 @@ export default function Login() {
 
       <Formik
         initialValues={{ user: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => navigation.navigate("Tab")}
         validateOnMount
         validationSchema={loginValidationSchema}
       >

@@ -1,6 +1,6 @@
 import { StatusBar } from "react-native";
 import { Container, ContentForm } from "../styles";
-import { Header } from "../../../components/layout/Header";
+import { Header } from "../../../components/layout";
 import { Button, FormControl, VStack } from "native-base";
 import { ConfirmPassword, InputText } from "../../../components/layout/UI";
 import { H5, Subtitle } from "../../../components/shared/text";
@@ -11,7 +11,10 @@ export default function AccountInfo() {
   const navigation = useNavigation<UserLoginNavigationProp>();
 
   return (
-    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
+    <Container 
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
       <Header backButton />
       <ContentForm>

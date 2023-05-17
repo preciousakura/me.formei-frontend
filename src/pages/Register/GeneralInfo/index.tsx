@@ -1,6 +1,6 @@
 import { StatusBar, Dimensions } from "react-native";
 import { Container, ContentForm, DateGroup } from "../styles";
-import { Header } from "../../../components/layout/Header";
+import { Header } from "../../../components/layout";
 import { Button, FormControl, VStack } from "native-base";
 import { InputSelect } from "../../../components/layout/UI";
 import { H5, Subtitle } from "../../../components/shared/text";
@@ -9,11 +9,14 @@ import { UserLoginNavigationProp } from "../../../types/types";
 
 export default function GeneralInfo() {
   const navigation = useNavigation<UserLoginNavigationProp>();
-  return (
-    <Container showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow: 1}}>
+  return ( 
+    <Container
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
       <Header backButton />
-      <ContentForm> 
+      <ContentForm>
         <Subtitle>Informações gerais</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>
           <FormControl>
