@@ -20,7 +20,7 @@ export function SucessRegister() {
       </IconContent>
       <TextContent style={{ height: Dimensions.get("window").height / 1 }}>
         <Title>Tudo certo!</Title>
-        <Subtitle style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
+        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
           Seu cadastro foi concluído com sucesso! Agora você pode acessar a
           plataforma.
         </Subtitle>
