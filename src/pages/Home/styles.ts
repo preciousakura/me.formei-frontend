@@ -7,11 +7,12 @@ export const TopContent = styled.View`
   background: ${(theme) => theme.theme.color.primaryColor};
   align-items: flex-start;
   justify-content: center;
-  padding: 0 20px;
+  padding: 40px 20px;
 `;
 
 export const Content = styled.View`
   flex: 5;
   background: ${(theme) => theme.theme.color.background};
   padding: 20px;
+  gap: 10px
 `;
