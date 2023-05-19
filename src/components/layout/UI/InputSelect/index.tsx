@@ -2,6 +2,7 @@ import { FormControl, Icon, Select } from "native-base";
 import { H5 } from "../../../shared/text";
 import { Entypo } from "@expo/vector-icons";
 import { ISelectProps } from "native-base/lib/typescript/components/primitives/Select";
+import { useTheme } from "styled-components";
 const { Item } = Select;
 const { Label } = FormControl;
 
@@ -17,17 +18,19 @@ interface InputSelectProps {
 }
 
 export function InputSelect({ label, config, values }: InputSelectProps) {
+  const theme = useTheme();
   return (
     <>
       <Label>
-        <H5 color="#277BC0" size={10}>
+        <H5 color={theme.color.primaryColor} size={10}>
           {label}
         </H5>
       </Label>
 
       <Select
         {...config}
-        focusOutlineColor="#277BC0"
+        color={theme.color.text}
+        focusOutlineColor={theme.color.primaryColor}
         variant="underlined"
         dropdownIcon={<Icon as={Entypo} name="chevron-down" size={4} />}
       >

@@ -8,7 +8,7 @@ export const Container = styled.ScrollView`
 
 export const ContentForm = styled.View`
   flex: 1;
-  background: ${(theme) => theme.theme.color.white};
+  background: ${(theme) => theme.theme.color.background};
   padding: 80px 50px;  
   z-index: 1;
 `;
@@ -19,4 +19,5 @@ export const ContainerLogo = styled.View`
   justify-content: center;
   z-index: 2;
   height: ${Dimensions.get('window').height/5}px;
+  background: ${(theme) => theme.theme.color.primaryColor};
 `;

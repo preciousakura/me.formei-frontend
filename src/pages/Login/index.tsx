@@ -7,8 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 import { UserLoginNavigationProp } from "../../types/types";
 import * as yup from "yup";
 import { Formik } from "formik";
+import { useTheme } from "styled-components";
 
 export default function Login() {
+  const theme = useTheme();
   const navigation = useNavigation<UserLoginNavigationProp>();
 
   let loginValidationSchema = yup.object().shape({
@@ -24,7 +26,7 @@ export default function Login() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
+      <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
 
       <ContainerLogo>
         <Image
@@ -82,18 +84,18 @@ export default function Login() {
 
               <Button
                 marginTop={30}
-                backgroundColor="#277BC0"
+                backgroundColor={theme.color.primaryColor}
                 onPress={() => handleSubmit()}
               >
-                <H5>Entrar</H5>
+                <H5 color={theme.color.textButton}>Entrar</H5>
               </Button>
             </VStack>
 
-            <H5 color="#2C3333">
+            <H5 color={theme.color.text}>
               Ainda não tem uma conta?{" "}
               <H5
                 onPress={() => navigation.navigate("AccountInfo")}
-                color="#277BC0"
+                color={theme.color.primaryColor}
               >
                 Registre-se!
               </H5>

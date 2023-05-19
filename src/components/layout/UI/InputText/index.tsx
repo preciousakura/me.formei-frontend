@@ -1,6 +1,7 @@
 import { Input, FormControl } from "native-base";
 import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
+import { useTheme } from "styled-components";
 
 const { Label } = FormControl;
 
@@ -10,14 +11,15 @@ interface InputTextProps {
 }
 
 export function InputText({ label, config }: InputTextProps) {
+  const theme = useTheme();
   return (
     <>
       <Label>
-        <H5 color="#277BC0" size={10}>
+        <H5 color={theme.color.primaryColor} size={10}>
           {label}
         </H5>
       </Label>
-      <Input focusOutlineColor="#277BC0" variant="underlined" {...config} />
+      <Input color={theme.color.text} focusOutlineColor={theme.color.primaryColor} variant="underlined" {...config} />
     </>
   );
 }

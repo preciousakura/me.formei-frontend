@@ -11,6 +11,6 @@ export const Button = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
     font-family: 'Nunito-Bold';
     text-align: center;
-    color: ${(props) => props.theme.color.white};
+    color: ${(props) => props.theme.color.text};
 `;
 

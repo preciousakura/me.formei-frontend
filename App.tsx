@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import Routes from "./src/routes";
-import { StatusBar } from "react-native";
+import { StatusBar, useColorScheme } from "react-native";
 
 import { ThemeProvider } from "styled-components";
 import themes from "./src/styles/themes";
@@ -13,6 +13,9 @@ import { NativeBaseProvider } from "native-base";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const deviceTheme = useColorScheme();
+  const theme = deviceTheme ? themes[deviceTheme] : themes.dark;
+
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("./src/assets/fonts/Nunito-Bold.ttf"),
     "Nunito-Regular": require("./src/assets/fonts/Nunito-Regular.ttf"),
@@ -31,8 +34,8 @@ export default function App() {
   return (
     <NativeBaseProvider>
       <GlobalStyle onLayout={onLayoutRootView}>
-        <ThemeProvider theme={themes.light}>
-          <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
+        <ThemeProvider theme={theme}>
+          <StatusBar backgroundColor={theme.color.background} barStyle="dark-content" />
           <Routes />
         </ThemeProvider>
       </GlobalStyle>

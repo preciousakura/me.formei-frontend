@@ -6,17 +6,19 @@ import { Profile } from "../pages/Profile";
 import { TabNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Dimensions } from "react-native";
+import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 const tabSize = Dimensions.get('screen').height * 0.08
 
 export function TabNavigator() {
+  const theme = useTheme()
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "#277BC0",
-        tabBarInactiveTintColor: "#2C3333",
+        tabBarActiveTintColor: theme.color.primaryColor,
+        tabBarInactiveTintColor: theme.color.text,
         tabBarLabelStyle: {
           fontFamily: "Nunito-Bold",
           fontSize: tabSize * 0.2,
@@ -24,8 +26,10 @@ export function TabNavigator() {
         },
         tabBarStyle: {
           height: tabSize,
+          backgroundColor: theme.color.background
         },
       }}
+      
     >
       <Tab.Screen
         name="Início"
@@ -36,7 +40,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="home-outline"
               size={tabSize * 0.5}
-              color={props.focused ? "#277BC0" : "#2C3333"}
+              color={props.focused ? theme.color.primaryColor : theme.color.text}
             />
           ),
         }}
@@ -50,7 +54,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="book-open-outline"
               size={tabSize * 0.5}
-              color={props.focused ? "#277BC0" : "#2C3333"}
+              color={props.focused ? theme.color.primaryColor : theme.color.text}
             />
           ),
         }}
@@ -64,7 +68,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="clock-time-four-outline"
               size={tabSize * 0.5}
-              color={props.focused ? "#277BC0" : "#2C3333"}
+              color={props.focused ? theme.color.primaryColor : theme.color.text}
             />
           ),
         }}
@@ -78,7 +82,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="account-outline"
               size={tabSize * 0.5}
-              color={props.focused ? "#277BC0" : "#2C3333"}
+              color={props.focused ? theme.color.primaryColor : theme.color.text}
             />
           ),
         }}

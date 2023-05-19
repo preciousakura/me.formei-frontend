@@ -15,6 +15,6 @@ export const IconContent = styled.View`
 export const TextContent = styled.View`
   flex: 2;
   padding: 50px 30px;
-  background: ${(theme) => theme.theme.color.white};
+  background: ${(theme) => theme.theme.color.background};
   align-items: center;
 `

@@ -39,6 +39,6 @@ export const H5 = styled.Text<{
         : "Nunito-Bold"
       : "Nunito-Bold"};
   font-size: ${(props) => (props.size ? props.size : 14)}px;
-  color: ${(props) => (props.color ? props.color : props.theme.color.white)};
-  text-align: ${(props) => (props.align ? props.align : "center")};
+  color: ${(props) => (props.color ? props.color : props.theme.color.text)};
+  text-align: ${(props) => (props.align ? props.align : "center")}; 
 `;

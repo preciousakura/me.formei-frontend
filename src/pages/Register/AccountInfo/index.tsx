@@ -6,16 +6,18 @@ import { ConfirmPassword, InputText } from "../../../components/layout/UI";
 import { H5, Subtitle } from "../../../components/shared/text";
 import { useNavigation } from "@react-navigation/native";
 import { UserLoginNavigationProp } from "../../../types/types";
+import { useTheme } from "styled-components";
 
 export default function AccountInfo() {
+  const theme = useTheme();
   const navigation = useNavigation<UserLoginNavigationProp>();
 
   return (
-    <Container 
+    <Container
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar backgroundColor="#277BC0" barStyle="dark-content" />
+      <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
       <Header backButton />
       <ContentForm>
         <Subtitle>Crie uma nova conta</Subtitle>
@@ -49,10 +51,10 @@ export default function AccountInfo() {
           <Button
             onPress={() => navigation.navigate("GeneralInfo")}
             marginTop={30}
-            backgroundColor="#277BC0"
+            backgroundColor={theme.color.primaryColor}
             mt="5"
           >
-            <H5>Próximo</H5>
+            <H5 color={theme.color.textButton}>Próximo</H5>
           </Button>
         </VStack>
       </ContentForm>

@@ -3,6 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { H5 } from "../../../shared/text";
 import { useState } from "react";
+import { useTheme } from "styled-components";
 
 const { Label } = FormControl;
 
@@ -51,18 +52,21 @@ export function InputPassword({
   label,
   placeholder,
 }: InputPasswordProps) {
+  const theme = useTheme();
+
   return (
     <View>
       <Label>
-        <H5 color="#277BC0" size={10}>
+        <H5 color={theme.color.primaryColor} size={10}>
           {label}
         </H5>
       </Label>
       <Input
-        focusOutlineColor="#277BC0"
+        focusOutlineColor={theme.color.primaryColor}
         variant="underlined"
         type={!show ? "password" : "text"}
         placeholder={placeholder}
+        color={theme.color.text}
         InputRightElement={
           <Icon
             onPress={() => setShow(!show)}
@@ -70,7 +74,7 @@ export function InputPassword({
             name={!show ? "eye" : "eye-off"}
             size={4}
             ml="2"
-            color="#2C3333"
+            color={theme.color.text}
           />
         }
       />

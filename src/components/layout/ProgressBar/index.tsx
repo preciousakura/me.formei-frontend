@@ -8,6 +8,7 @@ import {
   LegendBar,
   LegendBarGroup,
 } from "./styles";
+import { useTheme } from "styled-components";
 
 interface DataBar {
   name: string;
@@ -23,6 +24,7 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ data, legend = false }: ProgressBarProps) {
+  const theme = useTheme();
   return (
     <Container>
       <BarGroup>
@@ -47,11 +49,11 @@ export function ProgressBar({ data, legend = false }: ProgressBarProps) {
                   }}
                 >
                   <Circle color={p.color} />
-                  <H5 align="left" color="#2C3333">
+                  <H5 align="left" color={theme.color.greenDark}>
                     {p.name}
                   </H5>
                 </View>
-                <H5 align="right" color="#2C3333">
+                <H5 align="right" color={theme.color.greenDark}>
                   {p.parcial}/{p.total}
                 </H5>
               </LegendBar>
