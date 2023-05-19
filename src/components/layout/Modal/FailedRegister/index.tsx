@@ -27,7 +27,7 @@ export function FailedRegister() {
       </IconContent>
       <TextContent style={{ height: Dimensions.get("window").height / 1 }}>
         <Title color={theme.color.errorColor}>Ops!</Title>
-        <Subtitle style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
+        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
           Seu cadastro não pôde ser finalizado devido a uma falha no nosso
           sistema.
         </Subtitle>
