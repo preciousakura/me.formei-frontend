@@ -19,7 +19,7 @@ export default function GeneralInfo() {
       <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
       <Header backButton />
       <ContentForm>
-        <Subtitle>Informações gerais</Subtitle>
+        <Subtitle align="center">Informações gerais</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>
           <FormControl>
             <InputSelect

@@ -26,7 +26,7 @@ export function ProgressCourse() {
 
   return (
     <Container>
-      <H5 size={12} align="left" color={theme.color.primaryColor}>
+      <H5 size={12}  color={theme.color.primaryColor}>
         Progresso
       </H5>
       <View
@@ -36,10 +36,10 @@ export function ProgressCourse() {
           justifyContent: "space-between",
         }}
       >
-        <Title align="left" color={theme.color.text} size={30}>
+        <Title  color={theme.color.text} size={30}>
           72%
         </Title>
-        <Subtitle align="left" color={theme.color.text} size={14}>
+        <Subtitle  color={theme.color.text} size={14}>
           Carga Horária: 1400/3200h
         </Subtitle>
       </View>

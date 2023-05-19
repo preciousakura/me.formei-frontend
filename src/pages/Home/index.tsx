@@ -1,31 +1,27 @@
 import { Container, Content, TopContent } from "./styles";
-import { ProgressCourse, UserInfo } from "../../components/layout";
+import { ProgressCourse, UserInfo, TodayClasses } from "../../components/layout";
 import { ButtonCard } from "../../components/layout/ButtonCard";
-import { Feather,MaterialCommunityIcons } from "@expo/vector-icons";
-import { Icon } from "native-base";
-import { useTheme } from "styled-components";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+
 export function Home() {
-  const theme = useTheme();
   const options = [
     {
       name: "Horas complementares",
-      icon: () => (
-        <Icon as={MaterialCommunityIcons} name="timelapse" size={5} color={theme.color.text} />
-      ),
+      icon: MaterialCommunityIcons,
+      nameIcon: "timelapse",
     },
     {
       name: "Professores",
-      icon: () => (
-        <Icon as={Feather} name="book" size={5} color={theme.color.text} />
-      ),
+      icon: Feather,
+      nameIcon: "book",
     },
     {
       name: "Períodos",
-      icon: () => (
-        <Icon as={Feather} name="calendar" size={5} color={theme.color.text} />
-      ),
+      icon: Feather,
+      nameIcon: "calendar",
     },
   ];
+
   return (
     <Container
       showsVerticalScrollIndicator={false}
@@ -39,6 +35,7 @@ export function Home() {
         {options.map((o) => {
           return <ButtonCard key={o.name} {...o} />;
         })}
+        <TodayClasses />
       </Content>
     </Container>
   );

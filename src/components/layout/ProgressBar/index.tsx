@@ -49,7 +49,7 @@ export function ProgressBar({ data, legend = false }: ProgressBarProps) {
                   }}
                 >
                   <Circle color={p.color} />
-                  <H5 align="left" color={theme.color.greenDark}>
+                  <H5  color={theme.color.greenDark}>
                     {p.name}
                   </H5>
                 </View>

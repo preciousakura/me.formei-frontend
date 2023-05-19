@@ -55,7 +55,7 @@ export default function Login() {
           errors,
         }) => (
           <ContentForm>
-            <Subtitle>Faça seu login</Subtitle>
+            <Subtitle align="center">Faça seu login</Subtitle>
 
             <VStack space={3} mt="5" paddingBottom={30}>
               <FormControl>
@@ -91,7 +91,7 @@ export default function Login() {
               </Button>
             </VStack>
 
-            <H5 color={theme.color.text}>
+            <H5 align="center" color={theme.color.text}>
               Ainda não tem uma conta?{" "}
               <H5
                 onPress={() => navigation.navigate("AccountInfo")}

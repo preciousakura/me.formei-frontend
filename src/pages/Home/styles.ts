@@ -1,6 +1,8 @@
 import styled from "styled-components/native";
 
-export const Container = styled.ScrollView``;
+export const Container = styled.ScrollView`
+    background: ${props => props.theme.color.background};
+`;
 
 export const TopContent = styled.View`
   flex: 1;

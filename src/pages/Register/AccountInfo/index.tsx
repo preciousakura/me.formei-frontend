@@ -20,7 +20,7 @@ export default function AccountInfo() {
       <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
       <Header backButton />
       <ContentForm>
-        <Subtitle>Crie uma nova conta</Subtitle>
+        <Subtitle align="center">Crie uma nova conta</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>
           <FormControl>
             <InputText

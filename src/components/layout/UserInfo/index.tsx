@@ -16,18 +16,18 @@ export function UserInfo() {
             color={theme.color.textButton}
           />
           <View>
-            <Subtitle align="left" color={theme.color.textButton}>
+            <Subtitle  color={theme.color.textButton}>
               Isabel Cristina
             </Subtitle>
-            <H5 color={theme.color.textButton} align="left">
+            <H5 color={theme.color.textButton} >
               Curso:{" "}
-              <H5 color={theme.color.textButton} align="left" weight="regular">
+              <H5 color={theme.color.textButton}  weight="regular">
                 Ciência da Computação
               </H5>
             </H5>
-            <H5 color={theme.color.textButton} align="left">
+            <H5 color={theme.color.textButton} >
               Ano de entrada:{" "}
-              <H5 color={theme.color.textButton} align="left" weight="regular">
+              <H5 color={theme.color.textButton}  weight="regular">
                 2020.1
               </H5>
             </H5>
