@@ -65,8 +65,8 @@ export function TodayClasses() {
     };
   }, []);
 
-  function renderClasses(item: ClassesCardProps) {
-    return <ClassesCard key={item.discipline_name} {...item} />;
+  function renderClasses(item: ClassesCardProps, i: number) {
+    return <ClassesCard key={`${item.discipline_name}_${i}`} {...item} />;
   }
 
   return (

@@ -32,8 +32,8 @@ export function Home() {
     },
   ];
 
-  function renderCard(item: ButtonCardProps) {
-    return <ButtonCard key={item.name} {...item} />;
+  function renderCard(item: ButtonCardProps, i: number) {
+    return <ButtonCard key={`${item.name}_${i}`} {...item} />;
   }
 
   return (
