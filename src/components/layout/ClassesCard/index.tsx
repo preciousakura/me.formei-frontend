@@ -4,7 +4,7 @@ import { Hour } from "Discipline";
 import { H5 } from "../../shared/text";
 import { useTheme } from "styled-components";
 
-interface ClassesCardProps {
+export interface ClassesCardProps {
   discipline_name: string;
   teacher_name: string;
   hour: Hour;

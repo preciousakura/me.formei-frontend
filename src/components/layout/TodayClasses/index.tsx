@@ -1,8 +1,9 @@
 import { useTheme } from "styled-components";
 import { H5 } from "../../shared/text";
 import { Container } from "./styles";
-import { ClassesCard } from "../ClassesCard";
+import { ClassesCard, ClassesCardProps } from "../ClassesCard";
 import { useEffect, useState } from "react";
+import { FlatList, View } from "react-native";
 
 export function TodayClasses() {
   const theme = useTheme();
@@ -65,15 +66,23 @@ export function TodayClasses() {
     };
   }, []);
 
+  function renderClasses({ item }: { item: ClassesCardProps }) {
+    return <ClassesCard {...item} />;
+  }
+
   return (
     <Container>
       <H5>
         Aulas de Hoje ({today_label}):{" "}
         <H5 color={theme.color.primaryColor}>{today_day}</H5>
       </H5>
-      {data.map((d) => {
-        return <ClassesCard key={d.discipline_name} {...d} />;
-      })}
+
+      <FlatList
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+        keyExtractor={(item, i) => `${item.discipline_name}_${i}`}
+        data={data}
+        renderItem={renderClasses}
+      />
     </Container>
   );
 }

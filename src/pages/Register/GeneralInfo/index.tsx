@@ -1,4 +1,4 @@
-import { StatusBar, Dimensions } from "react-native";
+import { StatusBar, Dimensions, View } from "react-native";
 import { Container, ContentForm, DateGroup } from "../styles";
 import { Header } from "../../../components/layout";
 import { Button, VStack } from "native-base";
@@ -20,7 +20,9 @@ export default function GeneralInfo() {
         backgroundColor={theme.color.primaryColor}
         barStyle="dark-content"
       />
-      <Header backButton />
+      <View style={{ padding: 20 }}>
+        <Header backButton />
+      </View>
       <ContentForm>
         <Subtitle align="center">Informações gerais</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>

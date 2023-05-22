@@ -1,4 +1,4 @@
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import { Container, ContentForm } from "../styles";
 import { Header } from "../../../components/layout";
 import { Button, FormControl, VStack } from "native-base";
@@ -17,8 +17,13 @@ export default function AccountInfo() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
-      <Header backButton />
+      <StatusBar
+        backgroundColor={theme.color.primaryColor}
+        barStyle="dark-content"
+      />
+      <View style={{ padding: 20 }}>
+        <Header backButton />
+      </View>
       <ContentForm>
         <Subtitle align="center">Crie uma nova conta</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>

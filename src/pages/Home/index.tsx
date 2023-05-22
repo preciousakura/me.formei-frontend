@@ -1,7 +1,16 @@
 import { Container, Content, TopContent } from "./styles";
-import { ProgressCourse, UserInfo, TodayClasses } from "../../components/layout";
-import { ButtonCard } from "../../components/layout/ButtonCard";
+import {
+  ProgressCourse,
+  UserInfo,
+  TodayClasses,
+} from "../../components/layout";
+import {
+  ButtonCard,
+  ButtonCardProps,
+} from "../../components/layout/ButtonCard";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FlatList } from "native-base";
+import { View } from "react-native";
 
 export function Home() {
   const options = [
@@ -9,21 +18,25 @@ export function Home() {
       name: "Horas complementares",
       icon: MaterialCommunityIcons,
       nameIcon: "timelapse",
-      linkTo: "AdditionalHours"
+      linkTo: "AdditionalHours",
     },
     {
       name: "Professores",
       icon: Feather,
       nameIcon: "book",
-      linkTo: "Teacher"
+      linkTo: "Teacher",
     },
     {
       name: "Períodos",
       icon: Feather,
       nameIcon: "calendar",
-      linkTo: "Periods"
+      linkTo: "Periods",
     },
   ];
+
+  function renderCard({ item }: { item: ButtonCardProps }) {
+    return <ButtonCard {...item} />;
+  }
 
   return (
     <Container
@@ -35,9 +48,12 @@ export function Home() {
       </TopContent>
       <Content>
         <ProgressCourse />
-        {options.map((o) => {
-          return <ButtonCard key={o.name} {...o} />;
-        })}
+        <FlatList
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+          keyExtractor={(item) => item.name}
+          data={options}
+          renderItem={renderCard}
+        />
         <TodayClasses />
       </Content>
     </Container>
