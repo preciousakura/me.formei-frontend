@@ -9,8 +9,6 @@ import {
   ButtonCardProps,
 } from "../../components/layout/ButtonCard";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
-import { FlatList } from "native-base";
-import { View } from "react-native";
 
 export function Home() {
   const options = [
@@ -34,8 +32,8 @@ export function Home() {
     },
   ];
 
-  function renderCard({ item }: { item: ButtonCardProps }) {
-    return <ButtonCard {...item} />;
+  function renderCard(item: ButtonCardProps) {
+    return <ButtonCard key={item.name} {...item} />;
   }
 
   return (
@@ -48,12 +46,7 @@ export function Home() {
       </TopContent>
       <Content>
         <ProgressCourse />
-        <FlatList
-          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-          keyExtractor={(item) => item.name}
-          data={options}
-          renderItem={renderCard}
-        />
+        {options.map(renderCard)}
         <TodayClasses />
       </Content>
     </Container>
