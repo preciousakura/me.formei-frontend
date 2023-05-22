@@ -5,11 +5,19 @@ import { Header, SearchInput } from "../../../components/layout";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
+  const data = [
+    {
+      title: "Monitoria de Compiladores",
+      hour: 64,
+      linkTo: "",
+      isValid: false,
+    },
+    { title: "Líder de Turma", hour: 24, linkTo: "", isValid: true },
+    { title: "Estágio Insight", hour: 96, linkTo: "", isValid: true },
+  ];
+
   return (
-    <Container
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ flexGrow: 1 }}
-    >
+    <Container>
       <StatusBar
         backgroundColor={theme.color.background}
         barStyle="dark-content"
