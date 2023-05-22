@@ -3,33 +3,43 @@ import { H5 } from "../../shared/text";
 import { Container } from "./styles";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { View } from "react-native";
+import { TouchableHighlight, View } from "react-native";
 import { IIconProps, Icon } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 
 interface ButtonCardProps {
   name: string;
   icon: IIconProps;
   nameIcon: string;
+  linkTo: string;
 }
 
-export function ButtonCard({ name, icon, nameIcon }: ButtonCardProps) {
+export function ButtonCard({ name, icon, nameIcon, linkTo }: ButtonCardProps) {
   const theme = useTheme();
+  const navigation = useNavigation<any>();
+  
   return (
-    <Container>
-      <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-        <Icon
-          as={icon}
-          name={nameIcon}
-          size={5}
-          color={theme.color.primaryColor}
+    <TouchableHighlight
+      style={{ borderRadius: 10 }}
+      activeOpacity={0.6}
+      onPress={() => navigation.navigate(linkTo)}
+    >
+      <Container>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+          <Icon
+            as={icon}
+            name={nameIcon}
+            size={5}
+            color={theme.color.primaryColor}
+          />
+          <H5>{name}</H5>
+        </View>
+        <MaterialCommunityIcons
+          name="chevron-right"
+          size={25}
+          color={theme.color.text}
         />
-        <H5>{name}</H5>
-      </View>
-      <MaterialCommunityIcons
-        name="chevron-right"
-        size={25}
-        color={theme.color.text}
-      />
-    </Container>
+      </Container>
+    </TouchableHighlight>
   );
 }

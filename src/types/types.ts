@@ -21,3 +21,27 @@ export type TabNavigatorParamList = {
 }
 
 export type TabNavigatorProp = NativeStackNavigationProp<TabNavigatorParamList>;
+
+export type AdditionalHoursParamList = {
+  AdditionalHoursHome: undefined;
+  AdditionalHoursRegister: undefined;
+  AdditionalHoursEdit: undefined;
+}
+
+export type AdditionalHoursProp = NativeStackNavigationProp<AdditionalHoursParamList>;
+
+export type PeriodsParamList = {
+  PeriodsHome: undefined;
+  PeriodsRegister: undefined;
+  PeriodsEdit: undefined;
+}
+
+export type PeriodsProp = NativeStackNavigationProp<AdditionalHoursParamList>;
+
+export type TeacherParamList = {
+  TeacherHome: undefined;
+  TeacherRegister: undefined;
+  TeacherEdit: undefined;
+}
+
+export type TeacherProp = NativeStackNavigationProp<AdditionalHoursParamList>;

@@ -9,16 +9,19 @@ export function Home() {
       name: "Horas complementares",
       icon: MaterialCommunityIcons,
       nameIcon: "timelapse",
+      linkTo: "AdditionalHours"
     },
     {
       name: "Professores",
       icon: Feather,
       nameIcon: "book",
+      linkTo: "Teacher"
     },
     {
       name: "Períodos",
       icon: Feather,
       nameIcon: "calendar",
+      linkTo: "Periods"
     },
   ];
 
