@@ -8,8 +8,9 @@ export function EditButton(
   progress: Animated.AnimatedInterpolation<string | number>,
   dragX: Animated.AnimatedInterpolation<string | number>
 ) {
+
   const scale = dragX.interpolate({
-    inputRange: [0, 100],
+    inputRange: [0, 50],
     outputRange: [0, 1],
     extrapolate: "clamp",
   });

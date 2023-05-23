@@ -6,7 +6,6 @@ import { Icon } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import { H5 } from "../../shared/text";
 import { Swipeable } from "react-native-gesture-handler";
-import { EditButton } from "../EditButton";
 import { DeleteButton } from "../DeleteButton";
 import { AdditionalHour } from "AdditionalHours";
 
@@ -15,7 +14,6 @@ interface AdditionalHoursCardProps {
   item_key: number;
   rowRefs: Map<number, Swipeable>;
   onSwipeableWillOpen: () => void;
-  handleLeft: () => void;
   handleRight: () => void;
 }
 
@@ -24,7 +22,6 @@ export function AdditionalHoursCard({
   item_key,
   rowRefs,
   onSwipeableWillOpen,
-  handleLeft,
   handleRight,
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
@@ -38,9 +35,7 @@ export function AdditionalHoursCard({
           rowRefs.set(item_key, ref);
         }
       }}
-      renderLeftActions={EditButton}
       renderRightActions={DeleteButton}
-      onSwipeableLeftOpen={handleLeft}
       onSwipeableRightOpen={handleRight}
       onSwipeableWillOpen={onSwipeableWillOpen}
     >
