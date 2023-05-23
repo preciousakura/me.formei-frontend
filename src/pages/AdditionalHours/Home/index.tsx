@@ -48,11 +48,17 @@ export function AdditionalHoursHome() {
       alert("Right coisado");
       rowRefs.get(itens.index).close();
     };
+    
+    const handleLeft = () => {
+      alert("Left coisado");
+      rowRefs.get(itens.index).close();
+    };
 
     return (
       <AdditionalHoursCard
         data={item}
         handleRight={handleRight}
+        handleLeft={handleLeft}
         onSwipeableWillOpen={swipeOpen}
         item_key={itens.index}
         rowRefs={rowRefs}

@@ -8,6 +8,7 @@ import { H5 } from "../../shared/text";
 import { Swipeable } from "react-native-gesture-handler";
 import { DeleteButton } from "../DeleteButton";
 import { AdditionalHour } from "AdditionalHours";
+import { EditButton } from "../EditButton";
 
 interface AdditionalHoursCardProps {
   data: AdditionalHour;
@@ -15,6 +16,7 @@ interface AdditionalHoursCardProps {
   rowRefs: Map<number, Swipeable>;
   onSwipeableWillOpen: () => void;
   handleRight: () => void;
+  handleLeft: () => void;
 }
 
 export function AdditionalHoursCard({
@@ -23,6 +25,7 @@ export function AdditionalHoursCard({
   rowRefs,
   onSwipeableWillOpen,
   handleRight,
+  handleLeft,
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
@@ -35,8 +38,10 @@ export function AdditionalHoursCard({
           rowRefs.set(item_key, ref);
         }
       }}
+      renderLeftActions={EditButton}
       renderRightActions={DeleteButton}
       onSwipeableRightOpen={handleRight}
+      onSwipeableLeftOpen={handleLeft}
       onSwipeableWillOpen={onSwipeableWillOpen}
     >
       <TouchableHighlight
