@@ -1,7 +1,12 @@
-import { StatusBar } from "react-native";
+import { FlatList, ListRenderItemInfo, StatusBar } from "react-native";
 import { Container } from "../styles";
 import { useTheme } from "styled-components";
 import { Header, SearchInput } from "../../../components/layout";
+import { View } from "native-base";
+import {
+  AdditionalHoursCard,
+  AdditionalHoursCardProps,
+} from "../../../components/layout/AdditionalHoursCard";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
@@ -16,19 +21,56 @@ export function AdditionalHoursHome() {
     { title: "Estágio Insight", hour: 96, linkTo: "", isValid: true },
   ];
 
+  const HeaderElement = () => {
+    return (
+      <View>
+        <Header
+          backButton
+          colorIcon={theme.color.text}
+          colorText={theme.color.text}
+          title="Horas Complementares"
+        />
+        <SearchInput title="hora complementar" />
+      </View>
+    );
+  };
+
+  let rowRefs = new Map();
+
+  function renderCard(itens: ListRenderItemInfo<AdditionalHoursCardProps>) {
+    const { item } = itens;
+
+    const swipeOpen = () => {
+      [...rowRefs.entries()].forEach(([key, ref]) => {
+        if (key !== itens.index && ref) ref.close();
+      });
+    };
+
+    return (
+      <AdditionalHoursCard
+        onSwipeableWillOpen={swipeOpen}
+        item_key={itens.index}
+        rowRefs={rowRefs}
+        key={`${item.title}_${itens.index}`}
+        {...item}
+      />
+    );
+  }
+
   return (
     <Container>
       <StatusBar
         backgroundColor={theme.color.background}
         barStyle="dark-content"
       />
-      <Header
-        backButton
-        colorIcon={theme.color.text}
-        colorText={theme.color.text}
-        title="Horas Complementares"
+      <FlatList
+        data={data}
+        renderItem={renderCard}
+        keyExtractor={(item) => item.title}
+        ListHeaderComponent={HeaderElement}
+        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
       />
-      <SearchInput title="hora complementar" />
     </Container>
   );
 }

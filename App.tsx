@@ -9,6 +9,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { GlobalStyle } from "./src/styles/themes/global";
 import { NativeBaseProvider } from "native-base";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,13 +33,18 @@ export default function App() {
     return null;
   }
   return (
-    <NativeBaseProvider>
-      <GlobalStyle onLayout={onLayoutRootView}>
-        <ThemeProvider theme={theme}>
-          <StatusBar backgroundColor={theme.color.background} barStyle="dark-content" />
-          <Routes />
-        </ThemeProvider>
-      </GlobalStyle>
-    </NativeBaseProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NativeBaseProvider>
+        <GlobalStyle onLayout={onLayoutRootView}>
+          <ThemeProvider theme={theme}>
+            <StatusBar
+              backgroundColor={theme.color.background}
+              barStyle="dark-content"
+            />
+            <Routes />
+          </ThemeProvider>
+        </GlobalStyle>
+      </NativeBaseProvider>
+    </GestureHandlerRootView>
   );
 }
