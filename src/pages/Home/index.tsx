@@ -4,11 +4,9 @@ import {
   UserInfo,
   TodayClasses,
 } from "../../components/layout";
-import {
-  ButtonCard,
-  ButtonCardProps,
-} from "../../components/layout/ButtonCard";
+import { ButtonCard } from "../../components/layout/ButtonCard";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { IIconProps } from "native-base";
 
 export function Home() {
   const options = [
@@ -32,7 +30,10 @@ export function Home() {
     },
   ];
 
-  function renderCard(item: ButtonCardProps, i: number) {
+  function renderCard(
+    item: { name: string; icon: IIconProps; nameIcon: string; linkTo: string },
+    i: number
+  ) {
     return <ButtonCard key={`${item.name}_${i}`} {...item} />;
   }
 

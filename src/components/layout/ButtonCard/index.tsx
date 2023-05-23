@@ -7,7 +7,7 @@ import { TouchableHighlight, View } from "react-native";
 import { IIconProps, Icon } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 
-export interface ButtonCardProps {
+interface ButtonCardProps {
   name: string;
   icon: IIconProps;
   nameIcon: string;
@@ -17,7 +17,7 @@ export interface ButtonCardProps {
 export function ButtonCard({ name, icon, nameIcon, linkTo }: ButtonCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
-  
+
   return (
     <TouchableHighlight
       style={{ borderRadius: 10, margin: 0 }}

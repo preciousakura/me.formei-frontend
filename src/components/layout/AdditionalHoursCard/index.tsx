@@ -8,25 +8,24 @@ import { H5 } from "../../shared/text";
 import { Swipeable } from "react-native-gesture-handler";
 import { EditButton } from "../EditButton";
 import { DeleteButton } from "../DeleteButton";
+import { AdditionalHour } from "AdditionalHours";
 
-export interface AdditionalHoursCardProps {
-  linkTo: string;
-  title: string;
-  hour: number;
-  isValid: boolean;
-  item_key?: number;
-  rowRefs?: any;
-  onSwipeableWillOpen?: () => void
+interface AdditionalHoursCardProps {
+  data: AdditionalHour;
+  item_key: number;
+  rowRefs: Map<number, Swipeable>;
+  onSwipeableWillOpen: () => void;
+  handleLeft: () => void;
+  handleRight: () => void;
 }
 
 export function AdditionalHoursCard({
-  linkTo,
-  title,
-  hour,
-  isValid = false,
+  data,
   item_key,
   rowRefs,
-  onSwipeableWillOpen
+  onSwipeableWillOpen,
+  handleLeft,
+  handleRight,
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
@@ -41,24 +40,28 @@ export function AdditionalHoursCard({
       }}
       renderLeftActions={EditButton}
       renderRightActions={DeleteButton}
+      onSwipeableLeftOpen={handleLeft}
+      onSwipeableRightOpen={handleRight}
       onSwipeableWillOpen={onSwipeableWillOpen}
     >
       <TouchableHighlight
         style={{ borderRadius: 10, margin: 0 }}
         activeOpacity={0.9}
-        onPress={() => navigation.navigate(linkTo)}
+        onPress={() => navigation.navigate(data.linkTo)}
       >
         <Container>
           <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
             <Icon
               as={FontAwesome}
-              name={isValid ? "check" : "question"}
+              name={data.isValid ? "check" : "question"}
               size={5}
-              color={isValid ? theme.color.primaryColor : theme.color.grayDark}
+              color={
+                data.isValid ? theme.color.primaryColor : theme.color.grayDark
+              }
             />
-            <H5>{title}</H5>
+            <H5>{data.title}</H5>
           </View>
-          <H5>{hour}hs</H5>
+          <H5>{data.hour}hs</H5>
         </Container>
       </TouchableHighlight>
     </Swipeable>

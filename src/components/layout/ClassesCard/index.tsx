@@ -1,27 +1,20 @@
 import { View } from "react-native";
 import { Container } from "./styles";
-import { Hour } from "Discipline";
+import { Classe } from "Discipline";
 import { H5 } from "../../shared/text";
 import { useTheme } from "styled-components";
-
-export interface ClassesCardProps {
-  discipline_name: string;
-  teacher_name: string;
-  hour: Hour;
-  isCurrent: boolean;
-}
 
 export function ClassesCard({
   discipline_name,
   teacher_name,
   hour,
-  isCurrent
-}: ClassesCardProps) {
+  isCurrent,
+}: Classe) {
   const theme = useTheme();
 
   const start = ("0000" + hour.start).slice(-2);
   const end = ("0000" + hour.end).slice(-2);
-  
+
   return (
     <Container current_class={isCurrent}>
       <View>

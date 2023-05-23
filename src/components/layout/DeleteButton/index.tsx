@@ -1,16 +1,22 @@
 import { Icon } from "native-base";
 import { H5 } from "../../shared/text";
-import { Container } from "./styles";
+import { Container, IconStyle } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
-import { TouchableHighlight } from "react-native";
+import { Animated } from "react-native";
 
-export function DeleteButton() {
+export function DeleteButton(
+  progress: Animated.AnimatedInterpolation<string | number>,
+  dragX: Animated.AnimatedInterpolation<string | number>
+) {
+  const scale = dragX.interpolate({
+    inputRange: [0, 100],
+    outputRange: [1, 0],
+    extrapolate: "clamp",
+  });
+
   return (
-    <TouchableHighlight
-      style={{ borderRadius: 10, margin: 0 }}
-      activeOpacity={0.9}
-    >
-      <Container>
+    <Container>
+      <IconStyle style={{ transform: [{ scale }] }}>
         <Icon
           as={MaterialIcons}
           name="delete-outline"
@@ -20,7 +26,7 @@ export function DeleteButton() {
         <H5 color="#ffffff" size={10}>
           Exluir
         </H5>
-      </Container>
-    </TouchableHighlight>
+      </IconStyle>
+    </Container>
   );
 }

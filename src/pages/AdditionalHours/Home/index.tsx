@@ -3,10 +3,8 @@ import { Container } from "../styles";
 import { useTheme } from "styled-components";
 import { Header, SearchInput } from "../../../components/layout";
 import { View } from "native-base";
-import {
-  AdditionalHoursCard,
-  AdditionalHoursCardProps,
-} from "../../../components/layout/AdditionalHoursCard";
+import { AdditionalHoursCard } from "../../../components/layout/AdditionalHoursCard";
+import { AdditionalHour } from "AdditionalHours";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
@@ -37,7 +35,7 @@ export function AdditionalHoursHome() {
 
   let rowRefs = new Map();
 
-  function renderCard(itens: ListRenderItemInfo<AdditionalHoursCardProps>) {
+  function renderCard(itens: ListRenderItemInfo<AdditionalHour>) {
     const { item } = itens;
 
     const swipeOpen = () => {
@@ -46,8 +44,21 @@ export function AdditionalHoursHome() {
       });
     };
 
+    const handleLeft = () => {
+      alert("Left coisado");
+      rowRefs.get(itens.index).close();
+    };
+
+    const handleRight = () => {
+      alert("Right coisado");
+      rowRefs.get(itens.index).close();
+    };
+
     return (
       <AdditionalHoursCard
+        data={item}
+        handleRight={handleRight}
+        handleLeft={handleLeft}
         onSwipeableWillOpen={swipeOpen}
         item_key={itens.index}
         rowRefs={rowRefs}

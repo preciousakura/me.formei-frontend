@@ -1,8 +1,9 @@
 import { useTheme } from "styled-components";
 import { H5 } from "../../shared/text";
 import { Container } from "./styles";
-import { ClassesCard, ClassesCardProps } from "../ClassesCard";
+import { ClassesCard } from "../ClassesCard";
 import { useEffect, useState } from "react";
+import { Classe } from "Discipline";
 
 export function TodayClasses() {
   const theme = useTheme();
@@ -65,7 +66,7 @@ export function TodayClasses() {
     };
   }, []);
 
-  function renderClasses(item: ClassesCardProps, i: number) {
+  function renderClasses(item: Classe, i: number) {
     return <ClassesCard key={`${item.discipline_name}_${i}`} {...item} />;
   }
 
