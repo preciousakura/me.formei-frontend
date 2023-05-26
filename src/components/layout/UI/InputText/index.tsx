@@ -8,9 +8,18 @@ const { Label } = FormControl;
 interface InputTextProps {
   label: string;
   config?: IInputProps;
+  touched?: boolean;
+  isValid?: boolean;
+  errors?: string;
 }
 
-export function InputText({ label, config }: InputTextProps) {
+export function InputText({
+  label,
+  config,
+  touched,
+  isValid,
+  errors,
+}: InputTextProps) {
   const theme = useTheme();
   return (
     <>
@@ -19,7 +28,12 @@ export function InputText({ label, config }: InputTextProps) {
           {label}
         </H5>
       </Label>
-      <Input color={theme.color.text} focusOutlineColor={theme.color.primaryColor} variant="underlined" {...config} />
+      <Input
+        color={theme.color.text}
+        focusOutlineColor={theme.color.primaryColor}
+        variant="underlined"
+        {...config}
+      />
     </>
   );
 }

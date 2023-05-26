@@ -9,10 +9,19 @@ const { Label } = FormControl;
 
 interface InputPasswordProps {
   label: string;
-  config?: IInputProps
+  config?: IInputProps;
+  touched?: boolean;
+  isValid?: boolean;
+  errors?: string;
 }
 
-export function InputPassword({ label, config }: InputPasswordProps) {
+export function InputPassword({
+  label,
+  config,
+  touched,
+  isValid,
+  errors,
+}: InputPasswordProps) {
   const [showPassword, setShowPassword] = useState(false);
   const theme = useTheme();
   return (

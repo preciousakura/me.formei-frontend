@@ -12,11 +12,19 @@ interface Password {
   confirmPassword: string;
 }
 
-interface ConfirmPassWordProps {}
+interface ConfirmPassWordProps {
+  touched?: boolean;
+  isValid?: boolean;
+  errors?: string;
+}
 
-export function ConfirmPassword({}: ConfirmPassWordProps) {
+export function ConfirmPassword({
+  touched,
+  isValid,
+  errors,
+}: ConfirmPassWordProps) {
   const [showPassword, setShowPassword] = useState(false);
-  
+
   return (
     <>
       <FormControl>

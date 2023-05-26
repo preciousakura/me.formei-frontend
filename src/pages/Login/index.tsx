@@ -26,7 +26,10 @@ export default function Login() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar backgroundColor={theme.color.primaryColor} barStyle="dark-content" />
+      <StatusBar
+        backgroundColor={theme.color.primaryColor}
+        barStyle="dark-content"
+      />
 
       <ContainerLogo>
         <Image
@@ -61,6 +64,9 @@ export default function Login() {
               <FormControl>
                 <InputText
                   label="Usuário"
+                  touched={touched.user}
+                  isValid={isValid}
+                  errors={errors.user}
                   config={{
                     placeholder: "Digite seu usuário",
                     onChangeText: handleChange("user"),
@@ -73,6 +79,9 @@ export default function Login() {
               <FormControl>
                 <InputPassword
                   label="Senha"
+                  touched={touched.password}
+                  isValid={isValid}
+                  errors={errors.password}
                   config={{
                     placeholder: "Digite sua senha",
                     onChangeText: handleChange("password"),

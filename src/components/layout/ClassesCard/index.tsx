@@ -3,6 +3,7 @@ import { Container } from "./styles";
 import { Classe } from "Discipline";
 import { H5 } from "../../shared/text";
 import { useTheme } from "styled-components";
+import { HStack } from "native-base";
 
 export function ClassesCard({
   discipline_name,
@@ -17,17 +18,21 @@ export function ClassesCard({
 
   return (
     <Container current_class={isCurrent}>
-      <View>
-        <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
-          {discipline_name}
-        </H5>
-        <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
-          Prof. {teacher_name}
-        </H5>
-      </View>
-      <H5 color={isCurrent ? theme.color.textBgLight : undefined} size={16}>
-        {start}:00-{end}:00
-      </H5>
+      <HStack alignItems="center" justifyContent="space-between">
+        <View style={{width: '70%'}}>
+          <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
+            {discipline_name}
+          </H5>
+          <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
+            Prof. {teacher_name}
+          </H5>
+        </View>
+        <View >
+          <H5 color={isCurrent ? theme.color.textBgLight : undefined} size={16}>
+            {start}:00-{end}:00
+          </H5>
+        </View>
+      </HStack>
     </Container>
   );
 }

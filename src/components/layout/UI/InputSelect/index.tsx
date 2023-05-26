@@ -15,9 +15,19 @@ interface InputSelectProps {
   label: string;
   config?: ISelectProps;
   values: SelectData[];
+  touched?: boolean;
+  isValid?: boolean;
+  errors?: string;
 }
 
-export function InputSelect({ label, config, values }: InputSelectProps) {
+export function InputSelect({
+  label,
+  config,
+  values,
+  touched,
+  isValid,
+  errors,
+}: InputSelectProps) {
   const theme = useTheme();
   return (
     <View>
@@ -33,7 +43,7 @@ export function InputSelect({ label, config, values }: InputSelectProps) {
         variant="underlined"
         dropdownIcon={<Icon as={Entypo} name="chevron-down" size={4} />}
       >
-        {values.map((value) => { 
+        {values.map((value) => {
           return <Item key={value.label} {...value} />;
         })}
       </Select>

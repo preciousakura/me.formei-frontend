@@ -3,6 +3,7 @@ import { AdditionalHoursParamList } from "../types/types";
 import { AdditionalHoursHome } from "../pages/AdditionalHours/Home";
 import { AdditionalHoursRegister } from "../pages/AdditionalHours/Register";
 import { AdditionalHoursEdit } from "../pages/AdditionalHours/Edit";
+import { AdditionalHoursDetails } from "../pages/AdditionalHours/Details";
 
 const AdditionalHours = createNativeStackNavigator<AdditionalHoursParamList>();
 
@@ -22,6 +23,11 @@ export default function AdditionalHoursNavigator() {
       <AdditionalHours.Screen
         name="AdditionalHoursEdit"
         component={AdditionalHoursEdit}
+        options={{ headerShown: false }}
+      />
+      <AdditionalHours.Screen
+        name="AdditionalHoursDetails"
+        component={AdditionalHoursDetails}
         options={{ headerShown: false }}
       />
     </AdditionalHours.Navigator>

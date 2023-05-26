@@ -8,15 +8,53 @@ import { AdditionalHour } from "AdditionalHours";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
-  const data = [
+  const data: AdditionalHour[] = [
     {
-      title: "Monitoria de Compiladores",
-      hour: 64,
-      linkTo: "",
-      isValid: false,
+      situation: "Sem resposta",
+      activity_type: "Iniciação à pesquisa",
+      participation_type: "Membro da equipe",
+      activity_title: "Bolsa no laboratório CRAB",
+      atUfc: true,
+      institution_name: "Universidade Federal do Ceará",
+      institution_country: "Brasil",
+      institution_cnpj: "07272636000131",
+      date: {
+        start_date: "25/02/2021",
+        end_date: "29/09/2022",
+      },
+      amount_hours: 96,
     },
-    { title: "Líder de Turma", hour: 24, linkTo: "", isValid: true },
-    { title: "Estágio Insight", hour: 96, linkTo: "", isValid: true },
+    {
+      situation: "Indeferido",
+      activity_type: "Iniciação à pesquisa",
+      participation_type: "Membro da equipe",
+      activity_title: "Curso de Manutenção e Aprendizagem de Máquina",
+      atUfc: true,
+      institution_name:
+        "Universidade Federal do Ceará Ceará CearáCearáCeará Ceará Ceará",
+      institution_country: "Brasil",
+      institution_cnpj: "07272636000131",
+      date: {
+        start_date: "25/02/2021",
+        end_date: "29/09/2022",
+      },
+      amount_hours: 24,
+    },
+    {
+      situation: "Deferido",
+      activity_type: "Iniciação à pesquisa",
+      participation_type: "Membro da equipe",
+      activity_title: "Estágio no Great",
+      atUfc: true,
+      institution_name: "Universidade Federal do Ceará",
+      institution_country: "Brasil",
+      institution_cnpj: "07272636000131",
+      date: {
+        start_date: "25/02/2021",
+        end_date: "29/09/2022",
+      },
+      amount_hours: 64,
+    },
   ];
 
   const HeaderElement = () => {
@@ -48,7 +86,7 @@ export function AdditionalHoursHome() {
       alert("Right coisado");
       rowRefs.get(itens.index).close();
     };
-    
+
     const handleLeft = () => {
       alert("Left coisado");
       rowRefs.get(itens.index).close();
@@ -62,7 +100,7 @@ export function AdditionalHoursHome() {
         onSwipeableWillOpen={swipeOpen}
         item_key={itens.index}
         rowRefs={rowRefs}
-        key={`${item.title}_${itens.index}`}
+        key={`${item.activity_title}_${itens.index}`}
         {...item}
       />
     );
@@ -77,7 +115,7 @@ export function AdditionalHoursHome() {
       <FlatList
         data={data}
         renderItem={renderCard}
-        keyExtractor={(item) => item.title}
+        keyExtractor={(item) => item.activity_title}
         ListHeaderComponent={HeaderElement}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}

@@ -9,6 +9,7 @@ import { Swipeable } from "react-native-gesture-handler";
 import { DeleteButton } from "../DeleteButton";
 import { AdditionalHour } from "AdditionalHours";
 import { EditButton } from "../EditButton";
+import { AdditionalHoursProp } from "../../../types/types";
 
 interface AdditionalHoursCardProps {
   data: AdditionalHour;
@@ -28,7 +29,7 @@ export function AdditionalHoursCard({
   handleLeft,
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<AdditionalHoursProp>();
 
   return (
     <Swipeable
@@ -47,21 +48,33 @@ export function AdditionalHoursCard({
       <TouchableHighlight
         style={{ borderRadius: 10, margin: 0 }}
         activeOpacity={0.9}
-        onPress={() => navigation.navigate(data.linkTo)}
+        onPress={() => navigation.navigate("AdditionalHoursDetails", data)}
       >
         <Container>
           <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
             <Icon
               as={FontAwesome}
-              name={data.isValid ? "check" : "question"}
+              name={
+                data.situation === "Deferido"
+                  ? "check"
+                  : data.situation === "Indeferido"
+                  ? "remove"
+                  : "question"
+              }
               size={5}
               color={
-                data.isValid ? theme.color.primaryColor : theme.color.grayDark
+                data.situation === "Deferido"
+                  ? theme.color.primaryColor
+                  : data.situation === "Indeferido"
+                  ? theme.color.errorColor
+                  : theme.color.grayDark
               }
             />
-            <H5>{data.title}</H5>
+            <View style={{ width: "70%" }}>
+              <H5>{data.activity_title}</H5>
+            </View>
           </View>
-          <H5>{data.hour}hs</H5>
+          <H5>{data.amount_hours}hs</H5>
         </Container>
       </TouchableHighlight>
     </Swipeable>
