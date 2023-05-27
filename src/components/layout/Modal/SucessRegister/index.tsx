@@ -24,7 +24,7 @@ export function SucessRegister() {
           Seu cadastro foi concluído com sucesso! Agora você pode acessar a
           plataforma.
         </Subtitle>
-        <Button borderRadius={10} backgroundColor={theme.color.primaryColor} width={100} marginTop={5}>
+        <Button borderRadius={10}  width={100} marginTop={5}>
           <H5 color={theme.color.textButton}>Começar</H5>
         </Button>
       </TextContent>

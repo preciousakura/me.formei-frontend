@@ -1,4 +1,4 @@
-import { Input, FormControl } from "native-base";
+import { Input, FormControl, VStack } from "native-base";
 import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 import { useTheme } from "styled-components";
@@ -33,7 +33,7 @@ export function InputCNPJ({
   };
 
   return (
-    <>
+    <VStack>
       <Label>
         <H5 color={theme.color.primaryColor} size={12}>
           {label}
@@ -42,11 +42,11 @@ export function InputCNPJ({
       <Input
         value={cnpjMask(values.cnpj)}
         color={theme.color.text}
-        focusOutlineColor={theme.color.primaryColor}
+        
         variant="underlined"
         {...config}
         onChangeText={inputChange}
       />
-    </>
+    </VStack>
   );
 }

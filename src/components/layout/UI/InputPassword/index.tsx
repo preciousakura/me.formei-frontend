@@ -1,4 +1,4 @@
-import { Input, FormControl, Icon, IInputProps } from "native-base";
+import { Input, FormControl, Icon, IInputProps, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import { H5 } from "../../../shared/text";
@@ -25,14 +25,14 @@ export function InputPassword({
   const [showPassword, setShowPassword] = useState(false);
   const theme = useTheme();
   return (
-    <>
+    <VStack>
       <Label>
         <H5 color={theme.color.primaryColor} size={12}>
           {label}
         </H5>
       </Label>
       <Input
-        focusOutlineColor={theme.color.primaryColor}
+        
         variant="underlined"
         color={theme.color.text}
         {...config}
@@ -48,6 +48,6 @@ export function InputPassword({
           />
         }
       />
-    </>
+    </VStack>
   );
 }

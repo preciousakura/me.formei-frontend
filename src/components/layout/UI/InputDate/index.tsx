@@ -1,27 +1,100 @@
-import { FormControl } from "native-base";
+import { FormControl, IInputProps, Icon, Input, VStack } from "native-base";
 import { H5 } from "../../../shared/text";
 import { useTheme } from "styled-components";
-import RNDateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePicker, {
+  DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
+import { useState } from "react";
+import { FontAwesome } from "@expo/vector-icons";
+import { Platform, Pressable } from "react-native";
 
 const { Label } = FormControl;
 
 interface InputDateProps {
   label: string;
+  config?: IInputProps;
   touched?: boolean;
   isValid?: boolean;
   errors?: string;
 }
 
-export function InputDate({ label, touched, isValid, errors }: InputDateProps) {
+const zeroLeft = (value: number) => {
+  return ("0000" + value).slice(-2);
+};
+
+export function InputDate({
+  label,
+  config,
+  touched,
+  isValid,
+  errors,
+}: InputDateProps) {
   const theme = useTheme();
+
+  const [date, setDate] = useState<Date>(new Date());
+  const [dateValue, setDateValue] = useState(
+    `${zeroLeft(date.getDate())}/${zeroLeft(
+      date.getMonth()
+    )}/${date.getFullYear()}`
+  );
+  const [showPicker, setShowPicker] = useState(false);
+
+  const togglePicker = () => {
+    setShowPicker(!showPicker);
+  };
+
+  const onChange = (event: DateTimePickerEvent, d?: Date) => {
+    if (event.type === "set") {
+      const currentDate = d ?? new Date();
+      const dateValue = `${zeroLeft(currentDate.getDate())}/${zeroLeft(
+        currentDate.getMonth()
+      )}/${currentDate.getFullYear()}`;
+      setDate(currentDate);
+      if (Platform.OS === "android") {
+        togglePicker();
+        setDateValue(dateValue);
+      }
+    } else togglePicker();
+  };
+
   return (
-    <>
+    <VStack>
       <Label>
         <H5 color={theme.color.primaryColor} size={12}>
           {label}
         </H5>
       </Label>
-      <RNDateTimePicker mode="date" value={new Date()} />
-    </>
+      {showPicker && (
+        <DateTimePicker
+          locale="pt-BR"
+          onChange={onChange}
+          display="spinner"
+          value={date}
+          mode="date"
+        />
+      )}
+
+      {!showPicker && (
+        <Pressable onPress={togglePicker}>
+          <Input
+            variant="underlined"
+            color={theme.color.text}
+            {...config}
+            value={dateValue}
+            onChangeText={setDateValue}
+            editable={false}
+            InputRightElement={
+              <Icon
+                as={FontAwesome}
+                name="calendar"
+                size={4}
+                ml="2"
+                color={theme.color.text}
+              />
+            }
+          />
+        </Pressable>
+      )}
+    </VStack>
   );
 }

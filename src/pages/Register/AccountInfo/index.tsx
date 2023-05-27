@@ -18,7 +18,7 @@ export default function AccountInfo() {
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <StatusBar
-        backgroundColor={theme.color.primaryColor}
+        
         barStyle="dark-content"
       />
       <View style={{ padding: 20 }}>
@@ -56,7 +56,7 @@ export default function AccountInfo() {
           <Button
             onPress={() => navigation.navigate("GeneralInfo")}
             marginTop={30}
-            backgroundColor={theme.color.primaryColor}
+            
             mt="5"
           >
             <H5 color={theme.color.textButton}>Próximo</H5>

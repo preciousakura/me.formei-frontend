@@ -73,7 +73,9 @@ export function AdditionalHoursDetails() {
                 color={theme.color.text}
               />
               <H5 color={theme.color.text}>Inicio:</H5>
-              <H5 weight="regular" color={theme.color.text}>{params.date.start_date}</H5>
+              <H5 weight="regular" color={theme.color.text}>
+                {params.date.start_date}
+              </H5>
             </HStack>
             <HStack space={2} alignItems="center">
               <Icon
@@ -83,7 +85,9 @@ export function AdditionalHoursDetails() {
                 color={theme.color.text}
               />
               <H5 color={theme.color.text}>Fim:</H5>
-              <H5 weight="regular" color={theme.color.text}>{params.date.end_date}</H5>
+              <H5 weight="regular" color={theme.color.text}>
+                {params.date.end_date}
+              </H5>
             </HStack>
           </HStack>
         </VStack>
@@ -98,7 +102,9 @@ export function AdditionalHoursDetails() {
           return (
             <VStack key={i} paddingBottom={4}>
               <H5 color={theme.color.text}>{c.name}: </H5>
-              <H5 weight="regular" color={theme.color.text}>{c.value}</H5>
+              <H5 weight="regular" color={theme.color.text}>
+                {c.value}
+              </H5>
             </VStack>
           );
         })}

@@ -17,7 +17,7 @@ export default function GeneralInfo() {
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <StatusBar
-        backgroundColor={theme.color.primaryColor}
+        
         barStyle="dark-content"
       />
       <View style={{ padding: 20 }}>
@@ -83,7 +83,7 @@ export default function GeneralInfo() {
           <Button
             onPress={() => navigation.navigate("FailedRegister")}
             marginTop={30}
-            backgroundColor={theme.color.primaryColor}
+            
             mt="5"
           >
             <H5 color={theme.color.textButton}>Criar</H5>

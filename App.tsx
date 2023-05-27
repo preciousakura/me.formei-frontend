@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import Routes from "./src/routes";
 import { StatusBar, useColorScheme } from "react-native";
 
@@ -10,6 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { GlobalStyle } from "./src/styles/themes/global";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { nativeColors } from "./src/styles/themes/nativeColors";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -19,6 +20,7 @@ export default function App() {
   const theme = deviceTheme ? themes[deviceTheme] : themes.light;
 
   const customTheme = extendTheme({
+    colors: nativeColors,
     config: {
       useSystemColorMode: true,
     },
@@ -45,7 +47,7 @@ export default function App() {
         <GlobalStyle onLayout={onLayoutRootView}>
           <ThemeProvider theme={theme}>
             <StatusBar
-              backgroundColor={theme.color.background}
+              backgroundColor={theme.color.primaryColor}
               barStyle="dark-content"
             />
             <Routes />

@@ -1,4 +1,4 @@
-import { Input, FormControl } from "native-base";
+import { Input, FormControl, VStack } from "native-base";
 import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 import { useTheme } from "styled-components";
@@ -22,18 +22,13 @@ export function InputText({
 }: InputTextProps) {
   const theme = useTheme();
   return (
-    <>
+    <VStack>
       <Label>
         <H5 color={theme.color.primaryColor} size={12}>
           {label}
         </H5>
       </Label>
-      <Input
-        color={theme.color.text}
-        focusOutlineColor={theme.color.primaryColor}
-        variant="underlined"
-        {...config}
-      />
-    </>
+      <Input color={theme.color.text} variant="underlined" {...config} />
+    </VStack>
   );
 }

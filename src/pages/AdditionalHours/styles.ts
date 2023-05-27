@@ -18,3 +18,9 @@ export const BorderedContent = styled.View`
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
 `;
+
+
+export const DateGroup = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`

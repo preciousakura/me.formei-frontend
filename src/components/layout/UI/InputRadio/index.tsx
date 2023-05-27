@@ -1,4 +1,4 @@
-import { Radio, FormControl, IRadioProps, HStack } from "native-base";
+import { Radio, FormControl, IRadioProps, HStack, VStack } from "native-base";
 import { H5 } from "../../../shared/text";
 import { useTheme } from "styled-components";
 
@@ -25,7 +25,7 @@ export function InputRadio({
 }: InputRadioProps) {
   const theme = useTheme();
   return (
-    <>
+    <VStack>
       <Label>
         <H5 color={theme.color.primaryColor} size={12}>
           {label}
@@ -49,6 +49,6 @@ export function InputRadio({
           })}
         </HStack>
       </Radio.Group>
-    </>
+    </VStack>
   );
 }

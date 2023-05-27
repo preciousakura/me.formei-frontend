@@ -1,5 +1,5 @@
-import { VStack, View } from "native-base";
-import { BorderedContent, ScrollContent } from "../styles";
+import { VStack, View, Button, HStack } from "native-base";
+import { BorderedContent, DateGroup, ScrollContent } from "../styles";
 import { Header } from "../../../components/layout";
 import { useTheme } from "styled-components";
 import {
@@ -10,6 +10,8 @@ import {
   InputSelect,
   InputText,
 } from "../../../components/layout/UI";
+import { Dimensions } from "react-native";
+import { H5 } from "../../../components/shared/text";
 
 export function AdditionalHoursRegister() {
   const theme = useTheme();
@@ -70,11 +72,36 @@ export function AdditionalHoursRegister() {
             config={{ placeholder: "Digite o CNPJ da instituição" }}
           />
 
+          <DateGroup>
+            <InputDate
+              config={{
+                placeholder: "Selecione o ano",
+                width: Dimensions.get("window").width / 2 - 60,
+              }}
+              label="Data de início"
+            />
+
+            <InputDate
+              config={{
+                placeholder: "Seleciona o período",
+                width: Dimensions.get("window").width / 2 - 60,
+              }}
+              label="Data de fim"
+            />
+          </DateGroup>
+
           <InputNumber
             label="Carga horária total"
             config={{ placeholder: "Digite a carga horária total" }}
           />
-          <InputDate label="Carga horária total" />
+          <HStack space={3}>
+            <Button flex={1} marginTop={30} mt="5">
+              <H5 color={theme.color.textButton}>Adicionar</H5>
+            </Button>
+            <Button flex={1} variant="outline" marginTop={30} mt="5">
+              <H5 color={theme.color.text}>Cancelar</H5>
+            </Button>
+          </HStack>
         </VStack>
       </BorderedContent>
     </ScrollContent>

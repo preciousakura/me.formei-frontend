@@ -1,7 +1,7 @@
+import { Button } from "native-base";
 import styled from "styled-components/native";
 
-export const Container = styled.TouchableHighlight`
-  background-color: ${(props) => props.theme.color.primaryColor};
+export const Container = styled(Button)`
   border-radius: 10px;
   align-items: center;
   justify-content: center;

@@ -27,7 +27,7 @@ export default function Login() {
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <StatusBar
-        backgroundColor={theme.color.primaryColor}
+        
         barStyle="dark-content"
       />
 
@@ -93,7 +93,7 @@ export default function Login() {
 
               <Button
                 marginTop={30}
-                backgroundColor={theme.color.primaryColor}
+                
                 onPress={() => handleSubmit()}
               >
                 <H5 color={theme.color.textButton}>Entrar</H5>

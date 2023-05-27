@@ -1,4 +1,4 @@
-import { Input, FormControl, Icon, View } from "native-base";
+import { Input, FormControl, Icon, View, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import { H5 } from "../../../shared/text";
@@ -26,7 +26,7 @@ export function ConfirmPassword({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <>
+    <VStack>
       <FormControl>
         <InputPassword
           placeholder="Digite sua senha"
@@ -43,7 +43,7 @@ export function ConfirmPassword({
           label="Confirmação de senha"
         />
       </FormControl>
-    </>
+    </VStack>
   );
 }
 
@@ -70,7 +70,7 @@ export function InputPassword({
         </H5>
       </Label>
       <Input
-        focusOutlineColor={theme.color.primaryColor}
+        
         variant="underlined"
         type={!show ? "password" : "text"}
         placeholder={placeholder}
