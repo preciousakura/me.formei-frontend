@@ -1,13 +1,17 @@
 import { FlatList, ListRenderItemInfo, StatusBar } from "react-native";
 import { Container } from "../styles";
 import { useTheme } from "styled-components";
-import { Header, SearchInput } from "../../../components/layout";
-import { View } from "native-base";
+import { CreateButton, Header, SearchInput } from "../../../components/layout";
+import { HStack, View } from "native-base";
 import { AdditionalHoursCard } from "../../../components/layout/AdditionalHoursCard";
 import { AdditionalHour } from "AdditionalHours";
+import { useNavigation } from "@react-navigation/native";
+import { AdditionalHoursProp } from "../../../types/types";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
+  const navigation = useNavigation<AdditionalHoursProp>();
+
   const data: AdditionalHour[] = [
     {
       situation: "Sem resposta",
@@ -66,7 +70,12 @@ export function AdditionalHoursHome() {
           colorText={theme.color.text}
           title="Horas Complementares"
         />
-        <SearchInput title="hora complementar" />
+        <HStack space={2} paddingY={5}>
+          <SearchInput title="hora complementar" />
+          <CreateButton
+            onPress={() => navigation.navigate("AdditionalHoursRegister")}
+          />
+        </HStack>
       </View>
     );
   };
@@ -101,6 +110,7 @@ export function AdditionalHoursHome() {
         item_key={itens.index}
         rowRefs={rowRefs}
         key={`${item.activity_title}_${itens.index}`}
+        onPress={() => navigation.navigate("AdditionalHoursDetails", item)}
         {...item}
       />
     );

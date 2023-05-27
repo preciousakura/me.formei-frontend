@@ -2,10 +2,12 @@ import { Input, FormControl } from "native-base";
 import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 import { useTheme } from "styled-components";
+import { useState } from "react";
+import { cnpjMask } from "../../../../utils/masks";
 
 const { Label } = FormControl;
 
-interface InputTextProps {
+interface InputCNPJProps {
   label: string;
   config?: IInputProps;
   touched?: boolean;
@@ -13,14 +15,23 @@ interface InputTextProps {
   errors?: string;
 }
 
-export function InputText({
+export function InputCNPJ({
   label,
   config,
   touched,
   isValid,
   errors,
-}: InputTextProps) {
+}: InputCNPJProps) {
   const theme = useTheme();
+
+  const [values, setValues] = useState({ cnpj: "" });
+
+  const inputChange = (value: string) => {
+    setValues({
+      cnpj: value,
+    });
+  };
+
   return (
     <>
       <Label>
@@ -29,10 +40,12 @@ export function InputText({
         </H5>
       </Label>
       <Input
+        value={cnpjMask(values.cnpj)}
         color={theme.color.text}
         focusOutlineColor={theme.color.primaryColor}
         variant="underlined"
         {...config}
+        onChangeText={inputChange}
       />
     </>
   );

@@ -1,5 +1,5 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { DetailContainer, DetailContent } from "../styles";
+import { ScrollContent, BorderedContent } from "../styles";
 import { H5, Subtitle } from "../../../components/shared/text";
 import { Header } from "../../../components/layout";
 import { useTheme } from "styled-components";
@@ -28,7 +28,7 @@ export function AdditionalHoursDetails() {
   };
 
   return (
-    <DetailContainer
+    <ScrollContent
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
@@ -37,11 +37,10 @@ export function AdditionalHoursDetails() {
           backButton
           colorIcon={theme.color.text}
           colorText={theme.color.text}
-          title="Detalhes da atividade"
         />
       </View>
 
-      <DetailContent>
+      <BorderedContent>
         <HStack paddingBottom={5} alignItems="center" space={3}>
           <Icon
             as={FontAwesome}
@@ -71,39 +70,39 @@ export function AdditionalHoursDetails() {
                 as={FontAwesome}
                 name={"calendar"}
                 size={4}
-                color={theme.color.primaryColor}
+                color={theme.color.text}
               />
-              <H5 color={theme.color.primaryColor}>Inicio: </H5>
-              <H5 color={theme.color.text}>{params.date.start_date}</H5>
+              <H5 color={theme.color.text}>Inicio:</H5>
+              <H5 weight="regular" color={theme.color.text}>{params.date.start_date}</H5>
             </HStack>
             <HStack space={2} alignItems="center">
               <Icon
                 as={FontAwesome}
                 name={"calendar"}
                 size={4}
-                color={theme.color.primaryColor}
+                color={theme.color.text}
               />
-              <H5 color={theme.color.primaryColor}>Fim: </H5>
-              <H5 color={theme.color.text}>{params.date.end_date}</H5>
+              <H5 color={theme.color.text}>Fim:</H5>
+              <H5 weight="regular" color={theme.color.text}>{params.date.end_date}</H5>
             </HStack>
           </HStack>
         </VStack>
         <Divider marginBottom={5} />
 
         <HStack space={2} paddingBottom={4} alignItems="center">
-          <H5 color={theme.color.primaryColor}>Situação: </H5>
+          <H5 color={theme.color.text}>Situação: </H5>
           {situation_badges[params.situation]}
         </HStack>
 
         {column.map((c, i) => {
           return (
             <VStack key={i} paddingBottom={4}>
-              <H5 color={theme.color.primaryColor}>{c.name}: </H5>
-              <H5 color={theme.color.text}>{c.value}</H5>
+              <H5 color={theme.color.text}>{c.name}: </H5>
+              <H5 weight="regular" color={theme.color.text}>{c.value}</H5>
             </VStack>
           );
         })}
-      </DetailContent>
-    </DetailContainer>
+      </BorderedContent>
+    </ScrollContent>
   );
 }

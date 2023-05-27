@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import Routes from "./src/routes";
 import { StatusBar, useColorScheme } from "react-native";
 
@@ -8,14 +8,21 @@ import { useFonts } from "expo-font";
 
 import * as SplashScreen from "expo-splash-screen";
 import { GlobalStyle } from "./src/styles/themes/global";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, extendTheme } from "native-base";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const deviceTheme = useColorScheme();
-  const theme = deviceTheme ? themes[deviceTheme] : themes.dark;
+
+  const theme = deviceTheme ? themes[deviceTheme] : themes.light;
+
+  const customTheme = extendTheme({
+    config: {
+      useSystemColorMode: true,
+    },
+  });
 
   const [fontsLoaded] = useFonts({
     "Nunito-Bold": require("./src/assets/fonts/Nunito-Bold.ttf"),
@@ -34,7 +41,7 @@ export default function App() {
   }
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <NativeBaseProvider>
+      <NativeBaseProvider theme={customTheme}>
         <GlobalStyle onLayout={onLayoutRootView}>
           <ThemeProvider theme={theme}>
             <StatusBar

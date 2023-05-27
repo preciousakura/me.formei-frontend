@@ -1,7 +1,6 @@
 import { TouchableHighlight, View } from "react-native";
 import { Container } from "./styles";
 import { useTheme } from "styled-components";
-import { useNavigation } from "@react-navigation/native";
 import { Icon } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import { H5 } from "../../shared/text";
@@ -9,7 +8,6 @@ import { Swipeable } from "react-native-gesture-handler";
 import { DeleteButton } from "../DeleteButton";
 import { AdditionalHour } from "AdditionalHours";
 import { EditButton } from "../EditButton";
-import { AdditionalHoursProp } from "../../../types/types";
 
 interface AdditionalHoursCardProps {
   data: AdditionalHour;
@@ -18,6 +16,7 @@ interface AdditionalHoursCardProps {
   onSwipeableWillOpen: () => void;
   handleRight: () => void;
   handleLeft: () => void;
+  onPress: () => void;
 }
 
 export function AdditionalHoursCard({
@@ -27,9 +26,9 @@ export function AdditionalHoursCard({
   onSwipeableWillOpen,
   handleRight,
   handleLeft,
+  onPress
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
-  const navigation = useNavigation<AdditionalHoursProp>();
 
   return (
     <Swipeable
@@ -48,7 +47,7 @@ export function AdditionalHoursCard({
       <TouchableHighlight
         style={{ borderRadius: 10, margin: 0 }}
         activeOpacity={0.9}
-        onPress={() => navigation.navigate("AdditionalHoursDetails", data)}
+        onPress={onPress}
       >
         <Container>
           <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>

@@ -6,11 +6,11 @@ export const Container = styled.SafeAreaView`
   padding: 20px;
 `;
 
-export const DetailContainer = styled.ScrollView`
+export const ScrollContent = styled.ScrollView`
   background: ${(props) => props.theme.color.background};
 `;
 
-export const DetailContent = styled.View`
+export const BorderedContent = styled.View`
   flex: 2;
   background: ${(props) => props.theme.color.cardBackground};
   padding: 40px 30px;

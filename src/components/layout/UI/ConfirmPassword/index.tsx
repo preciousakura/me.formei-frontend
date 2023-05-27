@@ -65,7 +65,7 @@ export function InputPassword({
   return (
     <View>
       <Label>
-        <H5 color={theme.color.primaryColor} size={10}>
+        <H5 color={theme.color.primaryColor} size={12}>
           {label}
         </H5>
       </Label>
