@@ -21,19 +21,22 @@ export default function Login() {
       .required("A senha é obrigatório"),
   });
 
+  const path_img = () => {
+    return theme.isDark
+      ? require("../../assets/img/dark-logo-home.png")
+      : require("../../assets/img/light-logo-home.png");
+  };
+
   return (
     <Container
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar
-        
-        barStyle="dark-content"
-      />
+      <StatusBar barStyle="dark-content" />
 
       <ContainerLogo>
         <Image
-          source={require("../../assets/img/logo-home.png")}
+          source={path_img()}
           resizeMode="contain"
           style={{
             height: "50%",
@@ -91,11 +94,7 @@ export default function Login() {
                 />
               </FormControl>
 
-              <Button
-                marginTop={30}
-                
-                onPress={() => handleSubmit()}
-              >
+              <Button marginTop={30} onPress={() => handleSubmit()}>
                 <H5 color={theme.colors.white}>Entrar</H5>
               </Button>
             </VStack>
