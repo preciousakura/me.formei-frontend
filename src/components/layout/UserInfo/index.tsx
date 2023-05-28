@@ -13,28 +13,28 @@ export function UserInfo() {
           <MaterialCommunityIcons
             name="account-circle"
             size={60}
-            color={theme.color.textButton}
+            color={theme.colors.white}
           />
           <View>
-            <Subtitle  color={theme.color.textButton}>
+            <Subtitle  color={theme.colors.white}>
               Isabel Cristina
             </Subtitle>
-            <H5 color={theme.color.textButton} >
+            <H5 color={theme.colors.white} >
               Curso:{" "}
-              <H5 color={theme.color.textButton}  weight="regular">
+              <H5 color={theme.colors.white}  weight="regular">
                 Ciência da Computação
               </H5>
             </H5>
-            <H5 color={theme.color.textButton} >
+            <H5 color={theme.colors.white} >
               Ano de entrada:{" "}
-              <H5 color={theme.color.textButton}  weight="regular">
+              <H5 color={theme.colors.white}  weight="regular">
                 2020.1
               </H5>
             </H5>
           </View>
         </View>
         <View>
-          <MaterialCommunityIcons name="exit-to-app" size={30} color={theme.color.textButton} />
+          <MaterialCommunityIcons name="exit-to-app" size={30} color={theme.colors.white} />
         </View>
       </Row>
     </Container>

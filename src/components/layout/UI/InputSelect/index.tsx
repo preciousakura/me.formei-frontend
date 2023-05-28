@@ -32,14 +32,14 @@ export function InputSelect({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
 
       <Select
         {...config}
-        color={theme.color.text}
+        color={theme.colors.text}
         variant="underlined"
         dropdownIcon={<Icon as={Entypo} name="chevron-down" size={4} />}
       >

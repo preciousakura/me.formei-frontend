@@ -35,13 +35,13 @@ export function InputNumber({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
       <Input
         value={numberMask(values.number)}
-        color={theme.color.text}
+        color={theme.colors.text}
         
         variant="underlined"
         {...config}

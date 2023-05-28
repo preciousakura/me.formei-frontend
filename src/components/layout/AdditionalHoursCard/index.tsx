@@ -1,7 +1,7 @@
 import { TouchableHighlight, View } from "react-native";
 import { Container } from "./styles";
 import { useTheme } from "styled-components";
-import { Icon } from "native-base";
+import { HStack, Icon } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import { H5 } from "../../shared/text";
 import { Swipeable } from "react-native-gesture-handler";
@@ -26,7 +26,7 @@ export function AdditionalHoursCard({
   onSwipeableWillOpen,
   handleRight,
   handleLeft,
-  onPress
+  onPress,
 }: AdditionalHoursCardProps) {
   const theme = useTheme();
 
@@ -49,8 +49,8 @@ export function AdditionalHoursCard({
         activeOpacity={0.9}
         onPress={onPress}
       >
-        <Container>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+        <Container alignItems="center" justifyContent="space-between">
+          <HStack alignItems="center" space={2}>
             <Icon
               as={FontAwesome}
               name={
@@ -63,16 +63,16 @@ export function AdditionalHoursCard({
               size={5}
               color={
                 data.situation === "Deferido"
-                  ? theme.color.primaryColor
+                  ? theme.colors.primary[500]
                   : data.situation === "Indeferido"
-                  ? theme.color.errorColor
-                  : theme.color.grayDark
+                  ? theme.colors.red[500]
+                  : theme.colors.gray[500]
               }
             />
-            <View style={{ width: "70%" }}>
-              <H5>{data.activity_title}</H5>
+            <View style={{ width: "75%" }}>
+              <H5 numberOfLines={1}>{data.activity_title}</H5>
             </View>
-          </View>
+          </HStack>
           <H5>{data.amount_hours}hs</H5>
         </Container>
       </TouchableHighlight>

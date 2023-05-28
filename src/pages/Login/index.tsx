@@ -96,15 +96,15 @@ export default function Login() {
                 
                 onPress={() => handleSubmit()}
               >
-                <H5 color={theme.color.textButton}>Entrar</H5>
+                <H5 color={theme.colors.white}>Entrar</H5>
               </Button>
             </VStack>
 
-            <H5 align="center" color={theme.color.text}>
+            <H5 align="center" color={theme.colors.text}>
               Ainda não tem uma conta?{" "}
               <H5
                 onPress={() => navigation.navigate("AccountInfo")}
-                color={theme.color.primaryColor}
+                color={theme.colors.primary[500]}
               >
                 Registre-se!
               </H5>

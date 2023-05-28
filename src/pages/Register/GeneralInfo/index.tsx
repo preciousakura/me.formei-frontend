@@ -81,12 +81,12 @@ export default function GeneralInfo() {
           </DateGroup>
 
           <Button
-            onPress={() => navigation.navigate("FailedRegister")}
+            onPress={() => navigation.navigate("SucessRegister")}
             marginTop={30}
             
             mt="5"
           >
-            <H5 color={theme.color.textButton}>Criar</H5>
+            <H5 color={theme.colors.white}>Criar</H5>
           </Button>
         </VStack>
       </ContentForm>

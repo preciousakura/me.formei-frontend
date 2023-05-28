@@ -65,7 +65,7 @@ export function InputPassword({
   return (
     <View>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
@@ -74,7 +74,7 @@ export function InputPassword({
         variant="underlined"
         type={!show ? "password" : "text"}
         placeholder={placeholder}
-        color={theme.color.text}
+        color={theme.colors.text}
         InputRightElement={
           <Icon
             onPress={() => setShow(!show)}
@@ -82,7 +82,7 @@ export function InputPassword({
             name={!show ? "eye" : "eye-off"}
             size={4}
             ml="2"
-            color={theme.color.text}
+            color={theme.colors.text}
           />
         }
       />

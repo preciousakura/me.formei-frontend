@@ -5,7 +5,7 @@ export const Container = styled.View`
 `;
 
 export const BarGroup = styled.View`
-  background: ${(theme) => theme.theme.color.gray};
+  background: ${(theme) => theme.theme.isDark ? theme.theme.colors.primary[900] : theme.theme.colors.gray[50]};
   flex-direction: row;
   border-radius: 100px;
   height: 20px;
@@ -27,7 +27,7 @@ export const LegendBarGroup = styled.View`
 `
 
 export const LegendBar = styled.View`
-     background: ${(theme) => theme.theme.color.gray};
+     background: ${(theme) => theme.theme.isDark ? theme.theme.colors.primary[900] : theme.theme.colors.gray[50]};
      border-radius: 100px;
      flex-direction: row;
      gap: 10px;

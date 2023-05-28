@@ -59,7 +59,7 @@ export default function AccountInfo() {
             
             mt="5"
           >
-            <H5 color={theme.color.textButton}>Próximo</H5>
+            <H5 color={theme.colors.white}>Próximo</H5>
           </Button>
         </VStack>
       </ContentForm>

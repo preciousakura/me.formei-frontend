@@ -19,16 +19,16 @@ export function ClassesCard({
   return (
     <Container current_class={isCurrent}>
       <HStack alignItems="center" justifyContent="space-between">
-        <View style={{width: '70%'}}>
-          <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
+        <View style={{width: '65%'}}>
+          <H5 numberOfLines={1} color={isCurrent ? theme.colors.black : undefined}>
             {discipline_name}
           </H5>
-          <H5 color={isCurrent ? theme.color.textBgLight : undefined}>
+          <H5 color={isCurrent ? theme.colors.black : undefined}>
             Prof. {teacher_name}
           </H5>
         </View>
         <View >
-          <H5 color={isCurrent ? theme.color.textBgLight : undefined} size={16}>
+          <H5 color={isCurrent ? theme.colors.black : undefined} size={16}>
             {start}:00-{end}:00
           </H5>
         </View>

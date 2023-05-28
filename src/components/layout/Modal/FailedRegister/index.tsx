@@ -14,7 +14,7 @@ export function FailedRegister() {
   return (
     <Container>
       <StatusBar
-        backgroundColor={theme.color.errorColor}
+        backgroundColor={theme.colors.red[500]}
         barStyle="dark-content"
       />
       <IconContent style={{ height: Dimensions.get("window").height / 2.5 }}>
@@ -22,23 +22,23 @@ export function FailedRegister() {
           as={AntDesign}
           name="closecircle"
           size="120"
-          color={theme.color.background}
+          color={theme.colors.background}
         />
       </IconContent>
       <TextContent style={{ height: Dimensions.get("window").height / 1 }}>
-        <Title color={theme.color.errorColor}>Ops!</Title>
-        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
+        <Title color={theme.colors.red[500]}>Ops!</Title>
+        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.colors.text}>
           Seu cadastro não pôde ser finalizado devido a uma falha no nosso
           sistema.
         </Subtitle>
         <Button
           onPress={() => navigation.navigate("Login")}
           borderRadius={10}
-          backgroundColor={theme.color.errorColor}
+          backgroundColor={theme.colors.red[500]}
           width={100}
           marginTop={5}
         >
-          <H5 color={theme.color.textButton}>Voltar</H5>
+          <H5 color={theme.colors.white}>Voltar</H5>
         </Button>
       </TextContent>
     </Container>

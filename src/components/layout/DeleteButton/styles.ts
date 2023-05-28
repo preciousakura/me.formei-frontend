@@ -3,7 +3,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${(props) => props.theme.color.errorColor};
+  background-color: ${(props) => props.theme.colors.red[500]};
   border-radius: 10px;
   justify-content: center;
   align-items: flex-end;

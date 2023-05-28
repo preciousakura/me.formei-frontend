@@ -42,7 +42,7 @@ export function AdditionalHoursHome() {
         start_date: "25/02/2021",
         end_date: "29/09/2022",
       },
-      amount_hours: 24,
+      amount_hours: 321,
     },
     {
       situation: "Deferido",
@@ -66,8 +66,8 @@ export function AdditionalHoursHome() {
       <View>
         <Header
           backButton
-          colorIcon={theme.color.text}
-          colorText={theme.color.text}
+          colorIcon={theme.colors.text}
+          colorText={theme.colors.text}
           title="Horas Complementares"
         />
         <HStack space={2} paddingY={5}>
@@ -119,7 +119,7 @@ export function AdditionalHoursHome() {
   return (
     <Container>
       <StatusBar
-        backgroundColor={theme.color.background}
+        backgroundColor={theme.colors.background}
         barStyle="dark-content"
       />
       <FlatList

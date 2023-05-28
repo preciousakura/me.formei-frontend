@@ -11,13 +11,13 @@ export function PeriodsHome() {
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <StatusBar
-        backgroundColor={theme.color.background}
+        backgroundColor={theme.colors.background}
         barStyle="dark-content"
       />
       <Header
         backButton
-        colorIcon={theme.color.text}
-        colorText={theme.color.text}
+        colorIcon={theme.colors.text}
+        colorText={theme.colors.text}
         title="Períodos"
       />
       <SearchInput title="período" />

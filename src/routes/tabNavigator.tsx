@@ -17,8 +17,8 @@ export function TabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: theme.color.primaryColor,
-        tabBarInactiveTintColor: theme.color.text,
+        tabBarActiveTintColor: theme.colors.primary[500],
+        tabBarInactiveTintColor: theme.colors.text,
         tabBarLabelStyle: {
           fontFamily: "Nunito-Bold",
           fontSize: tabSize * 0.2,
@@ -26,7 +26,7 @@ export function TabNavigator() {
         },
         tabBarStyle: {
           height: tabSize,
-          backgroundColor: theme.color.background
+          backgroundColor: theme.colors.background
         },
       }}
       
@@ -40,7 +40,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="home-outline"
               size={tabSize * 0.5}
-              color={props.focused ? theme.color.primaryColor : theme.color.text}
+              color={props.focused ? theme.colors.primary[500] : theme.colors.text}
             />
           ),
         }}
@@ -54,7 +54,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="book-open-outline"
               size={tabSize * 0.5}
-              color={props.focused ? theme.color.primaryColor : theme.color.text}
+              color={props.focused ? theme.colors.primary[500] : theme.colors.text}
             />
           ),
         }}
@@ -68,7 +68,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="clock-time-four-outline"
               size={tabSize * 0.5}
-              color={props.focused ? theme.color.primaryColor : theme.color.text}
+              color={props.focused ? theme.colors.primary[500] : theme.colors.text}
             />
           ),
         }}
@@ -82,7 +82,7 @@ export function TabNavigator() {
             <MaterialCommunityIcons
               name="account-outline"
               size={tabSize * 0.5}
-              color={props.focused ? theme.color.primaryColor : theme.color.text}
+              color={props.focused ? theme.colors.primary[500] : theme.colors.text}
             />
           ),
         }}

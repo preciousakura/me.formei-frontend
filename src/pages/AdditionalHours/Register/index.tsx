@@ -23,8 +23,8 @@ export function AdditionalHoursRegister() {
       <View style={{ padding: 20 }}>
         <Header
           backButton
-          colorIcon={theme.color.text}
-          colorText={theme.color.text}
+          colorIcon={theme.colors.text}
+          colorText={theme.colors.text}
           title="Adicionar atividade"
         />
       </View>
@@ -96,10 +96,10 @@ export function AdditionalHoursRegister() {
           />
           <HStack space={3}>
             <Button flex={1} marginTop={30} mt="5">
-              <H5 color={theme.color.textButton}>Adicionar</H5>
+              <H5 color={theme.colors.white}>Adicionar</H5>
             </Button>
             <Button flex={1} variant="outline" marginTop={30} mt="5">
-              <H5 color={theme.color.text}>Cancelar</H5>
+              <H5 color={theme.colors.text}>Cancelar</H5>
             </Button>
           </HStack>
         </VStack>

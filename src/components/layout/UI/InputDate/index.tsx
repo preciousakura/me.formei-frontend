@@ -60,7 +60,7 @@ export function InputDate({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
@@ -78,7 +78,7 @@ export function InputDate({
         <Pressable onPress={togglePicker}>
           <Input
             variant="underlined"
-            color={theme.color.text}
+            color={theme.colors.text}
             {...config}
             value={dateValue}
             onChangeText={setDateValue}
@@ -89,7 +89,7 @@ export function InputDate({
                 name="calendar"
                 size={4}
                 ml="2"
-                color={theme.color.text}
+                color={theme.colors.text}
               />
             }
           />

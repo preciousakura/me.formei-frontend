@@ -15,17 +15,17 @@ export function SucessRegister() {
           as={AntDesign}
           name="checkcircle"
           size="120"
-          color={theme.color.background}
+          color={theme.colors.background}
         />
       </IconContent>
       <TextContent style={{ height: Dimensions.get("window").height / 1 }}>
         <Title>Tudo certo!</Title>
-        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.color.text}>
+        <Subtitle align="center" style={{ paddingTop: 20 }} size={14} color={theme.colors.text}>
           Seu cadastro foi concluído com sucesso! Agora você pode acessar a
           plataforma.
         </Subtitle>
         <Button borderRadius={10}  width={100} marginTop={5}>
-          <H5 color={theme.color.textButton}>Começar</H5>
+          <H5 color={theme.colors.white}>Começar</H5>
         </Button>
       </TextContent>
     </Container>

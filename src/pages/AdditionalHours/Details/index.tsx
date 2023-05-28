@@ -35,33 +35,13 @@ export function AdditionalHoursDetails() {
       <View style={{ padding: 20 }}>
         <Header
           backButton
-          colorIcon={theme.color.text}
-          colorText={theme.color.text}
+          colorIcon={theme.colors.text}
+          colorText={theme.colors.text}
         />
       </View>
 
       <BorderedContent>
-        <HStack paddingBottom={5} alignItems="center" space={3}>
-          <Icon
-            as={FontAwesome}
-            name={
-              params.situation === "Deferido"
-                ? "check"
-                : params.situation === "Indeferido"
-                ? "remove"
-                : "question"
-            }
-            size={8}
-            color={
-              params.situation === "Deferido"
-                ? theme.color.primaryColor
-                : params.situation === "Indeferido"
-                ? theme.color.errorColor
-                : theme.color.grayDark
-            }
-          />
-          <Subtitle size={22}>{params.activity_title}</Subtitle>
-        </HStack>
+        <Subtitle style={{paddingBottom: 10}} size={22}>{params.activity_title}</Subtitle>
 
         <VStack marginBottom={5}>
           <HStack justifyContent="space-between">
@@ -70,10 +50,10 @@ export function AdditionalHoursDetails() {
                 as={FontAwesome}
                 name={"calendar"}
                 size={4}
-                color={theme.color.text}
+                color={theme.colors.text}
               />
-              <H5 color={theme.color.text}>Inicio:</H5>
-              <H5 weight="regular" color={theme.color.text}>
+              <H5 color={theme.colors.text}>Inicio:</H5>
+              <H5 weight="regular" color={theme.colors.text}>
                 {params.date.start_date}
               </H5>
             </HStack>
@@ -82,10 +62,10 @@ export function AdditionalHoursDetails() {
                 as={FontAwesome}
                 name={"calendar"}
                 size={4}
-                color={theme.color.text}
+                color={theme.colors.text}
               />
-              <H5 color={theme.color.text}>Fim:</H5>
-              <H5 weight="regular" color={theme.color.text}>
+              <H5 color={theme.colors.text}>Fim:</H5>
+              <H5 weight="regular" color={theme.colors.text}>
                 {params.date.end_date}
               </H5>
             </HStack>
@@ -94,15 +74,15 @@ export function AdditionalHoursDetails() {
         <Divider marginBottom={5} />
 
         <HStack space={2} paddingBottom={4} alignItems="center">
-          <H5 color={theme.color.text}>Situação: </H5>
+          <H5 color={theme.colors.text}>Situação: </H5>
           {situation_badges[params.situation]}
         </HStack>
 
         {column.map((c, i) => {
           return (
             <VStack key={i} paddingBottom={4}>
-              <H5 color={theme.color.text}>{c.name}: </H5>
-              <H5 weight="regular" color={theme.color.text}>
+              <H5 color={theme.colors.text}>{c.name}: </H5>
+              <H5 weight="regular" color={theme.colors.text}>
                 {c.value}
               </H5>
             </VStack>

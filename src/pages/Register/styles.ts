@@ -1,12 +1,12 @@
 import styled from "styled-components/native";
 
 export const Container = styled.ScrollView`
-  background: ${(theme) => theme.theme.color.primaryColor};
+  background: ${(theme) => theme.theme.colors.primary[500]};
 `;
 
 export const ContentForm = styled.View`
   flex: 2;
-  background: ${(theme) => theme.theme.color.background};
+  background: ${(theme) => theme.theme.colors.background};
   padding: 50px;  
   z-index: 1;
   

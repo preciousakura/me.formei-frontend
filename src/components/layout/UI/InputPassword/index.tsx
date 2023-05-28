@@ -27,14 +27,14 @@ export function InputPassword({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
       <Input
         
         variant="underlined"
-        color={theme.color.text}
+        color={theme.colors.text}
         {...config}
         type={!showPassword ? "password" : "text"}
         InputRightElement={
@@ -44,7 +44,7 @@ export function InputPassword({
             name={!showPassword ? "eye" : "eye-off"}
             size={4}
             ml="2"
-            color={theme.color.text}
+            color={theme.colors.text}
           />
         }
       />

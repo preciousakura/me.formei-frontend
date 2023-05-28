@@ -27,7 +27,7 @@ export function InputRadio({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.color.primaryColor} size={12}>
+        <H5 color={theme.colors.primary[500]} size={12}>
           {label}
         </H5>
       </Label>
@@ -37,11 +37,11 @@ export function InputRadio({
         name="groupRadio"
         accessibilityLabel="favorite colorscheme"
       >
-        <HStack space={6}>
+        <HStack space={2}>
           {values.map((value, index) => {
             return (
               <Radio size="sm" key={index} value={value} my={1}>
-                <H5 color={theme.color.text} size={12}>
+                <H5 color={theme.colors.text} size={12}>
                   {value}
                 </H5>
               </Radio>

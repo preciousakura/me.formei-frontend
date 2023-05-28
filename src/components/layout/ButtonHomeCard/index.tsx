@@ -30,14 +30,14 @@ export function ButtonHomeCard({ name, icon, nameIcon, linkTo }: ButtonHomeCardP
             as={icon}
             name={nameIcon}
             size={5}
-            color={theme.color.primaryColor}
+            color={theme.colors.primary[500]}
           />
           <H5>{name}</H5>
         </View>
         <MaterialCommunityIcons
           name="chevron-right"
           size={25}
-          color={theme.color.text}
+          color={theme.colors.text}
         />
       </Container>
     </TouchableHighlight>

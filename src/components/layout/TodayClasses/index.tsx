@@ -27,7 +27,7 @@ export function TodayClasses() {
 
   const [data, setData] = useState([
     {
-      discipline_name: "Engenharia de Software",
+      discipline_name: "Lógica para Ciência da Computação",
       teacher_name: "Rossana Andrade",
       hour: { start: 8, end: 10 },
       isCurrent: false,
@@ -74,7 +74,7 @@ export function TodayClasses() {
     <Container>
       <H5>
         Aulas de Hoje ({today_label}):{" "}
-        <H5 color={theme.color.primaryColor}>{today_day}</H5>
+        <H5 color={theme.colors.primary[500]}>{today_day}</H5>
       </H5>
       {data.map(renderClasses)}
     </Container>

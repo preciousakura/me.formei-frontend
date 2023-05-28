@@ -49,11 +49,24 @@ export function ProgressBar({ data, legend = false }: ProgressBarProps) {
                   }}
                 >
                   <Circle color={p.color} />
-                  <H5  color={theme.color.greenDark}>
+                  <H5
+                    color={
+                      theme.isDark
+                        ? theme.colors.white
+                        : theme.colors.primary[900]
+                    }
+                  >
                     {p.name}
                   </H5>
                 </View>
-                <H5 align="right" color={theme.color.greenDark}>
+                <H5
+                  align="right"
+                  color={
+                    theme.isDark
+                      ? theme.colors.white
+                      : theme.colors.primary[900]
+                  }
+                >
                   {p.parcial}/{p.total}
                 </H5>
               </LegendBar>
