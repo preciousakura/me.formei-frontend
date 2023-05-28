@@ -25,7 +25,7 @@ export type TabNavigatorProp = NativeStackNavigationProp<TabNavigatorParamList>;
 export type AdditionalHoursParamList = {
   AdditionalHoursHome: undefined;
   AdditionalHoursRegister: undefined;
-  AdditionalHoursEdit: undefined;
+  AdditionalHoursEdit: AdditionalHour;
   AdditionalHoursDetails: AdditionalHour;
 };
 

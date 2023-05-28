@@ -92,12 +92,11 @@ export function AdditionalHoursHome() {
     };
 
     const handleRight = () => {
-      alert("Right coisado");
       rowRefs.get(itens.index).close();
     };
 
     const handleLeft = () => {
-      alert("Left coisado");
+      navigation.navigate("AdditionalHoursEdit", item)
       rowRefs.get(itens.index).close();
     };
 
