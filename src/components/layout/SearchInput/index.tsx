@@ -19,8 +19,9 @@ export function SearchInput({ title }: SearchInputProps) {
         backgroundColor={isDark ? theme.colors.black : theme.colors.white}
         color={theme.colors.text}
         borderRadius={10}
+        height={12}
+        fontSize={14}
         placeholder={`Buscar ${title}`}
-        
         InputLeftElement={<Icon as={<Ionicons name="search"/>} ml="3"/>}
       />
     </Container>

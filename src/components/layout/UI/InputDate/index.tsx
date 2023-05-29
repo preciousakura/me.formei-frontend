@@ -60,7 +60,7 @@ export function InputDate({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
@@ -77,6 +77,8 @@ export function InputDate({
       {!showPicker && (
         <Pressable onPress={togglePicker}>
           <Input
+            fontFamily="Nunito-Regular"
+            fontSize={14}
             variant="underlined"
             color={theme.colors.text}
             {...config}

@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const Container = styled.ScrollView`
-    background: ${props => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.background};
 `;
 
 export const TopContent = styled.View`
@@ -16,5 +16,5 @@ export const Content = styled.View`
   flex: 5;
   background: ${(theme) => theme.theme.colors.background};
   padding: 20px;
-  gap: 10px
+  gap: 10px;
 `;

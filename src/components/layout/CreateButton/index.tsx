@@ -8,7 +8,7 @@ interface CreateButtonProps {
 
 export function CreateButton({onPress}: CreateButtonProps) {
   return (
-    <Container onPress={onPress}>
+    <Container onPress={onPress} height={12}>
       <Icon as={MaterialIcons} name="add" size="6" color="#ffffff" />
     </Container>
   );

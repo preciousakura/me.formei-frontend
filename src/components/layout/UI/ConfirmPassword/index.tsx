@@ -65,12 +65,13 @@ export function InputPassword({
   return (
     <View>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
       <Input
-        
+        fontSize={14}
+        fontFamily="Nunito-Regular"
         variant="underlined"
         type={!show ? "password" : "text"}
         placeholder={placeholder}
@@ -80,7 +81,7 @@ export function InputPassword({
             onPress={() => setShow(!show)}
             as={Ionicons}
             name={!show ? "eye" : "eye-off"}
-            size={4}
+            size={5}
             ml="2"
             color={theme.colors.text}
           />

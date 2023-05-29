@@ -23,6 +23,6 @@ export function EditButton(
           EDITAR
         </H5>
       </IconStyle>
-    </Container>
+    </Container> 
   );
 }

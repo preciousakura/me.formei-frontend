@@ -7,7 +7,7 @@ export const Container = styled.ScrollView`
 export const ContentForm = styled.View`
   flex: 2;
   background: ${(theme) => theme.theme.colors.background};
-  padding: 50px;  
+  padding: 50px 40px;  
   z-index: 1;
   
   

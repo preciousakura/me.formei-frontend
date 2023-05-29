@@ -1,4 +1,4 @@
-import { FlatList, ListRenderItemInfo, StatusBar } from "react-native";
+import { FlatList, ListRenderItemInfo } from "react-native";
 import { Container } from "../styles";
 import { useTheme } from "styled-components";
 import { CreateButton, Header, SearchInput } from "../../../components/layout";
@@ -7,6 +7,7 @@ import { AdditionalHoursCard } from "../../../components/layout/AdditionalHoursC
 import { AdditionalHour } from "AdditionalHours";
 import { useNavigation } from "@react-navigation/native";
 import { AdditionalHoursProp } from "../../../types/types";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 
 export function AdditionalHoursHome() {
   const theme = useTheme();
@@ -65,6 +66,7 @@ export function AdditionalHoursHome() {
     return (
       <View>
         <Header
+          isSpaced={false}
           backButton
           colorIcon={theme.colors.text}
           colorText={theme.colors.text}
@@ -96,7 +98,7 @@ export function AdditionalHoursHome() {
     };
 
     const handleLeft = () => {
-      navigation.navigate("AdditionalHoursEdit", item)
+      navigation.navigate("AdditionalHoursEdit", item);
       rowRefs.get(itens.index).close();
     };
 
@@ -117,18 +119,17 @@ export function AdditionalHoursHome() {
 
   return (
     <Container>
-      <StatusBar
-        backgroundColor={theme.colors.background}
-        barStyle="dark-content"
-      />
-      <FlatList
-        data={data}
-        renderItem={renderCard}
-        keyExtractor={(item) => item.activity_title}
-        ListHeaderComponent={HeaderElement}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-      />
+      <CustomizedStatusBar backgroundColor={theme.colors.background} />
+      <View style={{ padding: 20 }}>
+        <FlatList
+          data={data}
+          renderItem={renderCard}
+          ListHeaderComponent={HeaderElement}
+          keyExtractor={(item) => item.activity_title}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+        />
+      </View>
     </Container>
   );
 }

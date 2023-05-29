@@ -1,5 +1,4 @@
-import { StatusBar, Dimensions, View } from "react-native";
-import { Container, ContentForm, DateGroup } from "../styles";
+import { Container, ContentForm } from "../styles";
 import { Header } from "../../../components/layout";
 import { Button, VStack } from "native-base";
 import { InputSelect } from "../../../components/layout/UI";
@@ -7,6 +6,7 @@ import { H5, Subtitle } from "../../../components/shared/text";
 import { useNavigation } from "@react-navigation/native";
 import { UserLoginNavigationProp } from "../../../types/types";
 import { useTheme } from "styled-components";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 
 export default function GeneralInfo() {
   const theme = useTheme();
@@ -16,13 +16,8 @@ export default function GeneralInfo() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar
-        
-        barStyle="dark-content"
-      />
-      <View style={{ padding: 20 }}>
-        <Header backButton />
-      </View>
+      <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
+      <Header backButton />
       <ContentForm>
         <Subtitle align="center">Informações gerais</Subtitle>
         <VStack space={3} mt="5" paddingBottom={30}>
@@ -60,30 +55,25 @@ export default function GeneralInfo() {
             label="Curso"
           />
 
-          <DateGroup>
-            <InputSelect
-              config={{
-                placeholder: "Selecione o ano",
-                width: Dimensions.get("window").width / 2 - 60,
-              }}
-              values={[{ label: "2020", value: "2020" }]}
-              label="Ano de entrada"
-            />
+          <InputSelect
+            config={{
+              placeholder: "Selecione o ano",
+            }}
+            values={[{ label: "2020", value: "2020" }]}
+            label="Ano de entrada"
+          />
 
-            <InputSelect
-              config={{
-                placeholder: "Seleciona o período",
-                width: Dimensions.get("window").width / 2 - 60,
-              }}
-              values={[{ label: "1", value: "1" }]}
-              label="Período de entrada"
-            />
-          </DateGroup>
+          <InputSelect
+            config={{
+              placeholder: "Seleciona o período",
+            }}
+            values={[{ label: "1", value: "1" }]}
+            label="Período de entrada"
+          />
 
           <Button
             onPress={() => navigation.navigate("SucessRegister")}
             marginTop={30}
-            
             mt="5"
           >
             <H5 color={theme.colors.white}>Criar</H5>

@@ -24,11 +24,17 @@ export function InputText({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
-      <Input color={theme.colors.text} variant="underlined" {...config} />
+      <Input
+        fontFamily="Nunito-Regular"
+        fontSize={14}
+        color={theme.colors.text}
+        variant="underlined"
+        {...config}
+      />
     </VStack>
   );
 }

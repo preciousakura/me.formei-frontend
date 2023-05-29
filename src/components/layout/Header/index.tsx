@@ -11,6 +11,7 @@ interface HeaderProps {
   colorText?: string;
   colorIcon?: string;
   align?: string;
+  isSpaced?: boolean;
 }
 
 export function Header({
@@ -18,12 +19,13 @@ export function Header({
   title,
   colorText = "white",
   colorIcon = "white",
-  align = "right"
+  align = "right",
+  isSpaced = true,
 }: HeaderProps) {
   const navigation = useNavigation<any>();
 
   return (
-    <Container>
+    <Container style={{ padding: isSpaced ? 20 : 0 }}>
       {backButton && (
         <IconButton
           onPress={() => navigation.goBack()}

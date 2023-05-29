@@ -1,4 +1,4 @@
-import { StatusBar, useColorMode } from "native-base";
+import { useColorMode } from "native-base";
 import { GlobalStyle } from "../styles/themes/global";
 import { ThemeProvider } from "styled-components";
 import Routes from "../routes";
@@ -37,10 +37,6 @@ export function PageManager() {
   return (
     <GlobalStyle onLayout={onLayoutRootView}>
       <ThemeProvider theme={theme}>
-        <StatusBar
-          backgroundColor={theme.colors.primary[500]}
-          barStyle="dark-content"
-        />
         <Routes />
       </ThemeProvider>
     </GlobalStyle>

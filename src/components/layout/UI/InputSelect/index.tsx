@@ -32,12 +32,14 @@ export function InputSelect({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
 
       <Select
+        fontFamily="Nunito-Regular"
+        fontSize={14}
         {...config}
         color={theme.colors.text}
         variant="underlined"

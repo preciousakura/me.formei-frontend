@@ -28,7 +28,7 @@ export function ProgressCourse() {
 
   return (
     <Container>
-      <H5 size={12} color={theme.colors.primary[500]}>
+      <H5 size={14} color={theme.colors.primary[500]}>
         Progresso
       </H5>
       <View

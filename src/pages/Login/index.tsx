@@ -1,13 +1,14 @@
-import { Button, FormControl, VStack } from "native-base";
+import { Button, FormControl, VStack, View } from "native-base";
 import { H5, Subtitle } from "../../components/shared/text";
 import { Container, ContentForm, ContainerLogo } from "./styles";
-import { StatusBar, Image } from "react-native";
+import { Image, Dimensions } from "react-native";
 import { InputPassword, InputText } from "../../components/layout/UI";
 import { useNavigation } from "@react-navigation/native";
 import { UserLoginNavigationProp } from "../../types/types";
 import * as yup from "yup";
 import { Formik } from "formik";
 import { useTheme } from "styled-components";
+import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
 
 export default function Login() {
   const theme = useTheme();
@@ -32,15 +33,13 @@ export default function Login() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar barStyle="dark-content" />
-
+      <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
       <ContainerLogo>
         <Image
           source={path_img()}
           resizeMode="contain"
           style={{
-            height: "50%",
-            bottom: "-50%",
+            height: Dimensions.get("screen").height / 6,
           }}
         />
       </ContainerLogo>

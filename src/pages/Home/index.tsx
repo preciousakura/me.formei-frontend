@@ -8,6 +8,7 @@ import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button, IIconProps, useColorMode } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
+import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
 
 export function Home() {
   const options = [
@@ -38,13 +39,14 @@ export function Home() {
     return <ButtonHomeCard key={`${item.name}_${i}`} {...item} />;
   }
 
-  const { toggleColorMode } = useTheme();
+  const { toggleColorMode, theme } = useTheme();
 
   return (
     <Container
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
+      <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
       <Button onPress={toggleColorMode}>Trocar</Button>
       <TopContent>
         <UserInfo />

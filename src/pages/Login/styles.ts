@@ -1,23 +1,26 @@
-import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 
 export const Container = styled.ScrollView`
   background: ${(theme) => theme.theme.colors.primary[500]};
 `;
 
-
 export const ContentForm = styled.View`
   flex: 1;
   background: ${(theme) => theme.theme.colors.background};
-  padding: 80px 50px;  
+  justify-content: center;
   z-index: 1;
+
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+  
+  padding: 50px 40px;  
 `;
 
 export const ContainerLogo = styled.View`
-  flex: 3;
+  flex: 1;
   align-items: center;
   justify-content: center;
   z-index: 2;
-  height: ${Dimensions.get('window').height/5}px;
   background: ${(theme) => theme.theme.colors.primary[500]};
+  padding: 20px 0;
 `;

@@ -1,5 +1,5 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { ScrollContent, BorderedContent } from "../styles";
+import { ScrollContent, ContentForm } from "../styles";
 import { H5, Subtitle } from "../../../components/shared/text";
 import { Header } from "../../../components/layout";
 import { useTheme } from "styled-components";
@@ -32,16 +32,16 @@ export function AdditionalHoursDetails() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <View style={{ padding: 20 }}>
-        <Header
-          backButton
-          colorIcon={theme.colors.text}
-          colorText={theme.colors.text}
-        />
-      </View>
+      <Header
+        backButton
+        colorIcon={theme.colors.text}
+        colorText={theme.colors.text}
+      />
 
-      <BorderedContent>
-        <Subtitle style={{paddingBottom: 10}} size={22}>{params.activity_title}</Subtitle>
+      <ContentForm>
+        <Subtitle style={{ paddingBottom: 10 }} size={22}>
+          {params.activity_title}
+        </Subtitle>
 
         <VStack marginBottom={5}>
           <HStack justifyContent="space-between">
@@ -88,7 +88,7 @@ export function AdditionalHoursDetails() {
             </VStack>
           );
         })}
-      </BorderedContent>
+      </ContentForm>
     </ScrollContent>
   );
 }

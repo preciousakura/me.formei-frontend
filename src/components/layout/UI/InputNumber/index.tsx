@@ -35,14 +35,15 @@ export function InputNumber({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
       <Input
+        fontFamily="Nunito-Regular"
         value={numberMask(values.number)}
         color={theme.colors.text}
-        
+        fontSize={14}
         variant="underlined"
         {...config}
         onChangeText={inputChange}

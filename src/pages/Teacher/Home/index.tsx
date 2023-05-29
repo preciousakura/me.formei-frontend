@@ -1,7 +1,7 @@
-import { StatusBar } from "react-native";
 import { Container } from "../styles";
 import { useTheme } from "styled-components";
 import { Header, SearchInput } from "../../../components/layout";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 
 export function TeacherHome() {
   const theme = useTheme();
@@ -10,10 +10,7 @@ export function TeacherHome() {
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <StatusBar
-        backgroundColor={theme.colors.background}
-        barStyle="dark-content"
-      />
+      <CustomizedStatusBar backgroundColor={theme.colors.background} />
       <Header
         backButton
         colorIcon={theme.colors.text}

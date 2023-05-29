@@ -27,12 +27,13 @@ export function InputPassword({
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
       <Input
-        
+        fontFamily="Nunito-Regular"
+        fontSize={14}
         variant="underlined"
         color={theme.colors.text}
         {...config}
@@ -42,7 +43,7 @@ export function InputPassword({
             onPress={() => setShowPassword(!showPassword)}
             as={Ionicons}
             name={!showPassword ? "eye" : "eye-off"}
-            size={4}
+            size={5}
             ml="2"
             color={theme.colors.text}
           />

@@ -12,10 +12,12 @@ interface InputRadioProps {
   touched?: boolean;
   isValid?: boolean;
   errors?: string;
+  orientation?: "vertical" | "horizontal";
 }
 
 export function InputRadio({
   label,
+  orientation,
   defaultValue,
   values,
   config,
@@ -24,10 +26,23 @@ export function InputRadio({
   errors,
 }: InputRadioProps) {
   const theme = useTheme();
+
+  const radioMap = () => {
+    return values.map((value, index) => {
+      return (
+        <Radio size="sm" key={index} value={value} my={1}>
+          <H5 color={theme.colors.text} size={14}>
+            {value}
+          </H5>
+        </Radio>
+      );
+    });
+  };
+
   return (
     <VStack>
       <Label>
-        <H5 color={theme.colors.primary[500]} size={12}>
+        <H5 color={theme.colors.primary[500]} size={14}>
           {label}
         </H5>
       </Label>
@@ -37,17 +52,11 @@ export function InputRadio({
         name="groupRadio"
         accessibilityLabel="favorite colorscheme"
       >
-        <HStack space={2}>
-          {values.map((value, index) => {
-            return (
-              <Radio size="sm" key={index} value={value} my={1}>
-                <H5 color={theme.colors.text} size={12}>
-                  {value}
-                </H5>
-              </Radio>
-            );
-          })}
-        </HStack>
+        {orientation === "vertical" ? (
+          <VStack space={2}>{radioMap()}</VStack>
+        ) : (
+          <HStack space={2}>{radioMap()}</HStack>
+        )}
       </Radio.Group>
     </VStack>
   );

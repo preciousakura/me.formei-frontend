@@ -28,7 +28,7 @@ export function ClassesCard({
           </H5>
         </View>
         <View >
-          <H5 color={isCurrent ? theme.colors.black : undefined} size={16}>
+          <H5 color={isCurrent ? theme.colors.black : undefined} size={14}>
             {start}:00-{end}:00
           </H5>
         </View>
