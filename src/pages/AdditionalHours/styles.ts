@@ -6,7 +6,11 @@ export const Container = styled.View`
   background: ${(props) => props.theme.colors.background};
 `;
 
-export const ContentForm = styled(View)`
+export const ScrollContent = styled.ScrollView`
+  background: ${(props) => props.theme.colors.background};
+`;
+
+export const BorderedContent = styled(View)`
   flex: 1;
   background: ${(props) =>
     props.theme.isDark ? props.theme.colors.black : props.theme.colors.white};

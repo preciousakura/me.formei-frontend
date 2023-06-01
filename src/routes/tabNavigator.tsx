@@ -5,11 +5,12 @@ import { Discipline } from "../pages/Discipline";
 import { Profile } from "../pages/Profile";
 import { TabNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
+const height = Platform.OS === "ios" ? 20 : 0;
 const tabSize = Dimensions.get("screen").height * 0.08;
 
 export function TabNavigator() {
@@ -22,10 +23,10 @@ export function TabNavigator() {
         tabBarLabelStyle: {
           fontFamily: "Nunito-Bold",
           fontSize: 14,
-          marginBottom: 5,
+          marginBottom: 5
         },
         tabBarStyle: {
-          height: tabSize,
+          height: tabSize + height,
           backgroundColor: theme.colors.background,
         },
         tabBarItemStyle: {
