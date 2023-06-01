@@ -1,9 +1,9 @@
 import { RouteProp, useRoute } from "@react-navigation/native";
-import { ScrollContent, ContentForm } from "../styles";
+import { ContentForm } from "../styles";
 import { H5, Subtitle } from "../../../components/shared/text";
 import { Header } from "../../../components/layout";
 import { useTheme } from "styled-components";
-import { Badge, Divider, HStack, Icon, VStack, View } from "native-base";
+import { Badge, Divider, HStack, Icon, ScrollView, VStack, View } from "native-base";
 import { AdditionalHoursParamList } from "../../../types/types";
 import { FontAwesome } from "@expo/vector-icons";
 export function AdditionalHoursDetails() {
@@ -28,7 +28,7 @@ export function AdditionalHoursDetails() {
   };
 
   return (
-    <ScrollContent
+    <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
@@ -89,6 +89,6 @@ export function AdditionalHoursDetails() {
           );
         })}
       </ContentForm>
-    </ScrollContent>
+    </ScrollView>
   );
 }
