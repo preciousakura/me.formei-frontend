@@ -31,7 +31,7 @@ export function AdditionalHoursRegister() {
       >
         <View style={{ padding: 20 }}>
           <Header
-          isSpaced={false}
+            isSpaced={false}
             backButton
             colorIcon={theme.colors.text}
             colorText={theme.colors.text}
@@ -39,8 +39,9 @@ export function AdditionalHoursRegister() {
           />
         </View>
         <BorderedContent>
-          <VStack space={3} mt="5" paddingBottom={30}>
+          <VStack space={6} mt="5" paddingBottom={30}>
             <InputRadio
+              orientation="vertical"
               label="Situação"
               values={["Sem resposta", "Deferido", "Indeferido"]}
               defaultValue="Sem resposta"
