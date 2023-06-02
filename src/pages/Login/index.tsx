@@ -1,7 +1,12 @@
 import { Button, FormControl, VStack, View } from "native-base";
 import { H5, Subtitle } from "../../components/shared/text";
 import { Container, ContentForm, ContainerLogo } from "./styles";
-import { Image, Dimensions } from "react-native";
+import {
+  Image,
+  Dimensions,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { InputPassword, InputText } from "../../components/layout/UI";
 import { useNavigation } from "@react-navigation/native";
 import { UserLoginNavigationProp } from "../../types/types";
@@ -29,87 +34,92 @@ export default function Login() {
   };
 
   return (
-    <Container
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ flexGrow: 1 }}
+    <KeyboardAvoidingView
+      style={{ flex: 1, backgroundColor: theme.colors.background }}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
-      <ContainerLogo>
-        <Image
-          source={path_img()}
-          resizeMode="contain"
-          style={{
-            height: Dimensions.get("screen").height / 6,
-          }}
-        />
-      </ContainerLogo>
-
-      <Formik
-        initialValues={{ user: "", password: "" }}
-        onSubmit={(values) => navigation.navigate("Tab")}
-        validateOnMount
-        validationSchema={loginValidationSchema}
+      <Container
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
       >
-        {({
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          values,
-          touched,
-          isValid,
-          errors,
-        }) => (
-          <ContentForm>
-            <Subtitle align="center">Faça seu login</Subtitle>
+        <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
+        <ContainerLogo>
+          <Image
+            source={path_img()}
+            resizeMode="contain"
+            style={{
+              height: Dimensions.get("screen").height / 6,
+            }}
+          />
+        </ContainerLogo>
 
-            <VStack space={3} mt="5" paddingBottom={30}>
-              <FormControl>
-                <InputText
-                  label="Usuário"
-                  touched={touched.user}
-                  isValid={isValid}
-                  errors={errors.user}
-                  config={{
-                    placeholder: "Digite seu usuário",
-                    onChangeText: handleChange("user"),
-                    onBlur: handleBlur("user"),
-                    value: values.user,
-                  }}
-                />
-              </FormControl>
+        <Formik
+          initialValues={{ user: "", password: "" }}
+          onSubmit={(values) => navigation.navigate("Tab")}
+          validateOnMount
+          validationSchema={loginValidationSchema}
+        >
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+            <ContentForm>
+              <Subtitle align="center">Faça seu login</Subtitle>
 
-              <FormControl>
-                <InputPassword
-                  label="Senha"
-                  touched={touched.password}
-                  isValid={isValid}
-                  errors={errors.password}
-                  config={{
-                    placeholder: "Digite sua senha",
-                    onChangeText: handleChange("password"),
-                    onBlur: handleBlur("password"),
-                    value: values.password,
-                  }}
-                />
-              </FormControl>
+              <VStack space={3} mt="5" paddingBottom={30}>
+                <FormControl>
+                  <InputText
+                    label="Usuário"
+                    touched={touched.user}
+                    isValid={isValid}
+                    errors={errors.user}
+                    config={{
+                      placeholder: "Digite seu usuário",
+                      onChangeText: handleChange("user"),
+                      onBlur: handleBlur("user"),
+                      value: values.user,
+                    }}
+                  />
+                </FormControl>
 
-              <Button marginTop={30} onPress={() => handleSubmit()}>
-                <H5 color={theme.colors.white}>Entrar</H5>
-              </Button>
-            </VStack>
+                <FormControl>
+                  <InputPassword
+                    label="Senha"
+                    touched={touched.password}
+                    isValid={isValid}
+                    errors={errors.password}
+                    config={{
+                      placeholder: "Digite sua senha",
+                      onChangeText: handleChange("password"),
+                      onBlur: handleBlur("password"),
+                      value: values.password,
+                    }}
+                  />
+                </FormControl>
 
-            <H5 align="center" color={theme.colors.text}>
-              Ainda não tem uma conta?{" "}
-              <H5
-                onPress={() => navigation.navigate("AccountInfo")}
-                color={theme.colors.primary[500]}
-              >
-                Registre-se!
+                <Button marginTop={30} onPress={() => handleSubmit()}>
+                  <H5 color={theme.colors.white}>Entrar</H5>
+                </Button>
+              </VStack>
+
+              <H5 align="center" color={theme.colors.text}>
+                Ainda não tem uma conta?{" "}
+                <H5
+                  onPress={() => navigation.navigate("AccountInfo")}
+                  color={theme.colors.primary[500]}
+                >
+                  Registre-se!
+                </H5>
               </H5>
-            </H5>
-          </ContentForm>
-        )}
-      </Formik>
-    </Container>
+            </ContentForm>
+          )}
+        </Formik>
+      </Container>
+    </KeyboardAvoidingView>
   );
 }
