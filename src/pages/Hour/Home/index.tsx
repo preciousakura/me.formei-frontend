@@ -1,25 +1,28 @@
-import { View } from "react-native";
 import { Container } from "../styles";
-import { TabView, SceneMap } from "react-native-tab-view";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import { useState } from "react";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import { Header } from "../../../components/layout";
+import { Header, HourSection } from "../../../components/layout";
 import { useTheme } from "../../../hooks/useTheme";
-
-const FirstRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
-);
-
-const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
-);
+import { Icon, IconButton } from "native-base";
+import { Ionicons } from "@expo/vector-icons";
 
 const renderScene = SceneMap({
-  seg: FirstRoute,
-  ter: SecondRoute,
-  qua: SecondRoute,
-  qui: SecondRoute,
-  sex: SecondRoute,
+  seg: () => {
+    return <HourSection day={2} />;
+  },
+  ter: () => {
+    return <HourSection day={3} />;
+  },
+  qua: () => {
+    return <HourSection day={4} />;
+  },
+  qui: () => {
+    return <HourSection day={5} />;
+  },
+  sex: () => {
+    return <HourSection day={6} />;
+  },
 });
 
 export function HourHome() {
@@ -34,6 +37,15 @@ export function HourHome() {
     { key: "sex", title: "SEX" },
   ]);
 
+  const renderTabBar = (props: any) => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: "white" }}
+      style={{ backgroundColor: theme.colors.primary[500] }}
+      labelStyle={{ fontFamily: "Nunito-Bold" }}
+    />
+  );
+
   return (
     <Container>
       <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
@@ -45,12 +57,24 @@ export function HourHome() {
         colorIcon={theme.colors.text}
         colorText={theme.colors.white}
         title="Horário"
+        rightButton={() => (
+          <IconButton
+            icon={<Icon as={Ionicons} name="md-settings-outline" />}
+            _icon={{
+              size: 36,
+              color: theme.colors.white,
+            }}
+            padding={0}
+            borderRadius={30}
+          />
+        )}
       />
       <TabView
-        style={{ backgroundColor: theme.colors.primary[500] }}
+        style={{ backgroundColor: theme.colors.background, flexGrow: 1 }}
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
+        renderTabBar={renderTabBar}
       />
     </Container>
   );

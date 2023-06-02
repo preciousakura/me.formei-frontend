@@ -21,3 +21,7 @@ export const dateMask = (value: string) => {
   }
   return v;
 };
+
+export const zeroLeftMask = (value: number) => {
+  return ("0000" + value).slice(-2);
+};

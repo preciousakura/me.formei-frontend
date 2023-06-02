@@ -1,7 +1,6 @@
-import React from "react";
 import { Container } from "./styles";
 import { Subtitle } from "../../shared/text";
-import { Icon, IconButton } from "native-base";
+import { Icon, IconButton, View } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { IViewProps } from "native-base/lib/typescript/components/basic/View/types";
@@ -14,6 +13,7 @@ interface HeaderProps {
   align?: string;
   isSpaced?: boolean;
   props?: IViewProps;
+  rightButton?: () => JSX.Element;
 }
 
 export function Header({
@@ -24,9 +24,10 @@ export function Header({
   align = "right",
   isSpaced = true,
   props,
+  rightButton,
 }: HeaderProps) {
   const navigation = useNavigation<any>();
-
+  const Component = rightButton as any;
   return (
     <Container
       {...props}
@@ -48,6 +49,9 @@ export function Header({
       <Subtitle align={align} color={colorText} size={22}>
         {title}
       </Subtitle>
+      <View position="absolute" right={6}>
+        {rightButton && <Component />}
+      </View>
     </Container>
   );
 }

@@ -47,8 +47,8 @@ export function Home() {
       contentContainerStyle={{ flexGrow: 1 }}
     >
       <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
-      <Button onPress={toggleColorMode}>Trocar</Button>
       <TopContent>
+      <Button onPress={toggleColorMode}>Trocar</Button>
         <UserInfo />
       </TopContent>
       <Content>

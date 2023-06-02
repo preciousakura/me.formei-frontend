@@ -16,10 +16,6 @@ interface InputDateProps {
   errors?: string;
 }
 
-const zeroLeft = (value: number) => {
-  return ("0000" + value).slice(-2);
-};
-
 export function InputDate({
   label,
   config,
