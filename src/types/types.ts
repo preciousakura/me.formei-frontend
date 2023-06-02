@@ -47,3 +47,11 @@ export type TeacherParamList = {
 };
 
 export type TeacherProp = NativeStackNavigationProp<AdditionalHoursParamList>;
+
+export type HourParamList = {
+  HourHome: undefined;
+  HourRegister: undefined;
+  HourEdit: undefined;
+};
+
+export type HourProp = NativeStackNavigationProp<AdditionalHoursParamList>;

@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../pages/Home";
-import { Hour } from "../pages/Hour";
 import { Discipline } from "../pages/Discipline";
 import { Profile } from "../pages/Profile";
 import { TabNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Dimensions, Platform } from "react-native";
 import { useTheme } from "styled-components";
+import { HourHome } from "../pages/Hour/Home";
 
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
@@ -23,7 +23,7 @@ export function TabNavigator() {
         tabBarLabelStyle: {
           fontFamily: "Nunito-Bold",
           fontSize: 14,
-          marginBottom: 5
+          marginBottom: 5,
         },
         tabBarStyle: {
           height: tabSize + height,
@@ -70,7 +70,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="Horário"
-        component={Hour}
+        component={HourHome}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (

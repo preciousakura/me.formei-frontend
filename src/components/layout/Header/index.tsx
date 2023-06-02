@@ -1,9 +1,10 @@
 import React from "react";
 import { Container } from "./styles";
 import { Subtitle } from "../../shared/text";
-import { Icon, IconButton, View } from "native-base";
+import { Icon, IconButton } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { IViewProps } from "native-base/lib/typescript/components/basic/View/types";
 
 interface HeaderProps {
   backButton?: boolean;
@@ -12,6 +13,7 @@ interface HeaderProps {
   colorIcon?: string;
   align?: string;
   isSpaced?: boolean;
+  props?: IViewProps;
 }
 
 export function Header({
@@ -21,11 +23,16 @@ export function Header({
   colorIcon = "white",
   align = "right",
   isSpaced = true,
+  props,
 }: HeaderProps) {
   const navigation = useNavigation<any>();
 
   return (
-    <Container style={{ padding: isSpaced ? 20 : 0 }}>
+    <Container
+      {...props}
+      justifyContent={props?.justifyContent ?? "space-between"}
+      style={{ padding: isSpaced ? 20 : 0 }}
+    >
       {backButton && (
         <IconButton
           onPress={() => navigation.goBack()}
