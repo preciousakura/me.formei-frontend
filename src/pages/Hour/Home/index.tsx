@@ -43,7 +43,7 @@ export function HourHome() {
           backgroundColor: theme.colors.primary[500],
         }}
         colorIcon={theme.colors.text}
-        colorText={theme.colors.text}
+        colorText={theme.colors.white}
         title="Horário"
       />
       <TabView
