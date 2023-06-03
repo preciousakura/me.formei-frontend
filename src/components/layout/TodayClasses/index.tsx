@@ -4,6 +4,7 @@ import { Container } from "./styles";
 import { ClassesCard } from "../ClassesCard";
 import { useEffect, useState } from "react";
 import { Classe } from "Discipline";
+import { zeroLeftMask } from "../../../utils/masks";
 
 export function TodayClasses() {
   const theme = useTheme();
@@ -19,10 +20,9 @@ export function TodayClasses() {
   ];
 
   const today_date = new Date();
-  const today_label = `${today_date.getDate()}/${(
-    "0000" +
-    (today_date.getMonth() + 1)
-  ).slice(-2)}`;
+  const today_label = `${zeroLeftMask(today_date.getDate())}/${zeroLeftMask(
+    today_date.getMonth() + 1
+  )}`;
   const today_day = week[today_date.getDay()];
 
   const [data, setData] = useState([

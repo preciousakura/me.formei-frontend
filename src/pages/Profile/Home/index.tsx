@@ -35,7 +35,12 @@ export function ProfileHome() {
     i: number
   ) {
     return (
-      <ButtonHomeCard key={`${item.name}_${i}`} {...item} hasIcon={false} />
+      <ButtonHomeCard
+        key={`${item.name}_${i}`}
+        {...item}
+        hasIcon={false}
+        root="Home"
+      />
     );
   }
 

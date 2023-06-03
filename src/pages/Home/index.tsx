@@ -16,24 +16,33 @@ export function Home() {
       name: "Horas complementares",
       icon: MaterialCommunityIcons,
       nameIcon: "timelapse",
-      linkTo: "AdditionalHours",
+      root: "AdditionalHours",
+      linkTo: "AdditionalHoursHome",
     },
     {
       name: "Professores",
       icon: Feather,
       nameIcon: "book",
-      linkTo: "Teacher",
+      root: "Teacher",
+      linkTo: "TeacherHome",
     },
     {
       name: "Períodos",
       icon: Feather,
       nameIcon: "calendar",
-      linkTo: "Periods",
+      root: "Periods",
+      linkTo: "PeriodsHome",
     },
   ];
 
   function renderCard(
-    item: { name: string; icon: IIconProps; nameIcon: string; linkTo: string },
+    item: {
+      name: string;
+      icon: IIconProps;
+      nameIcon: string;
+      linkTo: string;
+      root: string;
+    },
     i: number
   ) {
     return <ButtonHomeCard key={`${item.name}_${i}`} {...item} />;

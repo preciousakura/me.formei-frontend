@@ -2,7 +2,7 @@ import { Container, Content } from "../styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import { Header, ProgressDiscipline } from "../../../components/layout";
-import { IIconProps, VStack } from "native-base";
+import { VStack } from "native-base";
 import { ButtonHomeCard } from "../../../components/layout/ButtonHomeCard";
 
 export function DisciplineHome() {
@@ -15,7 +15,7 @@ export function DisciplineHome() {
     },
     {
       name: "Ver disciplinas disponíveis",
-      linkTo: "Teacher",
+      linkTo: "ListAvailable",
     },
   ];
 
@@ -27,7 +27,7 @@ export function DisciplineHome() {
     i: number
   ) {
     return (
-      <ButtonHomeCard key={`${item.name}_${i}`} {...item} hasIcon={false} />
+      <ButtonHomeCard key={`${item.name}_${i}`} {...item} hasIcon={false} root="Discipline" />
     );
   }
 
