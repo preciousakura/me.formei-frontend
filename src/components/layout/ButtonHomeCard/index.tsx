@@ -26,7 +26,6 @@ export function ButtonHomeCard({
 }: ButtonHomeCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
-  console.log(linkTo, root)
 
   return (
     <TouchableHighlight
