@@ -1,24 +1,22 @@
 import { Container, Content } from "../styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import { Header } from "../../../components/layout";
+import { AdminContactCard, Header } from "../../../components/layout";
 
 export function ListAvailable() {
   const { theme } = useTheme();
 
   return (
     <Container>
-      <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
+      <CustomizedStatusBar backgroundColor={theme.colors.background} />
       <Header
-        props={{
-          justifyContent: "center",
-          backgroundColor: theme.colors.primary[500],
-        }}
+        backButton
         colorIcon={theme.colors.text}
         colorText={theme.colors.white}
-        title="Disciplinas"
       />
-      <Content></Content>
+      <Content>
+        <AdminContactCard />
+      </Content>
     </Container>
   );
 }
