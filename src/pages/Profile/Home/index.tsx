@@ -40,7 +40,10 @@ export function ProfileHome() {
   }
 
   return (
-    <Container>
+    <Container
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ flexGrow: 1 }}
+    >
       <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
       <Header
         props={{
