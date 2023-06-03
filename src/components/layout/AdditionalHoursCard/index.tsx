@@ -1,10 +1,10 @@
-import { TouchableHighlight, View } from "react-native";
+import { View } from "react-native";
 import { Container } from "./styles";
 import { useTheme } from "styled-components";
 import { HStack, Icon } from "native-base";
 import { FontAwesome } from "@expo/vector-icons";
 import { H5 } from "../../shared/text";
-import { Swipeable } from "react-native-gesture-handler";
+import { Swipeable, TouchableHighlight } from "react-native-gesture-handler";
 import { DeleteButton } from "../DeleteButton";
 import { AdditionalHour } from "AdditionalHours";
 import { EditButton } from "../EditButton";

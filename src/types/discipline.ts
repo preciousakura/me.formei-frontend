@@ -1,4 +1,17 @@
 declare module "Discipline" {
+  interface Discipline {
+    name: string;
+    workload: number;
+    cod: string;
+
+    prerequisites: Discipline[];
+  }
+  
+  interface DisciplineByPeriod {
+    period: string;
+    disciplines: Discipline[];
+  }
+
   interface Hour {
     start: number;
     end: number;

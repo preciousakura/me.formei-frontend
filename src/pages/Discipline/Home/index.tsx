@@ -2,7 +2,6 @@ import { Container, Content } from "../styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import { Header, ProgressDiscipline } from "../../../components/layout";
-import { VStack } from "native-base";
 import { ButtonHomeCard } from "../../../components/layout/ButtonHomeCard";
 
 export function DisciplineHome() {
@@ -12,10 +11,12 @@ export function DisciplineHome() {
     {
       name: "Meu plano de formação",
       linkTo: "AdditionalHours",
+      root: "Discipline",
     },
     {
       name: "Ver disciplinas disponíveis",
       linkTo: "ListAvailable",
+      root: "Discipline",
     },
   ];
 
@@ -23,11 +24,12 @@ export function DisciplineHome() {
     item: {
       name: string;
       linkTo: string;
+      root: string;
     },
     i: number
   ) {
     return (
-      <ButtonHomeCard key={`${item.name}_${i}`} {...item} hasIcon={false} root="Discipline" />
+      <ButtonHomeCard key={`${item.name}_${i}`} {...item} hasIcon={false} />
     );
   }
 
@@ -43,11 +45,9 @@ export function DisciplineHome() {
         colorText={theme.colors.white}
         title="Disciplinas"
       />
-      <Content>
-        <VStack space={3}>
-          {options.map(renderCard)}
-          <ProgressDiscipline />
-        </VStack>
+      <Content space={3}>
+        {options.map(renderCard)}
+        <ProgressDiscipline />
       </Content>
     </Container>
   );

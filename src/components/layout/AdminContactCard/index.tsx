@@ -1,31 +1,29 @@
-import { TouchableHighlight, View } from "react-native";
+import { TouchableHighlight } from "react-native";
 import { Container } from "./styles";
 import { useTheme } from "styled-components";
-import { Icon } from "native-base";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Icon, View } from "native-base";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { H5 } from "../../shared/text";
 
 export function AdminContactCard() {
   const theme = useTheme();
 
   return (
     <TouchableHighlight
-      style={{ borderRadius: 10, margin: 0 }}
+      style={{ borderRadius: 10, marginBottom: 8 }}
       activeOpacity={0.9}
     >
-      <Container>
-        <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-          <Icon
-            as={MaterialCommunityIcons}
-            name="warning"
-            size={5}
-            color={theme.colors.primary[500]}
-          />
-        </View>
-        <MaterialCommunityIcons
-          name="chevron-right"
-          size={25}
-          color={theme.colors.text}
+      <Container space={5}>
+        <Icon
+          as={Ionicons}
+          name="ios-warning-outline"
+          size={45}
+          color={theme.colors.orange[500]}
         />
+        <H5 style={{ flex: 1, flexWrap: "wrap" }}>
+          Não encontrou alguma disciplina? Contate o administrador do seu curso
+          e solicite o cadastro.
+        </H5>
       </Container>
     </TouchableHighlight>
   );
