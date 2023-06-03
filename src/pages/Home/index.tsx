@@ -39,7 +39,7 @@ export function Home() {
     return <ButtonHomeCard key={`${item.name}_${i}`} {...item} />;
   }
 
-  const { toggleColorMode, theme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <Container
@@ -48,7 +48,6 @@ export function Home() {
     >
       <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
       <TopContent>
-      <Button onPress={toggleColorMode}>Trocar</Button>
         <UserInfo />
       </TopContent>
       <Content>

@@ -5,3 +5,4 @@ export { TodayClasses } from "./TodayClasses";
 export { SearchInput } from "./SearchInput";
 export { CreateButton } from "./CreateButton";
 export { HourSection } from "./HourSection";
+export { ProgressDiscipline } from "./ProgressDiscipline";

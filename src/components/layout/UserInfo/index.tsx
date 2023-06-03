@@ -16,25 +16,20 @@ export function UserInfo() {
             color={theme.colors.white}
           />
           <View>
-            <Subtitle  color={theme.colors.white}>
-              Isabel Cristina
-            </Subtitle>
-            <H5 color={theme.colors.white} >
+            <Subtitle color={theme.colors.white}>Isabel Cristina</Subtitle>
+            <H5 color={theme.colors.white}>
               Curso:{" "}
-              <H5 color={theme.colors.white}  weight="regular">
+              <H5 color={theme.colors.white} weight="regular">
                 Ciência da Computação
               </H5>
             </H5>
-            <H5 color={theme.colors.white} >
+            <H5 color={theme.colors.white}>
               Ano de entrada:{" "}
-              <H5 color={theme.colors.white}  weight="regular">
+              <H5 color={theme.colors.white} weight="regular">
                 2020.1
               </H5>
             </H5>
           </View>
-        </View>
-        <View>
-          <MaterialCommunityIcons name="exit-to-app" size={30} color={theme.colors.white} />
         </View>
       </Row>
     </Container>

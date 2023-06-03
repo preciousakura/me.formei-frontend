@@ -49,7 +49,7 @@ export function Header({
       <Subtitle align={align} color={colorText} size={22}>
         {title}
       </Subtitle>
-      <View position="absolute" right={6}>
+      <View position="absolute" right={6} zIndex={10}>
         {rightButton && <Component />}
       </View>
     </Container>

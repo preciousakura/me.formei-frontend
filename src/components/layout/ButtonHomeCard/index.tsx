@@ -9,12 +9,19 @@ import { useNavigation } from "@react-navigation/native";
 
 interface ButtonHomeCardProps {
   name: string;
-  icon: IIconProps;
-  nameIcon: string;
+  icon?: IIconProps;
+  nameIcon?: string;
   linkTo: string;
+  hasIcon?: boolean;
 }
 
-export function ButtonHomeCard({ name, icon, nameIcon, linkTo }: ButtonHomeCardProps) {
+export function ButtonHomeCard({
+  name,
+  icon,
+  nameIcon,
+  linkTo,
+  hasIcon = true,
+}: ButtonHomeCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
 
@@ -26,12 +33,14 @@ export function ButtonHomeCard({ name, icon, nameIcon, linkTo }: ButtonHomeCardP
     >
       <Container>
         <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-          <Icon
-            as={icon}
-            name={nameIcon}
-            size={5}
-            color={theme.colors.primary[500]}
-          />
+          {hasIcon && (
+            <Icon
+              as={icon}
+              name={nameIcon}
+              size={5}
+              color={theme.colors.primary[500]}
+            />
+          )}
           <H5>{name}</H5>
         </View>
         <MaterialCommunityIcons

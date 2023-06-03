@@ -9,6 +9,7 @@ import {
   LegendBarGroup,
 } from "./styles";
 import { useTheme } from "styled-components";
+import { useMemo } from "react";
 
 interface DataBar {
   name: string;
@@ -21,17 +22,31 @@ interface DataBar {
 interface ProgressBarProps {
   data: DataBar[];
   legend?: boolean;
+  hasTotal?: boolean;
 }
 
-export function ProgressBar({ data, legend = false }: ProgressBarProps) {
+export function ProgressBar({
+  data,
+  legend = false,
+  hasTotal = true,
+}: ProgressBarProps) {
   const theme = useTheme();
+
+  const fortatted_data = useMemo(() => {
+    return data.reduce((acc: DataBar[], acur, i) => {
+      const obj =
+        i == 0 ? acur : { ...acur, value: acur.value + acc[i - 1].value };
+      acc.push(obj);
+      return acc;
+    }, []);
+  }, [data]);
+
   return (
     <Container>
       <BarGroup>
-        {data.map((p, i) => {
-          const plusValue = i === 0 ? p.value : p.value + data[i - 1].value;
+        {fortatted_data.map((p, i) => {
           return (
-            <Bar key={p.name} value={plusValue} color={p.color} zIndex={-i} />
+            <Bar key={p.name} value={p.value} color={p.color} zIndex={-i} />
           );
         })}
       </BarGroup>
@@ -67,7 +82,9 @@ export function ProgressBar({ data, legend = false }: ProgressBarProps) {
                       : theme.colors.primary[900]
                   }
                 >
-                  {p.parcial}/{p.total}
+                  {p.parcial}
+                  {!hasTotal && `h`}
+                  {hasTotal && `/${p.total}`}
                 </H5>
               </LegendBar>
             );

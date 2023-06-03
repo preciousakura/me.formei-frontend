@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../pages/Home";
-import { Discipline } from "../pages/Discipline";
-import { Profile } from "../pages/Profile";
+import { DisciplineHome } from "../pages/Discipline/Home";
+import { ProfileHome } from "../pages/Profile/Home";
 import { TabNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Dimensions, Platform } from "react-native";
@@ -54,7 +54,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="Disciplinas"
-        component={Discipline}
+        component={DisciplineHome}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (
@@ -86,7 +86,7 @@ export function TabNavigator() {
       />
       <Tab.Screen
         name="Perfil"
-        component={Profile}
+        component={ProfileHome}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (
