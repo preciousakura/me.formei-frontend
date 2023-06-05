@@ -10,8 +10,6 @@ interface DisciplinesByPeriodProps {
 
 export function DisciplinesByPeriod({ data, Card }: DisciplinesByPeriodProps) {
   const theme = useTheme();
-  
-  console.log(data.period.toLowerCase())
 
   return (
     <Container>
