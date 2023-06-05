@@ -3,10 +3,10 @@ declare module "Discipline" {
     name: string;
     workload: number;
     cod: string;
-
+    isOptional: boolean;
     prerequisites: Discipline[];
   }
-  
+
   interface DisciplineByPeriod {
     period: string;
     disciplines: Discipline[];

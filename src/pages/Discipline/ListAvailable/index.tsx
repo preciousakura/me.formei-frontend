@@ -3,6 +3,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import {
   AdminContactCard,
+  DisciplineCard,
   DisciplinesByPeriod,
   FilterSelect,
   Header,
@@ -24,6 +25,8 @@ export function ListAvailable() {
           colorIcon={theme.colors.text}
           colorText={theme.colors.white}
         />
+        <SearchInput title="hora complementar" />
+
         <FilterSelect
           config={{
             placeholder: "Selecione um filtro",
@@ -34,7 +37,6 @@ export function ListAvailable() {
             { label: "Obrigatória", value: "Obrigatória" },
           ]}
         />
-        <SearchInput title="hora complementar" />
         <AdminContactCard />
       </VStack>
     );
@@ -45,6 +47,7 @@ export function ListAvailable() {
 
     return (
       <DisciplinesByPeriod
+        Card={DisciplineCard}
         data={item}
         key={`${item.period}_${itens.index}`}
         {...item}
@@ -61,24 +64,28 @@ export function ListAvailable() {
           prerequisites: [],
           workload: 96,
           cod: "CB0534",
+          isOptional: false,
         },
         {
           name: "Seminário em Computação",
           prerequisites: [],
           workload: 32,
           cod: "CB0534",
+          isOptional: false,
         },
         {
           name: "Matemática Discreta",
           prerequisites: [],
           workload: 96,
           cod: "CB0534",
+          isOptional: false,
         },
         {
           name: "Fundamentos de Programação",
           prerequisites: [],
           workload: 64,
           cod: "CB0534",
+          isOptional: false,
         },
       ],
     },
@@ -93,10 +100,12 @@ export function ListAvailable() {
               prerequisites: [],
               workload: 64,
               cod: "CB0534",
+              isOptional: false,
             },
           ],
           workload: 64,
           cod: "CB0534",
+          isOptional: false,
         },
         {
           name: "Cálculo Diferencial e Integral II ",
@@ -106,16 +115,19 @@ export function ListAvailable() {
               prerequisites: [],
               workload: 96,
               cod: "CB0534",
+              isOptional: false,
             },
           ],
           workload: 96,
           cod: "CB0535",
+          isOptional: false,
         },
         {
           name: "Álgebra Linear",
           prerequisites: [],
           workload: 64,
           cod: "CB0534",
+          isOptional: false,
         },
         {
           name: "Estrutura de Dados",
@@ -125,22 +137,26 @@ export function ListAvailable() {
               prerequisites: [],
               workload: 96,
               cod: "CB0534",
+              isOptional: false,
             },
             {
               name: "Fundamentos de Programação",
               prerequisites: [],
               workload: 64,
               cod: "CB0534",
+              isOptional: false,
             },
           ],
           workload: 64,
           cod: "CK0209",
+          isOptional: false,
         },
         {
           name: "Transmissão de Dados",
           prerequisites: [],
           workload: 64,
           cod: "CK0170",
+          isOptional: false,
         },
       ],
     },
@@ -151,7 +167,9 @@ export function ListAvailable() {
       <CustomizedStatusBar backgroundColor={theme.colors.background} />
       <Content>
         <FlatList
-          contentContainerStyle={{ paddingBottom: Platform.OS === 'ios' ? 70 : 0 }}
+          contentContainerStyle={{
+            paddingBottom: Platform.OS === "ios" ? 70 : 0,
+          }}
           data={data}
           renderItem={renderCard}
           ListHeaderComponent={HeaderElement}

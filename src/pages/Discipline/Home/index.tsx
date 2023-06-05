@@ -10,7 +10,7 @@ export function DisciplineHome() {
   const options = [
     {
       name: "Meu plano de formação",
-      linkTo: "AdditionalHours",
+      linkTo: "FormationPlan",
       root: "Discipline",
     },
     {

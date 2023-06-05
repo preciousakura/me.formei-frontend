@@ -9,3 +9,4 @@ export { ProgressDiscipline } from "./ProgressDiscipline";
 export { AdminContactCard } from "./AdminContactCard";
 export { FilterSelect } from "./FilterSelect";
 export { DisciplinesByPeriod } from "./DisciplinesByPeriod";
+export { DisciplineCard } from "./DisciplineCard";

@@ -87,6 +87,14 @@ export function ProfileHome() {
             >
               Ciência da Computação
             </H5>
+            <H5
+              align="center"
+              color={theme.colors.text}
+              size={18}
+              weight="regular"
+            >
+              2023.1 - 7° Período
+            </H5>
           </View>
           {options.map(renderCard)}
           <View>
