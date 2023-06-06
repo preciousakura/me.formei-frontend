@@ -10,3 +10,5 @@ export { AdminContactCard } from "./AdminContactCard";
 export { FilterSelect } from "./FilterSelect";
 export { DisciplinesByPeriod } from "./DisciplinesByPeriod";
 export { DisciplineCard } from "./DisciplineCard";
+export { SwipedDisciplineCard } from "./SwipedDisciplineCard";
+export { SwipedDisciplinesByPeriod } from "./SwipedDisciplinesByPeriod";

@@ -1,14 +1,14 @@
 import { Container } from "./styles";
 import { Divider, HStack, VStack, useTheme } from "native-base";
 import { H5 } from "../../shared/text";
-import { Discipline, DisciplineByPeriod } from "Discipline";
+import { DisciplineByPeriod } from "Discipline";
+import { DisciplineCard } from "../DisciplineCard";
 
 interface DisciplinesByPeriodProps {
   data: DisciplineByPeriod;
-  Card: (data: { data: Discipline }) => JSX.Element;
 }
 
-export function DisciplinesByPeriod({ data, Card }: DisciplinesByPeriodProps) {
+export function DisciplinesByPeriod({ data }: DisciplinesByPeriodProps) {
   const theme = useTheme();
 
   return (
@@ -16,13 +16,14 @@ export function DisciplinesByPeriod({ data, Card }: DisciplinesByPeriodProps) {
       <VStack space={3}>
         <HStack alignItems="center" space={3}>
           <H5 style={{ paddingVertical: 8 }} color={theme.colors.trueGray[400]}>
-            {data.period}{data.period.toLowerCase() !== "período atual" && ' PERÍODO'}
+            {data.period}
+            {data.period.toLowerCase() !== "período atual" && " PERÍODO"}
           </H5>
           <Divider />
         </HStack>
         {data.disciplines.map((d, i) => {
           const props = { data: d };
-          return <Card key={`${d.cod}_${i}`} {...props} />;
+          return <DisciplineCard key={`${d.cod}_${i}`} {...props} />;
         })}
       </VStack>
     </Container>

@@ -40,8 +40,6 @@ export function AdditionalHoursCard({
       }}
       renderLeftActions={EditButton}
       renderRightActions={DeleteButton}
-      onSwipeableRightOpen={handleRight}
-      onSwipeableLeftOpen={handleLeft}
       onSwipeableWillOpen={onSwipeableWillOpen}
     >
       <TouchableHighlight

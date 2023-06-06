@@ -2,7 +2,6 @@ import { Animated } from "react-native";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  flex: 1;
   background-color: ${(props) => props.theme.colors.green[500]};
   border-radius: 10px;
   justify-content: center;

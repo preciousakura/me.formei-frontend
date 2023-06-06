@@ -94,12 +94,10 @@ export function AdditionalHoursHome() {
     };
 
     const handleRight = () => {
-      rowRefs.get(itens.index).close();
     };
 
     const handleLeft = () => {
       navigation.navigate("AdditionalHoursEdit", item);
-      rowRefs.get(itens.index).close();
     };
 
     return (

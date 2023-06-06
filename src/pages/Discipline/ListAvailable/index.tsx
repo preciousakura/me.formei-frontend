@@ -47,7 +47,6 @@ export function ListAvailable() {
 
     return (
       <DisciplinesByPeriod
-        Card={DisciplineCard}
         data={item}
         key={`${item.period}_${itens.index}`}
         {...item}

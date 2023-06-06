@@ -3,11 +3,12 @@ import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import {
   CreateButton,
-  DisciplineCard,
   DisciplinesByPeriod,
   FilterSelect,
   Header,
   SearchInput,
+  SwipedDisciplineCard,
+  SwipedDisciplinesByPeriod,
 } from "../../../components/layout";
 import { FlatList, HStack, VStack, View } from "native-base";
 import { ListRenderItemInfo, Platform } from "react-native";
@@ -48,9 +49,8 @@ export function FormationPlan() {
     const { item } = itens;
 
     return (
-      <DisciplinesByPeriod
+      <SwipedDisciplinesByPeriod
         data={item}
-        Card={DisciplineCard}
         key={`${item.period}_${itens.index}`}
         {...item}
       />
