@@ -5,7 +5,7 @@ import {
   TodayClasses,
 } from "../../components/layout";
 import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
@@ -13,13 +13,19 @@ import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar
 export function Home() {
   const options = [
     {
+      name: "Progresso detalhado",
+      icon: Ionicons,
+      nameIcon: "md-hourglass-outline",
+      root: "Periods",
+      linkTo: "PeriodsHome",
+    },
+    {
       name: "Horas complementares",
       icon: MaterialCommunityIcons,
       nameIcon: "timelapse",
       root: "AdditionalHours",
       linkTo: "AdditionalHoursHome",
     },
-
     {
       name: "Períodos",
       icon: Feather,

@@ -1,7 +1,6 @@
 import { View } from "react-native";
 import { H5, Subtitle, Title } from "../../shared/text";
 import { Container } from "./styles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ProgressBar } from "../ProgressBar";
 import { useTheme } from "styled-components";
 import { useTheme as useThemeNativeBase } from "native-base";
@@ -47,23 +46,6 @@ export function ProgressCourse() {
       </View>
 
       <ProgressBar data={progressByType} legend />
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Subtitle align="right" color={theme.colors.text} size={14}>
-          Acessar progresso detalhado
-        </Subtitle>
-        <MaterialCommunityIcons
-          name="chevron-right"
-          size={25}
-          color={theme.colors.text}
-        />
-      </View>
     </Container>
   );
 }
