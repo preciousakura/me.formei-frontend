@@ -6,7 +6,7 @@ import {
 } from "../../components/layout";
 import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
-import { Button, IIconProps, useColorMode } from "native-base";
+import { IIconProps } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
 
@@ -19,13 +19,7 @@ export function Home() {
       root: "AdditionalHours",
       linkTo: "AdditionalHoursHome",
     },
-    {
-      name: "Professores",
-      icon: Feather,
-      nameIcon: "book",
-      root: "Teacher",
-      linkTo: "TeacherHome",
-    },
+
     {
       name: "Períodos",
       icon: Feather,

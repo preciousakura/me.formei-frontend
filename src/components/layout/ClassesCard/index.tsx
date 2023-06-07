@@ -8,7 +8,6 @@ import { zeroLeftMask } from "../../../utils/masks";
 
 export function ClassesCard({
   discipline_name,
-  teacher_name,
   hour,
   isCurrent,
 }: Classe) {
@@ -26,9 +25,6 @@ export function ClassesCard({
             color={isCurrent ? theme.colors.black : undefined}
           >
             {discipline_name}
-          </H5>
-          <H5 color={isCurrent ? theme.colors.black : undefined}>
-            Prof. {teacher_name}
           </H5>
         </View>
         <View>

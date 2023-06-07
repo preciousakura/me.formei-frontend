@@ -41,14 +41,6 @@ export type PeriodsParamList = {
 
 export type PeriodsProp = NativeStackNavigationProp<AdditionalHoursParamList>;
 
-export type TeacherParamList = {
-  TeacherHome: undefined;
-  TeacherRegister: undefined;
-  TeacherEdit: undefined;
-};
-
-export type TeacherProp = NativeStackNavigationProp<AdditionalHoursParamList>;
-
 export type HourParamList = {
   HourHome: undefined;
 };

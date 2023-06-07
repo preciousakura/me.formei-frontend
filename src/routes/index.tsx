@@ -5,7 +5,6 @@ import { TabNavigator } from "./tabNavigator";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AdditionalHoursNavigator from "./additionalHours";
 import PeriodsNavigator from "./periods";
-import TeacherNavigator from "./teacher";
 import HourNavigator from "./hour";
 import DisciplineNavigator from "./disciplines";
 import ProfileNavigator from "./profile";
@@ -34,11 +33,6 @@ export default function Routes() {
         <Navigation.Screen
           name="Periods"
           component={PeriodsNavigator}
-          options={{ headerShown: false }}
-        />
-        <Navigation.Screen
-          name="Teacher"
-          component={TeacherNavigator}
           options={{ headerShown: false }}
         />
         <Navigation.Screen

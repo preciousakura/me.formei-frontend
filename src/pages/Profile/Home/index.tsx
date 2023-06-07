@@ -19,7 +19,7 @@ export function ProfileHome() {
     },
     {
       name: "Editar período atual",
-      linkTo: "Teacher",
+      linkTo: "AdditionalHours",
     },
     {
       name: "Sair",

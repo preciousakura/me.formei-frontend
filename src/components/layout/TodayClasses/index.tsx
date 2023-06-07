@@ -28,19 +28,16 @@ export function TodayClasses() {
   const [data, setData] = useState([
     {
       discipline_name: "Lógica para Ciência da Computação",
-      teacher_name: "Rossana Andrade",
       hour: { start: 8, end: 10 },
       isCurrent: false,
     },
     {
       discipline_name: "Aprendizagem de Máquina",
-      teacher_name: "César Lincoln",
       hour: { start: 14, end: 16 },
       isCurrent: false,
     },
     {
       discipline_name: "Computação Gráfica II",
-      teacher_name: "Creto Vidal",
       hour: { start: 16, end: 18 },
       isCurrent: false,
     },

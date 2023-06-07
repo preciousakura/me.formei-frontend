@@ -1,22 +1,22 @@
-import { RouteProp, useRoute } from "@react-navigation/native";
-import { BorderedContent, Container } from "../styles";
-import { H5, Subtitle } from "../../../components/shared/text";
+import { BorderedContent, ScrollContent } from "../styles";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import { Header } from "../../../components/layout";
-import { useTheme } from "styled-components";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { H5, Subtitle } from "../../../components/shared/text";
 import {
-  Badge,
   Divider,
   HStack,
-  Icon,
-  ScrollView,
   VStack,
-  View,
+  useTheme as useThemeNative,
 } from "native-base";
+
 import { AdditionalHoursParamList } from "../../../types/types";
-import { FontAwesome } from "@expo/vector-icons";
-import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
+import { useTheme } from "../../../hooks/useTheme";
+
 export function AdditionalHoursDetails() {
-  const theme = useTheme();
+  const { colors } = useThemeNative();
+  const { theme } = useTheme();
+
   const { params } =
     useRoute<RouteProp<AdditionalHoursParamList, "AdditionalHoursDetails">>();
 
@@ -28,80 +28,47 @@ export function AdditionalHoursDetails() {
     { name: "País da Instituição", value: params.institution_country },
     { name: "CPNJ da Instituição", value: params.institution_cnpj },
     { name: "Carga horária total", value: `${params.amount_hours}h` },
+    { name: "Data de Início", value: params.date.start_date },
+    { name: "Data de FIM", value: params.date.end_date },
   ];
 
-  const situation_badges: Record<string, JSX.Element> = {
-    "Sem resposta": <Badge>Sem Resposta</Badge>,
-    Indeferido: <Badge colorScheme="danger">Indeferido</Badge>,
-    Deferido: <Badge colorScheme="success">Deferido</Badge>,
-  };
-
   return (
-    <Container>
+    <ScrollContent
+      contentContainerStyle={{ flexGrow: 1 }}
+      showsVerticalScrollIndicator={false}
+    >
       <CustomizedStatusBar />
-
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow: 1 }}
-      >
-        <Header
-          backButton
-          colorIcon={theme.colors.text}
-          colorText={theme.colors.text}
-        />
-
-        <BorderedContent>
-          <Subtitle style={{ paddingBottom: 10 }} size={22}>
-            {params.activity_title}
-          </Subtitle>
-
-          <VStack marginBottom={5}>
-            <HStack justifyContent="space-between">
-              <HStack space={2} alignItems="center">
-                <Icon
-                  as={FontAwesome}
-                  name={"calendar"}
-                  size={4}
-                  color={theme.colors.text}
-                />
-                <H5 color={theme.colors.text}>Inicio:</H5>
-                <H5 weight="regular" color={theme.colors.text}>
-                  {params.date.start_date}
-                </H5>
-              </HStack>
-              <HStack space={2} alignItems="center">
-                <Icon
-                  as={FontAwesome}
-                  name={"calendar"}
-                  size={4}
-                  color={theme.colors.text}
-                />
-                <H5 color={theme.colors.text}>Fim:</H5>
-                <H5 weight="regular" color={theme.colors.text}>
-                  {params.date.end_date}
-                </H5>
-              </HStack>
-            </HStack>
+      <Header
+        backButton
+        colorIcon={theme.colors.text}
+        colorText={theme.colors.white}
+      />
+      <BorderedContent>
+        <VStack space={6}>
+          <VStack>
+            <H5 color={colors.trueGray[400]}>
+              #{params.situation.toUpperCase()}
+            </H5>
+            <Subtitle color={theme.colors.text} size={26}>
+              {params.activity_title}
+            </Subtitle>
           </VStack>
-          <Divider marginBottom={5} />
 
-          <HStack space={2} paddingBottom={4} alignItems="center">
-            <H5 color={theme.colors.text}>Situação: </H5>
-            {situation_badges[params.situation]}
-          </HStack>
-
-          {column.map((c, i) => {
+          {column.map((v, i) => {
             return (
-              <VStack key={i} paddingBottom={4}>
-                <H5 color={theme.colors.text}>{c.name}: </H5>
-                <H5 weight="regular" color={theme.colors.text}>
-                  {c.value}
+              <VStack key={i} space={2}>
+                <HStack alignItems="center" space={3}>
+                  <H5 size={16}>{v.name.toUpperCase()}</H5>
+                  <Divider flex={1} />
+                </HStack>
+                <H5 weight="regular" size={16}>
+                  {v.value}
                 </H5>
               </VStack>
             );
           })}
-        </BorderedContent>
-      </ScrollView>
-    </Container>
+        </VStack>
+      </BorderedContent>
+    </ScrollContent>
   );
 }
