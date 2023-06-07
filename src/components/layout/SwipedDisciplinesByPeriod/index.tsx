@@ -3,6 +3,8 @@ import { Divider, HStack, VStack, useTheme } from "native-base";
 import { H5 } from "../../shared/text";
 import { DisciplineByPeriod } from "Discipline";
 import { SwipedDisciplineCard } from "../SwipedDisciplineCard";
+import { DisciplineProp } from "../../../types/types";
+import { useNavigation } from "@react-navigation/native";
 
 interface SwipedDisciplinesByPeriodProps {
   data: DisciplineByPeriod;
@@ -12,6 +14,7 @@ export function SwipedDisciplinesByPeriod({
   data,
 }: SwipedDisciplinesByPeriodProps) {
   const theme = useTheme();
+  const navigation = useNavigation<DisciplineProp>();
 
   let rowRefs = new Map();
 
@@ -21,11 +24,9 @@ export function SwipedDisciplinesByPeriod({
     });
   };
 
-  const handleRight = (index: number) => {
-  };
+  const handleRight = (index: number) => {};
 
-  const handleLeft = (index: number) => {
-  };
+  const handleLeft = (index: number) => {};
 
   return (
     <Container>
@@ -41,7 +42,7 @@ export function SwipedDisciplinesByPeriod({
           const props = { data: d };
           return (
             <SwipedDisciplineCard
-              onPress={() => console.log("oi")}
+              onPress={() => navigation.navigate("DisciplineDetails", d)}
               handleLeft={handleLeft}
               handleRight={handleRight}
               onSwipeableWillOpen={swipeOpen}

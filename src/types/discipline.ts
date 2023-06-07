@@ -1,6 +1,8 @@
 declare module "Discipline" {
   interface Discipline {
     name: string;
+    menu?: string;
+    bibliography: string[];
     workload: number;
     cod: string;
     isOptional: boolean;

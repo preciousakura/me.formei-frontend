@@ -3,7 +3,6 @@ import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import {
   AdminContactCard,
-  DisciplineCard,
   DisciplinesByPeriod,
   FilterSelect,
   Header,
@@ -64,6 +63,8 @@ export function ListAvailable() {
           workload: 96,
           cod: "CB0534",
           isOptional: false,
+          
+          bibliography: [],
         },
         {
           name: "Seminário em Computação",
@@ -71,6 +72,8 @@ export function ListAvailable() {
           workload: 32,
           cod: "CB0534",
           isOptional: false,
+          
+          bibliography: [],
         },
         {
           name: "Matemática Discreta",
@@ -78,6 +81,8 @@ export function ListAvailable() {
           workload: 96,
           cod: "CB0534",
           isOptional: false,
+          
+          bibliography: [],
         },
         {
           name: "Fundamentos de Programação",
@@ -85,6 +90,8 @@ export function ListAvailable() {
           workload: 64,
           cod: "CB0534",
           isOptional: false,
+          
+          bibliography: [],
         },
       ],
     },
@@ -100,11 +107,15 @@ export function ListAvailable() {
               workload: 64,
               cod: "CB0534",
               isOptional: false,
+              
+              bibliography: [],
             },
           ],
           workload: 64,
           cod: "CB0534",
           isOptional: false,
+          
+          bibliography: [],
         },
         {
           name: "Cálculo Diferencial e Integral II ",
@@ -115,11 +126,14 @@ export function ListAvailable() {
               workload: 96,
               cod: "CB0534",
               isOptional: false,
+              
+              bibliography: [],
             },
           ],
           workload: 96,
           cod: "CB0535",
           isOptional: false,
+          bibliography: [],
         },
         {
           name: "Álgebra Linear",
@@ -127,6 +141,7 @@ export function ListAvailable() {
           workload: 64,
           cod: "CB0534",
           isOptional: false,
+          bibliography: [],
         },
         {
           name: "Estrutura de Dados",
@@ -137,6 +152,7 @@ export function ListAvailable() {
               workload: 96,
               cod: "CB0534",
               isOptional: false,
+              bibliography: [],
             },
             {
               name: "Fundamentos de Programação",
@@ -144,11 +160,18 @@ export function ListAvailable() {
               workload: 64,
               cod: "CB0534",
               isOptional: false,
+              bibliography: [],
             },
           ],
           workload: 64,
           cod: "CK0209",
           isOptional: false,
+          menu: "Introdução, Listas Lineares, Árvores, Árvores balanceadas, Listas de prioridades, Tabelas de dispersão.",
+          bibliography: [
+            "CORMEN, T.; LEISERSON, C.; RIVEST, R.; STEIN, C. Algoritmos - Teoria e Prática. 3o edição, Editora Campus, 2012. ISBN-13: 978-8535236996",
+            "MARKENZON, L.; SZWARCFITER, J. Estruturas de Dados e Seus Algoritmos, LTC, 3a Edição, 2010. ISBN-13: 978-8521610144",
+            "SEDGEWICK, R.; WAYNE, K. Algorithms. Addison-Wesley Professional; 4th edition, 2011. ISBN-13: 978-0321573513.",
+          ],
         },
         {
           name: "Transmissão de Dados",
@@ -156,6 +179,7 @@ export function ListAvailable() {
           workload: 64,
           cod: "CK0170",
           isOptional: false,
+          bibliography: [],
         },
       ],
     },

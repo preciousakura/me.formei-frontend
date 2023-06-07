@@ -3,6 +3,7 @@ import { DisciplineParamList } from "../types/types";
 import { DisciplineHome } from "../pages/Discipline/Home";
 import { ListAvailable } from "../pages/Discipline/ListAvailable";
 import { FormationPlan } from "../pages/Discipline/FormationPlan";
+import { DisciplineDetails } from "../pages/Discipline/Details";
 
 const Discipline = createNativeStackNavigator<DisciplineParamList>();
 
@@ -22,6 +23,11 @@ export default function DisciplineNavigator() {
       <Discipline.Screen
         name="FormationPlan"
         component={FormationPlan}
+        options={{ headerShown: false }}
+      />
+      <Discipline.Screen
+        name="DisciplineDetails"
+        component={DisciplineDetails}
         options={{ headerShown: false }}
       />
     </Discipline.Navigator>
