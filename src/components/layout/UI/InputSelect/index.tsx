@@ -16,7 +16,6 @@ interface InputSelectProps {
   config?: ISelectProps;
   values: SelectData[];
   touched?: boolean;
-  isValid?: boolean;
   errors?: string;
 }
 
@@ -25,7 +24,6 @@ export function InputSelect({
   config,
   values,
   touched,
-  isValid,
   errors,
 }: InputSelectProps) {
   const theme = useTheme();
@@ -49,6 +47,11 @@ export function InputSelect({
           return <Item key={value.label} {...value} />;
         })}
       </Select>
+      {errors && touched && (
+        <H5 color="red" style={{ paddingTop: 10 }}>
+          {errors}
+        </H5>
+      )}
     </VStack>
   );
 }

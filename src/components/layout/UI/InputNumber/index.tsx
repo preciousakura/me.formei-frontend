@@ -2,8 +2,6 @@ import { Input, FormControl, VStack } from "native-base";
 import { H5 } from "../../../shared/text";
 import { IInputProps } from "native-base/lib/typescript/components/primitives/Input/types";
 import { useTheme } from "styled-components";
-import { useState } from "react";
-import { numberMask } from "../../../../utils/masks";
 
 const { Label } = FormControl;
 
@@ -24,14 +22,6 @@ export function InputNumber({
 }: InputNumberProps) {
   const theme = useTheme();
 
-  const [values, setValues] = useState({ number: "" });
-
-  const inputChange = (value: string) => {
-    setValues({
-      number: value,
-    });
-  };
-
   return (
     <VStack>
       <Label>
@@ -41,13 +31,17 @@ export function InputNumber({
       </Label>
       <Input
         fontFamily="Nunito-Regular"
-        value={numberMask(values.number)}
         color={theme.colors.text}
         fontSize={14}
         variant="underlined"
+        keyboardType="numeric"
         {...config}
-        onChangeText={inputChange}
       />
+      {errors && touched && (
+        <H5 color="red" style={{ paddingTop: 10 }}>
+          {errors}
+        </H5>
+      )}
     </VStack>
   );
 }

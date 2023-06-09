@@ -1,4 +1,11 @@
-import { Input, FormControl, Icon, View, VStack } from "native-base";
+import {
+  Input,
+  FormControl,
+  Icon,
+  View,
+  VStack,
+  IInputProps,
+} from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import { H5 } from "../../../shared/text";
@@ -8,20 +15,20 @@ import { useTheme } from "styled-components";
 const { Label } = FormControl;
 
 interface Password {
-  password: string;
-  confirmPassword: string;
-}
-
-interface ConfirmPassWordProps {
   touched?: boolean;
   isValid?: boolean;
   errors?: string;
+  config?: IInputProps;
+}
+
+interface ConfirmPassWordProps {
+  password?: Password;
+  confirmPassword?: Password;
 }
 
 export function ConfirmPassword({
-  touched,
-  isValid,
-  errors,
+  password,
+  confirmPassword,
 }: ConfirmPassWordProps) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -29,18 +36,24 @@ export function ConfirmPassword({
     <VStack>
       <FormControl>
         <InputPassword
-          placeholder="Digite sua senha"
+          config={password?.config}
           show={showPassword}
           setShow={setShowPassword}
           label="Senha"
+          touched={password?.touched}
+          isValid={password?.isValid}
+          errors={password?.errors}
         />
       </FormControl>
       <FormControl paddingTop={3}>
         <InputPassword
-          placeholder="Confirme sua senha"
+          config={confirmPassword?.config}
           show={showPassword}
           setShow={setShowPassword}
           label="Confirmação de senha"
+          touched={confirmPassword?.touched}
+          isValid={confirmPassword?.isValid}
+          errors={confirmPassword?.errors}
         />
       </FormControl>
     </VStack>
@@ -51,14 +64,20 @@ interface InputPasswordProps {
   show: boolean;
   setShow: (value: boolean) => void;
   label: string;
-  placeholder: string;
+  config?: IInputProps;
+  touched?: boolean;
+  isValid?: boolean;
+  errors?: string;
 }
 
 export function InputPassword({
   show,
   setShow,
   label,
-  placeholder,
+  config,
+  isValid,
+  touched,
+  errors,
 }: InputPasswordProps) {
   const theme = useTheme();
 
@@ -74,7 +93,7 @@ export function InputPassword({
         fontFamily="Nunito-Regular"
         variant="underlined"
         type={!show ? "password" : "text"}
-        placeholder={placeholder}
+        {...config}
         color={theme.colors.text}
         InputRightElement={
           <Icon
@@ -87,6 +106,8 @@ export function InputPassword({
           />
         }
       />
+
+      {errors && touched && <H5 color="red">{errors}</H5>}
     </View>
   );
 }

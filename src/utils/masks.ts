@@ -1,5 +1,5 @@
 export const numberMask = (value: string) => {
-  return value.replace(/\D+/g, ""); // não deixa ser digitado nenhuma letra
+  return value.replace(/\D/g, "");
 };
 
 export const cnpjMask = (value: string) => {

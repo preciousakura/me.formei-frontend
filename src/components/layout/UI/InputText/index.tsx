@@ -35,6 +35,11 @@ export function InputText({
         variant="underlined"
         {...config}
       />
+      {errors && touched && (
+        <H5 color="red" style={{ paddingTop: 10 }}>
+          {errors}
+        </H5>
+      )}
     </VStack>
   );
 }

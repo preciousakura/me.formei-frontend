@@ -1,11 +1,12 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AdditionalHour } from "AdditionalHours";
 import { Discipline } from "Discipline";
+import { AccountInfo } from "User";
 
 export type UserLoginNavigatorParamList = {
   Login: undefined;
   AccountInfo: undefined;
-  GeneralInfo: undefined;
+  GeneralInfo: AccountInfo;
   SucessRegister: undefined;
   FailedRegister: undefined;
   Tab: undefined;
