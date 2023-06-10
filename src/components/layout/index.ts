@@ -12,3 +12,4 @@ export { DisciplinesByPeriod } from "./DisciplinesByPeriod";
 export { DisciplineCard } from "./DisciplineCard";
 export { SwipedDisciplineCard } from "./SwipedDisciplineCard";
 export { SwipedDisciplinesByPeriod } from "./SwipedDisciplinesByPeriod";
+export { ProgressDisciplinesByPeriod } from "./ProgressDisciplinesByPeriod";

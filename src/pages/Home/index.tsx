@@ -16,8 +16,8 @@ export function Home() {
       name: "Progresso detalhado",
       icon: Ionicons,
       nameIcon: "md-hourglass-outline",
-      root: "Periods",
-      linkTo: "PeriodsHome",
+      root: "ProgressDetail",
+      linkTo: "ProgressDetail",
     },
     {
       name: "Horas complementares",

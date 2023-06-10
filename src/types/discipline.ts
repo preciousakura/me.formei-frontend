@@ -1,4 +1,6 @@
 declare module "Discipline" {
+  type Status = "Aprovado" | "Reprovado" | "Trancado";
+
   interface Discipline {
     name: string;
     menu?: string;
@@ -7,6 +9,7 @@ declare module "Discipline" {
     cod: string;
     isOptional: boolean;
     prerequisites: Discipline[];
+    status?: Status;
   }
 
   interface DisciplineByPeriod {

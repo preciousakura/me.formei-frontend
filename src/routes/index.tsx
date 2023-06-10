@@ -8,6 +8,7 @@ import PeriodsNavigator from "./periods";
 import HourNavigator from "./hour";
 import DisciplineNavigator from "./disciplines";
 import ProfileNavigator from "./profile";
+import { ProgressDetail } from "../pages/ProgressDetail";
 
 const Navigation = createNativeStackNavigator();
 
@@ -23,6 +24,11 @@ export default function Routes() {
         <Navigation.Screen
           name="Tab"
           component={TabNavigator}
+          options={{ headerShown: false }}
+        />
+        <Navigation.Screen
+          name="ProgressDetail"
+          component={ProgressDetail}
           options={{ headerShown: false }}
         />
         <Navigation.Screen

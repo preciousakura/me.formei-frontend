@@ -12,8 +12,8 @@ import { useTheme } from "styled-components";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { useAuth } from "../../../hooks/useAuth";
 import { Student } from "User";
+import { useAuth } from "../../../servicesHooks/useAuth";
 
 export default function GeneralInfo() {
   const theme = useTheme();
@@ -35,8 +35,9 @@ export default function GeneralInfo() {
 
   const { loading, postStudent, error } = useAuth();
 
+  const currentYear = new Date().getFullYear();
+
   function submit(values: any) {
-    const currentYear = new Date().getFullYear();
     const calculatedSemester =
       ((currentYear - Number(values.enrollmentYear)) * 12) / 6 + 1;
 
@@ -50,6 +51,15 @@ export default function GeneralInfo() {
 
     postStudent(student);
   }
+
+  const years = new Array(currentYear - 2015 + 1)
+    .fill({
+      label: 2015,
+      value: 2015,
+    })
+    .map((v, i) => {
+      return { label: String(v.label + i), value: String(v.value + i) };
+    });
 
   return (
     <Container
@@ -142,7 +152,7 @@ export default function GeneralInfo() {
                 }}
                 touched={touched.enrollmentYear}
                 errors={errors.enrollmentYear}
-                values={[{ label: "2020", value: "2020" }]}
+                values={years}
                 label="Ano de entrada"
               />
 
@@ -154,7 +164,7 @@ export default function GeneralInfo() {
                 }}
                 touched={touched.enrollmentSemester}
                 errors={errors.enrollmentSemester}
-                values={[{ label: "1", value: "1" }]}
+                values={[{ label: "1", value: "1" }, { label: "2", value: "2" }]}
                 label="Período de entrada"
               />
 
