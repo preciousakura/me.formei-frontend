@@ -1,6 +1,20 @@
 declare module "User" {
+  interface User {
+    isAdmin: boolean;
+    user: {
+      adminId: string;
+      city: string;
+      email: string;
+      id: string;
+      lastname: string;
+      name: string;
+      state: string;
+      username: string;
+    };
+  }
+
   interface UserLogin {
-    user: string;
+    username: string;
     password: string;
   }
 

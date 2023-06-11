@@ -164,16 +164,17 @@ export default function GeneralInfo() {
                 }}
                 touched={touched.enrollmentSemester}
                 errors={errors.enrollmentSemester}
-                values={[{ label: "1", value: "1" }, { label: "2", value: "2" }]}
+                values={[
+                  { label: "1", value: "1" },
+                  { label: "2", value: "2" },
+                ]}
                 label="Período de entrada"
               />
 
               <Button
-                isLoading={loading}
-                disabled={!isValid}
-                onPress={() => handleSubmit()}
+                isDisabled={!isValid}
                 marginTop={30}
-                mt="5"
+                onPress={() => handleSubmit()}
               >
                 <H5 color={theme.colors.white}>Criar</H5>
               </Button>

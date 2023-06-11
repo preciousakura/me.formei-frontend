@@ -16,3 +16,20 @@ export const colorModeManager = {
     }
   },
 };
+
+export const userSave = {
+  get: async () => {
+    try {
+      return await AsyncStorage.getItem("@token");
+    } catch (e) {
+      return null;
+    }
+  },
+  set: async (token: string) => {
+    try {
+      await AsyncStorage.setItem("@token", token);
+    } catch (e) {
+      console.log(e);
+    }
+  },
+};

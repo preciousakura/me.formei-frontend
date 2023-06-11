@@ -1,4 +1,4 @@
-import { Button, FormControl, VStack, View } from "native-base";
+import { Button, FormControl, VStack } from "native-base";
 import { H5, Subtitle } from "../../components/shared/text";
 import { Container, ContentForm, ContainerLogo } from "./styles";
 import {
@@ -14,17 +14,19 @@ import * as yup from "yup";
 import { Formik } from "formik";
 import { useTheme } from "styled-components";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
+import { UserLogin } from "User";
+import { useSignin } from "../../servicesHooks/useSignin";
+import { useUser } from "../../hooks/useUser";
+import { useEffect } from "react";
+import { Loading } from "../../components/layout";
 
 export default function Login() {
   const theme = useTheme();
   const navigation = useNavigation<UserLoginNavigationProp>();
 
   let loginValidationSchema = yup.object().shape({
-    user: yup.string().required("O usuário é obrigatório"),
-    password: yup
-      .string()
-      .min(6, ({ min }) => `A senha deve conter pelo menos ${min} caracteres.`)
-      .required("A senha é obrigatório"),
+    username: yup.string().required("O usuário é obrigatório"),
+    password: yup.string().required("A senha é obrigatória"),
   });
 
   const path_img = () => {
@@ -33,11 +35,32 @@ export default function Login() {
       : require("../../assets/img/light-logo-home.png");
   };
 
+  const { signin, loading, isUserError, isPasswordError, isGenericError } =
+    useSignin();
+  const { isLoggedIn, loading: loginLoading } = useUser();
+
+  useEffect(() => {
+    if (isLoggedIn) toHome();
+  }, [isLoggedIn]);
+
+  const toHome = () => {
+    navigation.navigate("Tab");
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "Tab" }],
+    });
+  };
+
+  const submit = async (values: UserLogin) => {
+    await signin(values, toHome);
+  };
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: theme.colors.background }}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
+      {loginLoading && <Loading />}
       <Container
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -54,8 +77,8 @@ export default function Login() {
         </ContainerLogo>
 
         <Formik
-          initialValues={{ user: "", password: "" }}
-          onSubmit={(values) => navigation.navigate("Tab")}
+          initialValues={{ username: "", password: "" }}
+          onSubmit={(values) => submit(values)}
           validateOnMount
           validationSchema={loginValidationSchema}
         >
@@ -75,14 +98,19 @@ export default function Login() {
                 <FormControl>
                   <InputText
                     label="Usuário"
-                    touched={touched.user}
-                    isValid={isValid}
-                    errors={errors.user}
+                    touched={touched.username}
+                    errors={
+                      errors.username
+                        ? errors.username
+                        : isUserError
+                        ? "Usuário não encontrado"
+                        : errors.username
+                    }
                     config={{
                       placeholder: "Digite seu usuário",
-                      onChangeText: handleChange("user"),
-                      onBlur: handleBlur("user"),
-                      value: values.user,
+                      onChangeText: handleChange("username"),
+                      onBlur: handleBlur("username"),
+                      value: values.username,
                     }}
                   />
                 </FormControl>
@@ -91,8 +119,15 @@ export default function Login() {
                   <InputPassword
                     label="Senha"
                     touched={touched.password}
-                    isValid={isValid}
-                    errors={errors.password}
+                    errors={
+                      errors.password
+                        ? errors.password
+                        : isPasswordError
+                        ? "A senha está incorreta"
+                        : isGenericError
+                        ? "Ocorreu um erro no servidor, tente novamente mais tarde."
+                        : errors.password
+                    }
                     config={{
                       placeholder: "Digite sua senha",
                       onChangeText: handleChange("password"),
@@ -102,7 +137,12 @@ export default function Login() {
                   />
                 </FormControl>
 
-                <Button marginTop={30} onPress={() => handleSubmit()}>
+                <Button
+                  isLoading={loading}
+                  isDisabled={!isValid}
+                  marginTop={30}
+                  onPress={() => handleSubmit()}
+                >
                   <H5 color={theme.colors.white}>Entrar</H5>
                 </Button>
               </VStack>

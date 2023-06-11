@@ -161,11 +161,11 @@ export default function AccountInfo() {
                     errors: errors.passwordConfirmation,
                   }}
                 />
+
                 <Button
-                  disabled={!isValid}
-                  onPress={() => handleSubmit()}
+                  isDisabled={!isValid}
                   marginTop={30}
-                  mt="5"
+                  onPress={() => handleSubmit()}
                 >
                   <H5 color={theme.colors.white}>Próximo</H5>
                 </Button>

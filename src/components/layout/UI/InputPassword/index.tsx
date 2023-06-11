@@ -49,6 +49,11 @@ export function InputPassword({
           />
         }
       />
+      {errors && touched && (
+        <H5 color="red" style={{ paddingTop: 10 }}>
+          {errors}
+        </H5>
+      )}
     </VStack>
   );
 }
