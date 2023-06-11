@@ -26,7 +26,7 @@ export default function Login() {
 
   interface LoginInformation {
     user: String;
-    password: String
+    password: String;
   }
 
   let loginValidationSchema = yup.object().shape({
@@ -35,12 +35,12 @@ export default function Login() {
   });
 
   const handleLogin = ({ user, password }: LoginInformation) => {
-    if (user === 'admin@gmail.com' && password === 'admin123') {
-      navigation.navigate("Admin")
+    if (user === "admin@gmail.com" && password === "admin123") {
+      navigation.navigate("Admin");
     } else {
-      navigation.navigate("Tab")
+      navigation.navigate("Tab");
     }
-  }
+  };
 
   const path_img = () => {
     return theme.isDark
@@ -50,17 +50,18 @@ export default function Login() {
 
   const { signin, loading, isUserError, isPasswordError, isGenericError } =
     useSignin();
-  const { isLoggedIn, loading: loginLoading } = useUser();
+  const { isLoggedIn, loading: loginLoading, isAdmin } = useUser();
 
   useEffect(() => {
     if (isLoggedIn) toHome();
   }, [isLoggedIn]);
 
   const toHome = () => {
-    navigation.navigate("Tab");
+    const to = isAdmin ? "Admin" : "Tab";
+    navigation.navigate(to);
     navigation.reset({
       index: 0,
-      routes: [{ name: "Tab" }],
+      routes: [{ name: to }],
     });
   };
 

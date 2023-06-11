@@ -6,8 +6,6 @@ import { TabAdminNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Dimensions, Platform } from "react-native";
 import { useTheme } from "styled-components";
-import { HourHome } from "../pages/Hour/Home";
-import { UsersHome } from "../pages/Users/Home";
 
 const Tab = createBottomTabNavigator<TabAdminNavigatorParamList>();
 

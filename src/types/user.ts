@@ -1,6 +1,7 @@
 declare module "User" {
   interface User {
     isAdmin: boolean;
+    token: string;
     user: {
       adminId: string;
       city: string;

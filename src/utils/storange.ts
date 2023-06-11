@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { User } from "User";
 
 export const colorModeManager = {
   get: async () => {
@@ -20,14 +21,16 @@ export const colorModeManager = {
 export const userSave = {
   get: async () => {
     try {
-      return await AsyncStorage.getItem("@token");
+      const jsonValue = await AsyncStorage.getItem("@user");
+      return jsonValue != null ? JSON.parse(jsonValue) : null;
     } catch (e) {
       return null;
     }
   },
-  set: async (token: string) => {
+  set: async (user: User) => {
     try {
-      await AsyncStorage.setItem("@token", token);
+      const jsonValue = JSON.stringify(user);
+      await AsyncStorage.setItem("@user", jsonValue);
     } catch (e) {
       console.log(e);
     }

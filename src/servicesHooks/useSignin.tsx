@@ -8,7 +8,7 @@ export function useSignin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
-  const { handleUser, handleToken } = useUser();
+  const { handleUser } = useUser();
 
   function signin(data: UserLogin, toHome: () => void) {
     setLoading(true);
@@ -17,7 +17,6 @@ export function useSignin() {
       .then((res) => {
         setData(res.data);
         handleUser(res.data);
-        handleToken(res.data.token);
         toHome();
       })
       .catch((error) => setError(error.response.data.message))

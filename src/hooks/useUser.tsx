@@ -11,9 +11,7 @@ import { userSave } from "../utils/storange";
 
 export interface IUserContext {
   user?: User;
-  token?: string;
   handleUser: (u: User) => void;
-  handleToken: (token: string) => void;
   isAdmin: boolean;
   isLoggedIn: boolean;
   loading: boolean;
@@ -23,7 +21,6 @@ const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User>();
-  const [token, setToken] = useState<string>();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -35,18 +32,19 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     await userSave
       .get()
-      .then((token) => {
-        if (token) {
-          setToken(token);
+      .then((user) => {
+        if (user) {
           setIsLoggedIn(true);
+          setUser(user);
         }
       })
       .finally(() => setLoading(false));
   };
 
-  const handleUser = (user: User) => {
+  const handleUser = async (user: User) => {
     const u = {
       isAdmin: user.isAdmin,
+      token: user.token,
       user: {
         adminId: user.user.adminId,
         city: user.user.city,
@@ -59,11 +57,7 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
       },
     };
     setUser(u);
-  };
-
-  const handleToken = async (token: string) => {
-    setToken(token);
-    await userSave.set(token);
+    await userSave.set(u);
   };
 
   const isAdmin = useMemo(() => {
@@ -73,14 +67,12 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
   const providerValue = useMemo(
     () => ({
       user,
-      token,
       handleUser,
-      handleToken,
       isAdmin,
       isLoggedIn,
       loading,
     }),
-    [user, token, isAdmin, isLoggedIn, loading]
+    [user, isAdmin, isLoggedIn, loading]
   );
   return (
     <UserContext.Provider value={providerValue}>
