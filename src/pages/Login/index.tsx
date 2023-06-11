@@ -19,6 +19,11 @@ export default function Login() {
   const theme = useTheme();
   const navigation = useNavigation<UserLoginNavigationProp>();
 
+  interface LoginInformation {
+    user: String;
+    password: String
+  }
+
   let loginValidationSchema = yup.object().shape({
     user: yup.string().required("O usuário é obrigatório"),
     password: yup
@@ -26,6 +31,14 @@ export default function Login() {
       .min(6, ({ min }) => `A senha deve conter pelo menos ${min} caracteres.`)
       .required("A senha é obrigatório"),
   });
+
+  const handleLogin = ({ user, password }: LoginInformation) => {
+    if (user === 'admin@gmail.com' && password === 'admin123') {
+      navigation.navigate("Admin")
+    } else {
+      navigation.navigate("Tab")
+    }
+  }
 
   const path_img = () => {
     return theme.isDark
@@ -54,8 +67,8 @@ export default function Login() {
         </ContainerLogo>
 
         <Formik
-          initialValues={{ user: "", password: "" }}
-          onSubmit={(values) => navigation.navigate("Tab")}
+          initialValues={{ user: "admin@gmail.com", password: "admin123" }}
+          onSubmit={handleLogin}
           validateOnMount
           validationSchema={loginValidationSchema}
         >

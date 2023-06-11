@@ -2,6 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import UserLoginNavigator from "./userLogin";
 import { TabNavigator } from "./tabNavigator";
+import { TabAdminNavigator } from "./tabAdminNavigator";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AdditionalHoursNavigator from "./additionalHours";
 import PeriodsNavigator from "./periods";
@@ -24,6 +25,11 @@ export default function Routes() {
         <Navigation.Screen
           name="Tab"
           component={TabNavigator}
+          options={{ headerShown: false }}
+        />
+        <Navigation.Screen
+          name="Admin"
+          component={TabAdminNavigator}
           options={{ headerShown: false }}
         />
         <Navigation.Screen

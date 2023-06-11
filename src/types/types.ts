@@ -10,6 +10,7 @@ export type UserLoginNavigatorParamList = {
   SucessRegister: undefined;
   FailedRegister: undefined;
   Tab: undefined;
+  Admin: undefined;
 };
 
 export type UserLoginNavigationProp =
@@ -23,6 +24,15 @@ export type TabNavigatorParamList = {
 };
 
 export type TabNavigatorProp = NativeStackNavigationProp<TabNavigatorParamList>;
+
+export type TabAdminNavigatorParamList = {
+  Início: undefined;
+  Disciplinas: undefined;
+  Perfil: undefined;
+  Usuários: undefined;
+};
+
+export type TabAdminNavigatorProp = NativeStackNavigationProp<TabAdminNavigatorParamList>;
 
 export type AdditionalHoursParamList = {
   AdditionalHoursHome: undefined;
@@ -64,3 +74,10 @@ export type ProfileParamList = {
 };
 
 export type ProfileProp = NativeStackNavigationProp<ProfileParamList>;
+
+export type UsersParamList = {
+  UsersHome: undefined;
+  UsersDetails: Discipline;
+};
+
+export type UsersProp = NativeStackNavigationProp<UsersParamList>;
