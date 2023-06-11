@@ -176,4 +176,4 @@ export default function AccountInfo() {
       </Container>
     </KeyboardAvoidingView>
   );
-}
+} 

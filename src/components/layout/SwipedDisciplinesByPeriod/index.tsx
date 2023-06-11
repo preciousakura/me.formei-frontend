@@ -26,7 +26,9 @@ export function SwipedDisciplinesByPeriod({
 
   const handleRight = (index: number) => {};
 
-  const handleLeft = (index: number) => {};
+  const handleLeft = (index: number) => {
+    return <></>
+  };
 
   return (
     <Container>

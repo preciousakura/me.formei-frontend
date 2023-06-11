@@ -15,8 +15,14 @@ export function EditButton(
     extrapolate: "clamp",
   });
 
+  const starTest = () => {
+    return console.log("AAAAAA");
+  }
+
   return (
-    <Container>
+    <Container
+     onTouchStart={starTest}
+    >
       <IconStyle style={{ transform: [{ scale }] }}>
         <Icon as={Feather} name="edit" size="4" color="#ffffff" />
         <H5 color="#ffffff" size={10}>
