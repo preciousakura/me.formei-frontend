@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home } from "../pages/Home";
-import { DisciplineHome } from "../pages/Discipline/Home";
+import { HomeAdmin } from "../pages/HomeAdmin";
+import { DisciplineHomeAdmin } from "../pages/DisciplineAdmin/DisciplineHomeAdmin";
 import { ProfileHome } from "../pages/Profile/Home";
 import { TabAdminNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -39,7 +39,7 @@ export function TabAdminNavigator() {
     >
       <Tab.Screen
         name="Início"
-        component={Home}
+        component={HomeAdmin}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (
@@ -55,7 +55,7 @@ export function TabAdminNavigator() {
       />
       <Tab.Screen
         name="Disciplinas"
-        component={DisciplineHome}
+        component={DisciplineHomeAdmin}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (
@@ -71,7 +71,7 @@ export function TabAdminNavigator() {
       />
       <Tab.Screen
         name="Usuários"
-        component={DisciplineHome}
+        component={DisciplineHomeAdmin}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (

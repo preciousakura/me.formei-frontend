@@ -58,6 +58,16 @@ export type HourParamList = {
 
 export type HourProp = NativeStackNavigationProp<AdditionalHoursParamList>;
 
+export type DisciplineAdminParamList = {
+  DisciplineAdminHome: undefined;
+  DisciplineDetails: Discipline;
+  AddDisciplineAdmin: undefined
+  ListDisciplineAdmin: undefined;
+  DisciplineHomeAdmin: undefined;
+};
+
+export type DisciplineAdminProp = NativeStackNavigationProp<DisciplineAdminParamList>;
+
 export type DisciplineParamList = {
   DisciplineHome: undefined;
   ListAvailable: undefined;
