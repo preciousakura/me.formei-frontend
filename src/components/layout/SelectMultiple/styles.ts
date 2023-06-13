@@ -19,6 +19,8 @@ export const Content = styled.View`
 `;
 
 export const DisciplineItem = styled.View`
+  flex: 1;
+
   background-color: ${(props) =>
     !props.theme.isDark ? props.theme.colors.white : props.theme.colors.black};
   padding: 12px 10px;

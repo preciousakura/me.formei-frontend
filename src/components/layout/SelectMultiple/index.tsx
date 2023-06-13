@@ -4,13 +4,14 @@ import { TouchableOpacity, Modal, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import { HStack, Icon, VStack, useTheme as useNativeTheme } from "native-base";
 import { useTheme } from "../../../hooks/useTheme";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 import { CustomizedStatusBar } from "../CustomizedStatusBar";
 import { SearchInput } from "../SearchInput";
 
 interface Discipline {
   name: string;
   cod: string;
+  id: number;
 }
 
 interface SelectMultipleProps {
@@ -34,6 +35,8 @@ export function SelectMultiple({
   const [visible, setVisible] = useState(false);
   const [options, setOptions] = useState<Discipline[]>([]);
   const [list, setList] = useState<Discipline[]>([]);
+  const [selected, setSelected] = useState<Discipline[]>([]);
+  const [isFull, setIsFull] = useState(false);
 
   const [termo, setTermo] = useState("");
 
@@ -42,13 +45,56 @@ export function SelectMultiple({
     setList(data);
   }, [data]);
 
+  useEffect(() => {
+    if (max) setIsFull(selected.length >= max);
+  }, [selected]);
+
+  const toggleSelection = (item: Discipline) => {
+    const index = selected.findIndex((i) => i.id === item.id);
+    const arrSelected = [...selected];
+    if (index !== -1) {
+      arrSelected.splice(index, 1);
+    } else {
+      if (max) {
+        if (arrSelected.length < max) arrSelected.push(item);
+      } else arrSelected.push(item);
+    }
+    setSelected(arrSelected);
+  };
+
   function renderItem(item: Discipline, index: number) {
+    const selectedItem = selected.findIndex((i) => i.id === item.id) !== -1;
     return (
-      <TouchableOpacity key={index}>
-        <DisciplineItem>
-          <H5 color={theme.colors.trueGray[400]}>#{item.cod}</H5>
-          <H5 color={theme.colors.text}>{item.name}</H5>
-        </DisciplineItem>
+      <TouchableOpacity
+        key={index}
+        disabled={!selectedItem && isFull}
+        style={{
+          opacity: !selectedItem && isFull ? 0.4 : 1,
+        }}
+        onPress={() => toggleSelection(item)}
+      >
+        <HStack alignItems="center">
+          {!selectedItem && isFull ? (
+            <Icon
+              as={AntDesign}
+              name="pluscircle"
+              color={theme.colors.red[500]}
+              size={36}
+            />
+          ) : (
+            <Icon
+              as={AntDesign}
+              name="minuscircle"
+              color={theme.colors.red[500]}
+              size={36}
+            />
+          )}
+
+          <DisciplineItem>
+            <H5 color={theme.colors.trueGray[400]}>#{item.cod}</H5>
+            <H5 color={theme.colors.text}>{item.name}</H5>
+          </DisciplineItem>
+        </HStack>
       </TouchableOpacity>
     );
   }

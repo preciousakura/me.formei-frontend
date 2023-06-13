@@ -31,52 +31,64 @@ export function DisciplineRegister() {
             <SelectMultiple
               data={[
                 {
+                  id: 0,
                   name: "Aprendizado de Máquina",
                   cod: "CK0215",
                 },
                 {
+                  id: 1,
                   name: "Processamento de Imagens",
                   cod: "CK0215",
                 },
                 {
+                  id: 2,
                   name: "Teoria da Computação",
                   cod: "CK0215",
                 },
                 {
+                  id: 3,
                   name: "Construção e Análise de Algoritmos",
                   cod: "CK0215",
                 },
                 {
+                  id: 4,
                   name: "Circuitos Digitais",
                   cod: "CK0215",
                 },
                 {
+                  id: 5,
                   name: "Programação",
                   cod: "CK0215",
                 },
                 {
+                  id: 6,
                   name: "Engenharia de Software",
                   cod: "CK0215",
                 },
                 {
+                  id: 7,
                   name: "Computação Gráfica",
                   cod: "CK0215",
                 },
                 {
+                  id: 8,
                   name: "Lógica para Ciência da computação",
                   cod: "CK0215",
                 },
                 {
+                  id: 9,
                   name: "Seminário em Computação",
                   cod: "CK0215",
                 },
                 {
+                  id: 10,
                   name: "Informática e Sociedade",
                   cod: "CK0215",
                 },
               ]}
               onChange={() => console.log()}
               placeholder="Selecione a disciplina"
+              max={3}
             />
 
             <InputSelect
