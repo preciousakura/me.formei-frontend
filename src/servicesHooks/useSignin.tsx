@@ -12,6 +12,7 @@ export function useSignin() {
 
   function signin(data: UserLogin, toHome: () => void) {
     setLoading(true);
+    setError(undefined)
     auth
       .signin(data)
       .then((res) => {
@@ -19,7 +20,11 @@ export function useSignin() {
         handleUser(res.data);
         toHome();
       })
-      .catch((error) => setError(error.response.data.message))
+      .catch((error) =>
+        error.response
+          ? setError(error.response.data.message)
+          : setError(error.message)
+      )
       .finally(() => setLoading(false));
   }
 

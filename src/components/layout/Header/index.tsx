@@ -4,6 +4,7 @@ import { Icon, IconButton, View } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { IViewProps } from "native-base/lib/typescript/components/basic/View/types";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface HeaderProps {
   backButton?: boolean;
@@ -35,16 +36,9 @@ export function Header({
       style={{ padding: isSpaced ? 20 : 0 }}
     >
       {backButton && (
-        <IconButton
-          onPress={() => navigation.goBack()}
-          icon={<Icon as={Entypo} name="chevron-left" />}
-          _icon={{
-            color: colorIcon,
-            size: 36,
-          }}
-          padding={0}
-          borderRadius={30}
-        />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Icon as={Entypo} name="chevron-left" size={36} color={colorIcon} />
+        </TouchableOpacity>
       )}
       <Subtitle align={align} color={colorText} size={22}>
         {title}

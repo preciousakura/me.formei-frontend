@@ -14,3 +14,4 @@ export { SwipedDisciplineCard } from "./SwipedDisciplineCard";
 export { SwipedDisciplinesByPeriod } from "./SwipedDisciplinesByPeriod";
 export { ProgressDisciplinesByPeriod } from "./ProgressDisciplinesByPeriod";
 export { Loading } from "./Loading";
+export { SelectMultiple } from "./SelectMultiple";

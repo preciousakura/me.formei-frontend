@@ -24,23 +24,10 @@ export default function Login() {
   const theme = useTheme();
   const navigation = useNavigation<UserLoginNavigationProp>();
 
-  interface LoginInformation {
-    user: String;
-    password: String;
-  }
-
   let loginValidationSchema = yup.object().shape({
     username: yup.string().required("O usuário é obrigatório"),
     password: yup.string().required("A senha é obrigatória"),
   });
-
-  const handleLogin = ({ user, password }: LoginInformation) => {
-    if (user === "admin@gmail.com" && password === "admin123") {
-      navigation.navigate("Admin");
-    } else {
-      navigation.navigate("Tab");
-    }
-  };
 
   const path_img = () => {
     return theme.isDark

@@ -38,7 +38,7 @@ export function AdditionalHoursRegister() {
               backButton
               colorIcon={theme.colors.text}
               colorText={theme.colors.text}
-              title="Adicionar atividade"
+              title="Adicionar Atividade"
             />
           </View>
           <BorderedContent>

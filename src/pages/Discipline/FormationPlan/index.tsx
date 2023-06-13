@@ -11,9 +11,12 @@ import {
 import { FlatList, HStack, VStack, View } from "native-base";
 import { ListRenderItemInfo, Platform } from "react-native";
 import { DisciplineByPeriod } from "Discipline";
+import { useNavigation } from "@react-navigation/native";
+import { DisciplineProp } from "../../../types/types";
 
 export function FormationPlan() {
   const { theme } = useTheme();
+  const navigation = useNavigation<DisciplineProp>();
 
   const HeaderElement = () => {
     return (
@@ -37,7 +40,9 @@ export function FormationPlan() {
               { label: "Concluídas", value: "Concluídas" },
             ]}
           />
-          <CreateButton onPress={() => console.log()} />
+          <CreateButton
+            onPress={() => navigation.navigate("DisciplineRegister")}
+          />
         </HStack>
       </VStack>
     );
