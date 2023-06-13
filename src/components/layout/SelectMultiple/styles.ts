@@ -7,13 +7,21 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
   flex-direction: row;
   border: 1px;
-  border-color: ${props => props.theme.colors.primary[500]};
+  border-color: ${(props) => props.theme.colors.primary[500]};
   border-radius: 10px;
   padding: 10px;
 `;
 
 export const Content = styled.View`
   flex: 1;
-  background: ${props => props.theme.colors.background};
+  background: ${(props) => props.theme.colors.background};
   padding: 20px;
-`
+`;
+
+export const DisciplineItem = styled.View`
+  background-color: ${(props) =>
+    !props.theme.isDark ? props.theme.colors.white : props.theme.colors.black};
+  padding: 12px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+`;

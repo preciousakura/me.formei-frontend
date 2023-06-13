@@ -1,17 +1,18 @@
 import { useTheme } from "styled-components";
 import { Container } from "./styles";
-import { Icon, Input } from "native-base";
+import { IInputProps, Icon, Input } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme as Theme } from "../../../hooks/useTheme";
 
 interface SearchInputProps {
   title?: string;
+  config?: IInputProps;
 }
 
-export function SearchInput({ title }: SearchInputProps) {
+export function SearchInput({ title, config }: SearchInputProps) {
   const theme = useTheme();
-  const {isDark} = Theme();
-  
+  const { isDark } = Theme();
+
   return (
     <Container>
       <Input
@@ -22,7 +23,8 @@ export function SearchInput({ title }: SearchInputProps) {
         height={12}
         fontSize={14}
         placeholder={`Buscar ${title}`}
-        InputLeftElement={<Icon as={<Ionicons name="search"/>} ml="3"/>}
+        InputLeftElement={<Icon as={<Ionicons name="search" />} ml="3" />}
+        {...config}
       />
     </Container>
   );
