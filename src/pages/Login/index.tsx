@@ -19,6 +19,7 @@ import { useSignin } from "../../servicesHooks/useSignin";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
 import { Loading } from "../../components/layout";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Login() {
   const theme = useTheme();
@@ -126,7 +127,7 @@ export default function Login() {
                         : isPasswordError
                         ? "A senha está incorreta"
                         : isGenericError
-                        ? "Ocorreu um erro no servidor, tente novamente mais tarde."
+                        ? "Ocorreu um erro, tente novamente mais tarde."
                         : errors.password
                     }
                     config={{
@@ -150,12 +151,11 @@ export default function Login() {
 
               <H5 align="center" color={theme.colors.text}>
                 Ainda não tem uma conta?{" "}
-                <H5
+                <TouchableOpacity
                   onPress={() => navigation.navigate("AccountInfo")}
-                  color={theme.colors.primary[500]}
                 >
-                  Registre-se!
-                </H5>
+                  <H5 color={theme.colors.primary[500]}>Registre-se!</H5>
+                </TouchableOpacity>
               </H5>
             </ContentForm>
           )}
