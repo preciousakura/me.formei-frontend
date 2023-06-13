@@ -8,27 +8,20 @@ export function EditButton(
   progress: Animated.AnimatedInterpolation<string | number>,
   dragX: Animated.AnimatedInterpolation<string | number>
 ) {
-
   const scale = dragX.interpolate({
     inputRange: [0, 50],
     outputRange: [0, 1],
     extrapolate: "clamp",
   });
 
-  const starTest = () => {
-    return console.log("AAAAAA");
-  }
-
   return (
-    <Container
-     onTouchStart={starTest}
-    >
+    <Container>
       <IconStyle style={{ transform: [{ scale }] }}>
         <Icon as={Feather} name="edit" size="4" color="#ffffff" />
         <H5 color="#ffffff" size={10}>
           EDITAR
         </H5>
       </IconStyle>
-    </Container> 
+    </Container>
   );
 }

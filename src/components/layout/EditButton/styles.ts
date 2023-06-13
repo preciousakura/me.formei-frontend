@@ -1,11 +1,13 @@
 import { Animated } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled(TouchableOpacity)`
   background-color: ${(props) => props.theme.colors.green[500]};
   border-radius: 10px;
   justify-content: center;
   padding: 10px;
+  height: 100%;
 `;
 
 export const IconStyle = styled(Animated.View)`
