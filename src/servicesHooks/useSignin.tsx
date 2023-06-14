@@ -8,11 +8,11 @@ export function useSignin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
-  const { handleUser } = useUser();
+  const { handleUser, deleteUser } = useUser();
 
   function signin(data: UserLogin, toHome: () => void) {
     setLoading(true);
-    setError(undefined)
+    setError(undefined);
     auth
       .signin(data)
       .then((res) => {
@@ -26,6 +26,10 @@ export function useSignin() {
           : setError(error.message)
       )
       .finally(() => setLoading(false));
+  }
+
+  function signout() {
+    deleteUser();
   }
 
   const isUserError = useMemo(() => {
@@ -49,6 +53,7 @@ export function useSignin() {
       isUserError,
       isPasswordError,
       isGenericError,
+      signout,
     }),
     [data, loading, error, isUserError, isPasswordError, isGenericError]
   );

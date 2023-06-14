@@ -12,6 +12,7 @@ import { userSave } from "../utils/storange";
 export interface IUserContext {
   user?: User;
   handleUser: (u: User) => void;
+  deleteUser: () => void;
   isAdmin: boolean;
   isLoggedIn: boolean;
   loading: boolean;
@@ -39,6 +40,10 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
         }
       })
       .finally(() => setLoading(false));
+  };
+
+  const deleteUser = async () => {
+    await userSave.delete();
   };
 
   const handleUser = async (user: User) => {
@@ -71,6 +76,7 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
       isAdmin,
       isLoggedIn,
       loading,
+      deleteUser,
     }),
     [user, isAdmin, isLoggedIn, loading]
   );

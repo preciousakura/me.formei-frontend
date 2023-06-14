@@ -14,6 +14,7 @@ interface ButtonHomeCardProps {
   linkTo: string;
   hasIcon?: boolean;
   root: string;
+  onPress?: () => void;
 }
 
 export function ButtonHomeCard({
@@ -23,6 +24,7 @@ export function ButtonHomeCard({
   linkTo,
   hasIcon = true,
   root,
+  onPress,
 }: ButtonHomeCardProps) {
   const theme = useTheme();
   const navigation = useNavigation<any>();
@@ -31,7 +33,10 @@ export function ButtonHomeCard({
     <TouchableHighlight
       style={{ borderRadius: 10, margin: 0 }}
       activeOpacity={0.9}
-      onPress={() => navigation.navigate(root, { screen: linkTo })}
+      onPress={() => {
+        navigation.navigate(root, { screen: linkTo });
+        if (onPress) onPress();
+      }}
     >
       <Container>
         <View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>

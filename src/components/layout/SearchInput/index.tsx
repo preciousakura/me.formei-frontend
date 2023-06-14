@@ -7,9 +7,10 @@ import { useTheme as Theme } from "../../../hooks/useTheme";
 interface SearchInputProps {
   title?: string;
   config?: IInputProps;
+  onClear?: (value: string) => void;
 }
 
-export function SearchInput({ title, config }: SearchInputProps) {
+export function SearchInput({ title, config, onClear }: SearchInputProps) {
   const theme = useTheme();
   const { isDark } = Theme();
 
@@ -24,6 +25,16 @@ export function SearchInput({ title, config }: SearchInputProps) {
         fontSize={14}
         placeholder={`Buscar ${title}`}
         InputLeftElement={<Icon as={<Ionicons name="search" />} ml="3" />}
+        InputRightElement={
+          onClear ? (
+            <Icon
+              as={<Ionicons name="close" />}
+              ml="3"
+              right={3}
+              onPress={() => onClear("")}
+            />
+          ) : undefined
+        }
         {...config}
       />
     </Container>

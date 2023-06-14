@@ -8,9 +8,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ButtonHomeCard } from "../../../components/layout/ButtonHomeCard";
 import { Subtitle } from "../../../components/shared/text";
 import { H5 } from "../../../components/shared/text";
+import { useSignin } from "../../../servicesHooks/useSignin";
 
 export function ProfileHome() {
   const { theme, toggleColorMode } = useTheme();
+  const { signout } = useSignin();
 
   const options = [
     {
@@ -24,6 +26,7 @@ export function ProfileHome() {
     {
       name: "Sair",
       linkTo: "Login",
+      onPress: signout,
     },
   ];
 
@@ -39,7 +42,7 @@ export function ProfileHome() {
         key={`${item.name}_${i}`}
         {...item}
         hasIcon={false}
-        root="Home"
+        root="Account"
       />
     );
   }
