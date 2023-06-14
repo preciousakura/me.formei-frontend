@@ -1,18 +1,18 @@
 import { Container, Content, TopContent } from "../styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import { Header } from "../../../components/layout";
+import { Header, Loading } from "../../../components/layout";
 import { Switch, VStack, View } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { ButtonHomeCard } from "../../../components/layout/ButtonHomeCard";
 import { Subtitle } from "../../../components/shared/text";
 import { H5 } from "../../../components/shared/text";
-import { useSignin } from "../../../servicesHooks/useSignin";
+import { useUser } from "../../../hooks/useUser";
 
 export function ProfileHome() {
   const { theme, toggleColorMode } = useTheme();
-  const { signout } = useSignin();
+  const { deleteUser, loading } = useUser();
 
   const options = [
     {
@@ -25,24 +25,27 @@ export function ProfileHome() {
     },
     {
       name: "Sair",
-      linkTo: "Login",
-      onPress: signout,
+      onPress: deleteUser,
+      root: "Account",
+      isLoading: loading,
     },
   ];
 
   function renderCard(
     item: {
       name: string;
-      linkTo: string;
+      linkTo?: string;
+      root?: string;
+      isLoading?: boolean;
     },
     i: number
   ) {
     return (
       <ButtonHomeCard
+        isLoading={item.isLoading}
         key={`${item.name}_${i}`}
         {...item}
         hasIcon={false}
-        root="Account"
       />
     );
   }

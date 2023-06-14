@@ -14,7 +14,7 @@ import * as yup from "yup";
 import { Formik } from "formik";
 import { useTheme } from "styled-components";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
-import { UserLogin } from "User";
+import { User, UserLogin } from "User";
 import { useSignin } from "../../servicesHooks/useSignin";
 import { useUser } from "../../hooks/useUser";
 import { useEffect } from "react";
@@ -38,14 +38,14 @@ export default function Login() {
 
   const { signin, loading, isUserError, isPasswordError, isGenericError } =
     useSignin();
-  const { isLoggedIn, loading: loginLoading, isAdmin } = useUser();
+  const { loading: loginLoading, user } = useUser();
 
   useEffect(() => {
-    if (isLoggedIn) toHome();
-  }, [isLoggedIn]);
+    if (user) toHome(user);
+  }, []);
 
-  const toHome = () => {
-    const to = isAdmin ? "Admin" : "Tab";
+  const toHome = (user: User) => {
+    const to = user.isAdmin ? "Admin" : "Tab";
     navigation.navigate(to);
     navigation.reset({
       index: 0,

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { auth } from "../service/auth";
-import { UserLogin } from "User";
+import { User, UserLogin } from "User";
 import { useUser } from "../hooks/useUser";
 
 export function useSignin() {
@@ -8,9 +8,9 @@ export function useSignin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
-  const { handleUser, deleteUser } = useUser();
+  const { handleUser } = useUser();
 
-  function signin(data: UserLogin, toHome: () => void) {
+  function signin(data: UserLogin, toHome: (user: User) => void) {
     setLoading(true);
     setError(undefined);
     auth
@@ -18,7 +18,7 @@ export function useSignin() {
       .then((res) => {
         setData(res.data);
         handleUser(res.data);
-        toHome();
+        toHome(res.data);
       })
       .catch((error) =>
         error.response
@@ -26,10 +26,6 @@ export function useSignin() {
           : setError(error.message)
       )
       .finally(() => setLoading(false));
-  }
-
-  function signout() {
-    deleteUser();
   }
 
   const isUserError = useMemo(() => {
@@ -53,7 +49,6 @@ export function useSignin() {
       isUserError,
       isPasswordError,
       isGenericError,
-      signout,
     }),
     [data, loading, error, isUserError, isPasswordError, isGenericError]
   );
