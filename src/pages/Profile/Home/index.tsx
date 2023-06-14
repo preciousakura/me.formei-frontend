@@ -1,7 +1,7 @@
 import { Container, Content, TopContent } from "../styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import { Header, Loading } from "../../../components/layout";
+import { Header } from "../../../components/layout";
 import { Switch, VStack, View } from "native-base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
