@@ -8,13 +8,7 @@ import {
 } from "./styles";
 import { TouchableOpacity, Modal, FlatList } from "react-native";
 import { useEffect, useState } from "react";
-import {
-  HStack,
-  Icon,
-  VStack,
-  View,
-  useTheme as useNativeTheme,
-} from "native-base";
+import { HStack, Icon, VStack, useTheme as useNativeTheme } from "native-base";
 import { useTheme } from "../../../hooks/useTheme";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { CustomizedStatusBar } from "../CustomizedStatusBar";

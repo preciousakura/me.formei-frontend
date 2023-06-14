@@ -54,8 +54,7 @@ export default function Login() {
   };
 
   const submit = async (values: UserLogin) => {
-    navigation.navigate('Tab');
-    // await signin(values, toHome);
+    await signin(values, toHome);
   };
 
   return (
