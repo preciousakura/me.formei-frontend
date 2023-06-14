@@ -6,6 +6,7 @@ import { Header, HourSection } from "../../../components/layout";
 import { useTheme } from "../../../hooks/useTheme";
 import { Icon, IconButton } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const renderScene = SceneMap({
   seg: () => {
@@ -58,15 +59,14 @@ export function HourHome() {
         colorText={theme.colors.white}
         title="Horário"
         rightButton={() => (
-          <IconButton
-            icon={<Icon as={Ionicons} name="md-settings-outline" />}
-            _icon={{
-              size: 36,
-              color: theme.colors.white,
-            }}
-            padding={0}
-            borderRadius={30}
-          />
+          <TouchableOpacity>
+            <Icon
+              as={Ionicons}
+              name="md-settings-outline"
+              color={theme.colors.white}
+              size={36}
+            />
+          </TouchableOpacity>
         )}
       />
       <TabView
