@@ -1,11 +1,7 @@
 import { Container, Content, TopContent } from "./styles";
-import {
-  ProgressCourse,
-  UserInfo,
-  TodayClasses,
-} from "../../components/layout";
+import { UserInfo } from "../../components/layout";
 import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
-import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
@@ -20,12 +16,12 @@ export function HomeAdmin() {
       linkTo: "AddDisciplineAdmin",
     },
     {
-        name: "Mensagens",
-        icon: MaterialCommunityIcons,
-        nameIcon: "message-outline",
-        root: "Periods",
-        linkTo: "PeriodsHome",
-      },
+      name: "Mensagens",
+      icon: MaterialCommunityIcons,
+      nameIcon: "message-outline",
+      root: "Periods",
+      linkTo: "PeriodsHome",
+    },
     {
       name: "Períodos",
       icon: MaterialCommunityIcons,
@@ -34,12 +30,12 @@ export function HomeAdmin() {
       linkTo: "PeriodsHome",
     },
     {
-        name: "Cursos",
-        icon: MaterialCommunityIcons,
-        nameIcon: "book-open-outline",
-        root: "Periods",
-        linkTo: "PeriodsHome",
-      },
+      name: "Cursos",
+      icon: MaterialCommunityIcons,
+      nameIcon: "book-open-outline",
+      root: "Periods",
+      linkTo: "PeriodsHome",
+    },
   ];
 
   function renderCard(
@@ -66,9 +62,7 @@ export function HomeAdmin() {
       <TopContent>
         <UserInfo />
       </TopContent>
-      <Content>
-        {options.map(renderCard)}
-      </Content>
+      <Content>{options.map(renderCard)}</Content>
     </Container>
   );
 }

@@ -4,9 +4,10 @@ import { useState } from "react";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import { Header, HourSection } from "../../../components/layout";
 import { useTheme } from "../../../hooks/useTheme";
-import { Icon, IconButton } from "native-base";
+import { Icon } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 const renderScene = SceneMap({
   seg: () => {
@@ -28,6 +29,7 @@ const renderScene = SceneMap({
 
 export function HourHome() {
   const { theme } = useTheme();
+  const navigation = useNavigation<any>();
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
@@ -59,7 +61,9 @@ export function HourHome() {
         colorText={theme.colors.white}
         title="Horário"
         rightButton={() => (
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Hour", { screen: "HoursList" })}
+          >
             <Icon
               as={Ionicons}
               name="md-settings-outline"
