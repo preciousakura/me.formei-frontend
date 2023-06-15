@@ -23,7 +23,7 @@ export default function GeneralInfo() {
     useRoute<RouteProp<UserLoginNavigatorParamList, "GeneralInfo">>();
 
   let registerValidationSchema = yup.object().shape({
-    state: yup.string().required("O estado obrigatório."),
+    state: yup.string().required("O estado é obrigatório."),
     city: yup.string().required("A cidade é obrigatória."),
     university: yup.string().required("A universidade é obrigatória."),
     course: yup.string().required("O curso é obrigatório."),
