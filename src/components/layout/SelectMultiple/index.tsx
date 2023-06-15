@@ -43,6 +43,8 @@ export function SelectMultiple({
   const [list, setList] = useState<Discipline[]>([]);
   const [selected, setSelected] = useState<Discipline[]>([]);
 
+  const [temporarySelected, setTemporarySelected] = useState<Discipline[]>([]);
+
   const [isFull, setIsFull] = useState(false);
 
   const [termo, setTermo] = useState("");
@@ -54,12 +56,12 @@ export function SelectMultiple({
   }, [data]);
 
   useEffect(() => {
-    if (max) setIsFull(selected.length >= max);
-  }, [selected]);
+    if (max) setIsFull(temporarySelected.length >= max);
+  }, [temporarySelected]);
 
   const toggleSelection = (item: Discipline) => {
-    const index = selected.findIndex((i) => i.id === item.id);
-    const arrSelected = [...selected];
+    const index = temporarySelected.findIndex((i) => i.id === item.id);
+    const arrSelected = [...temporarySelected];
     if (index !== -1) {
       arrSelected.splice(index, 1);
     } else {
@@ -67,11 +69,12 @@ export function SelectMultiple({
         if (arrSelected.length < max) arrSelected.push(item);
       } else arrSelected.push(item);
     }
-    setSelected(arrSelected);
+    setTemporarySelected(arrSelected);
   };
 
   function renderItem(item: Discipline, index: number) {
-    const selectedItem = selected.findIndex((i) => i.id === item.id) !== -1;
+    const selectedItem =
+      temporarySelected.findIndex((i) => i.id === item.id) !== -1;
     return (
       <TouchableOpacity
         key={index}
@@ -151,7 +154,7 @@ export function SelectMultiple({
               <TouchableOpacity
                 onPress={() => {
                   setVisible(false);
-                  if (selected.length <= 0) setSelected([]);
+                  setTemporarySelected(selected);
                 }}
               >
                 <Icon
@@ -164,6 +167,7 @@ export function SelectMultiple({
               <TouchableOpacity
                 onPress={() => {
                   setVisible(false);
+                  setSelected(temporarySelected);
                 }}
               >
                 <H5 color={theme.colors.primary[500]} size={22}>
