@@ -88,7 +88,6 @@ export function DisciplineRegister() {
               ]}
               onChange={() => console.log()}
               placeholder="Selecione a disciplina"
-              max={1}
             />
 
             <InputSelect
