@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useTheme } from "../../../hooks/useTheme";
 import { H5, Subtitle } from "../../shared/text";
-import { Container, ContainerModal } from "./styles";
+import { BorderedContent, Container, ContainerModal, Header } from "./styles";
 import { Modal, TouchableOpacity } from "react-native";
 import { HStack, Icon, VStack } from "native-base";
 import { Entypo } from "@expo/vector-icons";
 import { CustomizedStatusBar } from "../CustomizedStatusBar";
 import { WeekSelected } from "../WeekSelected";
+import { InputSelect } from "../UI";
+import { zeroLeftMask } from "../../../utils/masks";
 
 interface EditHoursModalProps {
   item: {
@@ -18,6 +20,18 @@ interface EditHoursModalProps {
 export function EditHoursModal({ item }: EditHoursModalProps) {
   const { theme } = useTheme();
   const [visible, setVisible] = useState(false);
+
+  const hours = new Array(15)
+    .fill({
+      label: 8,
+      value: 8,
+    })
+    .map((v, i) => {
+      return {
+        label: `${zeroLeftMask(v.label + i)}:00`,
+        value: String(v.value + i),
+      };
+    });
 
   return (
     <Container>
@@ -37,26 +51,36 @@ export function EditHoursModal({ item }: EditHoursModalProps) {
         <CustomizedStatusBar />
 
         <ContainerModal>
-          <VStack>
-            <HStack justifyContent="space-between" alignItems="center">
-              <TouchableOpacity
-                onPress={() => {
-                  setVisible(false);
-                }}
-              >
-                <Icon
-                  as={Entypo}
-                  name="chevron-left"
-                  color={theme.colors.text}
-                  size={36}
-                />
-              </TouchableOpacity>
-              <Subtitle align="left" color={theme.colors.text} size={22}>
-                Editar Horário
-              </Subtitle>
-            </HStack>
+          <Header>
+            <TouchableOpacity
+              onPress={() => {
+                setVisible(false);
+              }}
+            >
+              <Icon
+                as={Entypo}
+                name="chevron-left"
+                color={theme.colors.text}
+                size={36}
+              />
+            </TouchableOpacity>
+            <Subtitle align="left" color={theme.colors.text} size={22}>
+              Editar Horário
+            </Subtitle>
+          </Header>
+          <BorderedContent space={6} paddingBottom={30}>
             <WeekSelected />
-          </VStack>
+            <InputSelect
+              config={{ placeholder: "Selecione o horário" }}
+              values={hours}
+              label="Horário inicial"
+            />
+            <InputSelect
+              config={{ placeholder: "Selecione o horário" }}
+              values={hours}
+              label="Horário final"
+            />
+          </BorderedContent>
         </ContainerModal>
       </Modal>
     </Container>

@@ -10,9 +10,9 @@ export const WeekButtom = styled.TouchableOpacity<{ isSelected: boolean }>`
     props.isSelected
       ? props.theme.colors.primary[500]
       : props.theme.colors.trueGray[400]};
-  height: ${Dimensions.get("window").width / 5 - 15}px;
+  height: ${Dimensions.get("window").width / 5 - 20}px;
   align-items: center;
   justify-content: center;
-  width: ${Dimensions.get("window").width / 5 - 15}px;
+  width: ${Dimensions.get("window").width / 5 - 20}px;
   border-radius: 10px;
 `;
