@@ -192,7 +192,6 @@ export function ListDisciplineAdmin() {
       ],
     },
   ];
-
   return (
     <Container>
       <CustomizedStatusBar backgroundColor={theme.colors.background} />
