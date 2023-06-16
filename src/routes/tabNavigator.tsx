@@ -17,6 +17,7 @@ export function TabNavigator() {
   const theme = useTheme();
   return (
     <Tab.Navigator
+      initialRouteName="Início"
       screenOptions={{
         tabBarActiveTintColor: theme.colors.primary[500],
         tabBarInactiveTintColor: theme.colors.text,

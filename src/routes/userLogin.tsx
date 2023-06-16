@@ -10,7 +10,7 @@ const UserLogin = createNativeStackNavigator<UserLoginNavigatorParamList>();
 
 export default function UserLoginNavigator() {
   return (
-    <UserLogin.Navigator>
+    <UserLogin.Navigator initialRouteName="Login">
       <UserLogin.Screen
         name="Login"
         component={Login}

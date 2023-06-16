@@ -12,8 +12,7 @@ import { userSave } from "../utils/storange";
 export interface IUserContext {
   user?: User;
   handleUser: (u: User) => void;
-  isAdmin: boolean;
-  isLoggedIn: boolean;
+  deleteUser: (toBack: () => void) => void;
   loading: boolean;
 }
 
@@ -21,22 +20,25 @@ const UserContext = createContext<IUserContext>({} as IUserContext);
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User>();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     checkLoggedIn();
-  }, []);
+  }, [user]);
 
   const checkLoggedIn = async () => {
+    await userSave.get().then((user) => {
+      if (user) setUser(user);
+    });
+  };
+
+  const deleteUser = async (toBack: () => void) => {
     setLoading(true);
-    await userSave
-      .get()
-      .then((user) => {
-        if (user) {
-          setIsLoggedIn(true);
-          setUser(user);
-        }
+    userSave
+      .delete()
+      .then(() => {
+        setUser(undefined);
+        toBack();
       })
       .finally(() => setLoading(false));
   };
@@ -60,19 +62,14 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
     await userSave.set(u);
   };
 
-  const isAdmin = useMemo(() => {
-    return user ? user.isAdmin : false;
-  }, [user]);
-
   const providerValue = useMemo(
     () => ({
       user,
       handleUser,
-      isAdmin,
-      isLoggedIn,
       loading,
+      deleteUser,
     }),
-    [user, isAdmin, isLoggedIn, loading]
+    [user, loading]
   );
   return (
     <UserContext.Provider value={providerValue}>

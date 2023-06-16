@@ -8,9 +8,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ButtonHomeCard } from "../../../components/layout/ButtonHomeCard";
 import { Subtitle } from "../../../components/shared/text";
 import { H5 } from "../../../components/shared/text";
+import { useUser } from "../../../hooks/useUser";
 
 export function ProfileHome() {
   const { theme, toggleColorMode } = useTheme();
+  const { deleteUser, loading } = useUser();
 
   const options = [
     {
@@ -19,23 +21,27 @@ export function ProfileHome() {
     },
     {
       name: "Sair",
-      linkTo: "Login",
+      onPress: deleteUser,
+      root: "Account",
+      isLoading: loading,
     },
   ];
 
   function renderCard(
     item: {
       name: string;
-      linkTo: string;
+      linkTo?: string;
+      root?: string;
+      isLoading?: boolean;
     },
     i: number
   ) {
     return (
       <ButtonHomeCard
+        isLoading={item.isLoading}
         key={`${item.name}_${i}`}
         {...item}
         hasIcon={false}
-        root="Home"
       />
     );
   }

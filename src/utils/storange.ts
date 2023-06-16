@@ -35,4 +35,11 @@ export const userSave = {
       console.log(e);
     }
   },
+  delete: async () => {
+    try {
+      await AsyncStorage.removeItem("@user");
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };

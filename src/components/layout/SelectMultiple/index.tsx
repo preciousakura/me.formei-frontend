@@ -1,5 +1,11 @@
 import { H5 } from "../../shared/text";
-import { Container, Content, DisciplineItem } from "./styles";
+import {
+  Container,
+  Content,
+  DisciplineItem,
+  InputSelectedItem,
+  DisciplineTitle,
+} from "./styles";
 import { TouchableOpacity, Modal, FlatList } from "react-native";
 import { useEffect, useState } from "react";
 import { HStack, Icon, VStack, useTheme as useNativeTheme } from "native-base";
@@ -17,7 +23,7 @@ interface Discipline {
 interface SelectMultipleProps {
   data: Discipline[];
   onChange: () => void;
-  defaultValue?: string[];
+  defaultValue?: Discipline[];
   placeholder?: string;
   max?: number;
 }
@@ -36,22 +42,26 @@ export function SelectMultiple({
   const [options, setOptions] = useState<Discipline[]>([]);
   const [list, setList] = useState<Discipline[]>([]);
   const [selected, setSelected] = useState<Discipline[]>([]);
+
+  const [temporarySelected, setTemporarySelected] = useState<Discipline[]>([]);
+
   const [isFull, setIsFull] = useState(false);
 
   const [termo, setTermo] = useState("");
 
   useEffect(() => {
+    if (defaultValue.length > 0) setSelected(defaultValue);
     setOptions(data);
     setList(data);
   }, [data]);
 
   useEffect(() => {
-    if (max) setIsFull(selected.length >= max);
-  }, [selected]);
+    if (max) setIsFull(temporarySelected.length >= max);
+  }, [temporarySelected]);
 
   const toggleSelection = (item: Discipline) => {
-    const index = selected.findIndex((i) => i.id === item.id);
-    const arrSelected = [...selected];
+    const index = temporarySelected.findIndex((i) => i.id === item.id);
+    const arrSelected = [...temporarySelected];
     if (index !== -1) {
       arrSelected.splice(index, 1);
     } else {
@@ -59,11 +69,12 @@ export function SelectMultiple({
         if (arrSelected.length < max) arrSelected.push(item);
       } else arrSelected.push(item);
     }
-    setSelected(arrSelected);
+    setTemporarySelected(arrSelected);
   };
 
   function renderItem(item: Discipline, index: number) {
-    const selectedItem = selected.findIndex((i) => i.id === item.id) !== -1;
+    const selectedItem =
+      temporarySelected.findIndex((i) => i.id === item.id) !== -1;
     return (
       <TouchableOpacity
         key={index}
@@ -73,28 +84,32 @@ export function SelectMultiple({
         }}
         onPress={() => toggleSelection(item)}
       >
-        <HStack alignItems="center">
-          {!selectedItem && isFull ? (
+        <DisciplineItem space={3}>
+          {!selectedItem ? (
             <Icon
               as={AntDesign}
               name="pluscircle"
-              color={theme.colors.red[500]}
-              size={36}
+              color={theme.colors.green[500]}
+              size={22}
             />
           ) : (
             <Icon
               as={AntDesign}
               name="minuscircle"
               color={theme.colors.red[500]}
-              size={36}
+              size={22}
             />
           )}
 
-          <DisciplineItem>
-            <H5 color={theme.colors.trueGray[400]}>#{item.cod}</H5>
-            <H5 color={theme.colors.text}>{item.name}</H5>
-          </DisciplineItem>
-        </HStack>
+          <DisciplineTitle>
+            <H5 color={theme.colors.trueGray[400]} numberOfLines={1}>
+              #{item.cod}
+            </H5>
+            <H5 color={theme.colors.text} numberOfLines={1}>
+              {item.name}
+            </H5>
+          </DisciplineTitle>
+        </DisciplineItem>
       </TouchableOpacity>
     );
   }
@@ -110,9 +125,22 @@ export function SelectMultiple({
 
   return (
     <Container onPress={() => setVisible(true)}>
-      <H5 color={colors.trueGray[400]} weight="regular">
-        {placeholder}
-      </H5>
+      {selected.length > 0 ? (
+        <VStack space={2}>
+          {selected.map((item, i) => {
+            return (
+              <InputSelectedItem key={i}>
+                <H5 numberOfLines={1}>{item.name}</H5>
+              </InputSelectedItem>
+            );
+          })}
+        </VStack>
+      ) : (
+        <H5 color={colors.trueGray[400]} weight="regular">
+          {placeholder}
+        </H5>
+      )}
+
       <Icon as={Entypo} name="chevron-down" size={4} />
       <Modal
         animationType="slide"
@@ -123,7 +151,12 @@ export function SelectMultiple({
         <Content>
           <VStack space={2}>
             <HStack justifyContent="space-between" alignItems="center">
-              <TouchableOpacity onPress={() => setVisible(false)}>
+              <TouchableOpacity
+                onPress={() => {
+                  setVisible(false);
+                  setTemporarySelected(selected);
+                }}
+              >
                 <Icon
                   as={Entypo}
                   name="chevron-left"
@@ -131,8 +164,13 @@ export function SelectMultiple({
                   size={36}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
-                <H5 color={theme.colors.text} size={22}>
+              <TouchableOpacity
+                onPress={() => {
+                  setVisible(false);
+                  setSelected(temporarySelected);
+                }}
+              >
+                <H5 color={theme.colors.primary[500]} size={22}>
                   OK
                 </H5>
               </TouchableOpacity>
@@ -140,13 +178,14 @@ export function SelectMultiple({
             <SearchInput
               title="disciplina"
               config={{ defaultValue: termo, onChangeText: setTermo }}
+              onClear={setTermo}
             />
           </VStack>
           <FlatList
+            showsVerticalScrollIndicator={false}
             style={{ marginTop: 65 }}
             keyExtractor={(_, i) => `${i}`}
             data={termo.length > 0 ? filteredList : list}
-            // ListHeaderComponent={HeaderContent}
             renderItem={({ item, index }) => renderItem(item, index)}
           />
         </Content>

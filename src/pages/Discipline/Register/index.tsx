@@ -32,7 +32,7 @@ export function DisciplineRegister() {
               data={[
                 {
                   id: 0,
-                  name: "Aprendizado de Máquina",
+                  name: "Aprendizado e Manutenção de Máquinas de Vencer",
                   cod: "CK0215",
                 },
                 {
@@ -88,7 +88,6 @@ export function DisciplineRegister() {
               ]}
               onChange={() => console.log()}
               placeholder="Selecione a disciplina"
-              max={3}
             />
 
             <InputSelect

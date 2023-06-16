@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { auth } from "../service/auth";
-import { UserLogin } from "User";
+import { User, UserLogin } from "User";
 import { useUser } from "../hooks/useUser";
 
 export function useSignin() {
@@ -10,15 +10,15 @@ export function useSignin() {
 
   const { handleUser } = useUser();
 
-  function signin(data: UserLogin, toHome: () => void) {
+  function signin(data: UserLogin, toHome: (user: User) => void) {
     setLoading(true);
-    setError(undefined)
+    setError(undefined);
     auth
       .signin(data)
       .then((res) => {
         setData(res.data);
         handleUser(res.data);
-        toHome();
+        toHome(res.data);
       })
       .catch((error) =>
         error.response

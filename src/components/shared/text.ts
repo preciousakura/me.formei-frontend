@@ -41,4 +41,5 @@ export const H5 = styled.Text<{
   font-size: ${(props) => (props.size ? props.size : 14)}px;
   color: ${(props) => (props.color ? props.color : props.theme.colors.text)};
   text-align: ${(props) => (props.align ? props.align : "left")}; 
+  flex-wrap: wrap;
 `;

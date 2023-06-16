@@ -1,11 +1,7 @@
 import { Container, Content, TopContent } from "./styles";
-import {
-  ProgressCourse,
-  UserInfo,
-  TodayClasses,
-} from "../../components/layout";
+import { UserInfo } from "../../components/layout";
 import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
-import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
@@ -53,9 +49,7 @@ export function HomeAdmin() {
       <TopContent>
         <UserInfoAdmin/>
       </TopContent>
-      <Content>
-        {options.map(renderCard)}
-      </Content>
+      <Content>{options.map(renderCard)}</Content>
     </Container>
   );
 }
