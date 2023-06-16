@@ -17,9 +17,16 @@ export function UserInfoAdmin() {
           />
           <View>
             <Subtitle color={theme.colors.white}>Isabel Cristina</Subtitle>
-            <H5 color={theme.colors.white}>
+            <H5 color={theme.colors.white} >
+              Cargo
               <H5 color={theme.colors.white} weight="regular">
-              Adminstrador
+                : Administrador
+              </H5>
+            </H5>
+            <H5 color={theme.colors.white} >
+              Email
+              <H5 color={theme.colors.white} weight="regular">
+                : isa@gmail.com
               </H5>
             </H5>
           </View>

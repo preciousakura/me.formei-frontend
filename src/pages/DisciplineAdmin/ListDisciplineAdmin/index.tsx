@@ -3,21 +3,25 @@ import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import {
   DisciplinesByPeriod,
+  CreateButton,
   FilterSelect,
   Header,
   SearchInput,
   SwipedDisciplinesByPeriod,
 } from "../../../components/layout";
-import { FlatList, VStack, View } from "native-base";
+import { FlatList, HStack, VStack, View } from "native-base";
 import { ListRenderItemInfo, Platform } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { DisciplineByPeriod } from "Discipline";
+import { DisciplineAdminProp } from "../../../types/types"
 
 export function ListDisciplineAdmin() {
   const { theme } = useTheme();
+  const navigation = useNavigation<any>();
 
   const HeaderElement = () => {
     return (
-      <VStack space={3}>
+      <VStack space={3} paddingBottom={4}>
         <Header
           isSpaced={false}
           backButton
@@ -25,17 +29,22 @@ export function ListDisciplineAdmin() {
           colorText={theme.colors.white}
         />
         <SearchInput title="disciplinas" />
+        <HStack space={2}>
 
-        <FilterSelect
-          config={{
-            placeholder: "Selecione um filtro",
-            defaultValue: "Obrigatória",
-          }}
-          values={[
-            { label: "Optativa", value: "Optativa" },
-            { label: "Obrigatória", value: "Obrigatória" },
-          ]}
-        />
+          <FilterSelect
+            config={{
+              placeholder: "Selecione um filtro",
+              defaultValue: "Obrigatória",
+            }}
+            values={[
+              { label: "Optativa", value: "Optativa" },
+              { label: "Obrigatória", value: "Obrigatória" },
+            ]}
+          />
+          <CreateButton
+            onPress={() => navigation.navigate("DisciplineAdmin", { screen: "DisciplineRegisterAdmin"})}
+          />
+        </HStack>
       </VStack>
     );
   };
@@ -62,7 +71,7 @@ export function ListDisciplineAdmin() {
           workload: 96,
           cod: "CB0534",
           isOptional: false,
-          
+
           bibliography: [],
         },
         {
@@ -71,7 +80,7 @@ export function ListDisciplineAdmin() {
           workload: 32,
           cod: "CB0534",
           isOptional: false,
-          
+
           bibliography: [],
         },
         {
@@ -80,7 +89,7 @@ export function ListDisciplineAdmin() {
           workload: 96,
           cod: "CB0534",
           isOptional: false,
-          
+
           bibliography: [],
         },
         {
@@ -89,7 +98,7 @@ export function ListDisciplineAdmin() {
           workload: 64,
           cod: "CB0534",
           isOptional: false,
-          
+
           bibliography: [],
         },
       ],
@@ -106,14 +115,14 @@ export function ListDisciplineAdmin() {
               workload: 64,
               cod: "CB0534",
               isOptional: false,
-              
+
               bibliography: [],
             },
           ],
           workload: 64,
           cod: "CB0534",
           isOptional: false,
-          
+
           bibliography: [],
         },
         {
@@ -125,7 +134,7 @@ export function ListDisciplineAdmin() {
               workload: 96,
               cod: "CB0534",
               isOptional: false,
-              
+
               bibliography: [],
             },
           ],

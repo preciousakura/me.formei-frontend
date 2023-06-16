@@ -29,7 +29,7 @@ export type TabAdminNavigatorParamList = {
   Início: undefined;
   Disciplinas: undefined;
   Perfil: undefined;
-  Usuários: undefined;
+  Admins: undefined;
 };
 
 export type TabAdminNavigatorProp = NativeStackNavigationProp<TabAdminNavigatorParamList>;
@@ -64,6 +64,7 @@ export type DisciplineAdminParamList = {
   AddDisciplineAdmin: undefined
   ListDisciplineAdmin: undefined;
   DisciplineHomeAdmin: undefined;
+  DisciplineRegisterAdmin: undefined;
 };
 
 export type DisciplineAdminProp = NativeStackNavigationProp<DisciplineAdminParamList>;
@@ -86,9 +87,9 @@ export type ProfileParamList = {
 
 export type ProfileProp = NativeStackNavigationProp<ProfileParamList>;
 
-export type UsersParamList = {
-  UsersHome: undefined;
-  UsersDetails: Discipline;
+export type AdminParamList = {
+  ListAdmins: undefined;
+  AdminsDetails: Discipline;
 };
 
-export type UsersProp = NativeStackNavigationProp<UsersParamList>;
+export type AdminsProp = NativeStackNavigationProp<AdminParamList>;
