@@ -1,4 +1,4 @@
-import { Button, FormControl, VStack } from "native-base";
+import { Button, FormControl, HStack, VStack } from "native-base";
 import { H5, Subtitle } from "../../components/shared/text";
 import { Container, ContentForm, ContainerLogo } from "./styles";
 import {
@@ -149,14 +149,14 @@ export default function Login() {
                 </Button>
               </VStack>
 
-              <H5 align="center" color={theme.colors.text}>
-                Ainda não tem uma conta?{" "}
+              <HStack alignItems="center" justifyContent="center">
+                <H5 color={theme.colors.text}>Ainda não tem uma conta? </H5>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("AccountInfo")}
                 >
                   <H5 color={theme.colors.primary[500]}>Registre-se!</H5>
                 </TouchableOpacity>
-              </H5>
+              </HStack>
             </ContentForm>
           )}
         </Formik>
