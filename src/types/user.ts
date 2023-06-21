@@ -32,11 +32,10 @@ declare module "User" {
   interface GeneralInformation {
     state: string;
     city: string;
-    university: string;
-    course: string;
     currentSemester: number;
     enrollmentSemester: number;
     enrollmentYear: number;
+    curriculumId: string;
   }
 
   type Student = AccountInfo & GeneralInformation;
