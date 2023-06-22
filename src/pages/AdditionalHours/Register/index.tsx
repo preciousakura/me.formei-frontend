@@ -1,11 +1,6 @@
 import { VStack, View, Button, HStack } from "native-base";
-import {
-  BorderedContent,
-  Container,
-  DateGroup,
-  ScrollContent,
-} from "../styles";
-import { Header } from "../../../components/layout";
+import { BorderedContent, Container, DateGroup } from "../styles";
+import { Header, VirtualizedScrollView } from "../../../components/layout";
 import { useTheme } from "styled-components";
 import {
   InputCNPJ,
@@ -28,10 +23,7 @@ export function AdditionalHoursRegister() {
         style={{ flex: 1, backgroundColor: theme.colors.background }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
       >
-        <ScrollContent
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flexGrow: 1 }}
-        >
+        <VirtualizedScrollView>
           <View style={{ padding: 20 }}>
             <Header
               isSpaced={false}
@@ -118,7 +110,7 @@ export function AdditionalHoursRegister() {
               </HStack>
             </VStack>
           </BorderedContent>
-        </ScrollContent>
+        </VirtualizedScrollView>
       </KeyboardAvoidingView>
     </Container>
   );

@@ -46,12 +46,14 @@ export default function AccountInfo() {
       style={{ flex: 1, backgroundColor: theme.colors.background }}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <Container
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow: 1 }}
-      >
-        <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
-        <Header backButton />
+      <Container>
+        <CustomizedStatusBar />
+        <Header
+          backButton
+          colorIcon={
+            theme.isDark ? theme.colors.white : theme.colors.primary[500]
+          }
+        />
         <Formik
           initialValues={{
             registration: "",
@@ -176,4 +178,4 @@ export default function AccountInfo() {
       </Container>
     </KeyboardAvoidingView>
   );
-} 
+}
