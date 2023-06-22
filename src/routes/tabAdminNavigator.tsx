@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeAdmin } from "../pages/HomeAdmin";
-import { ListDisciplineAdmin } from "../pages/DisciplineAdmin/ListDisciplineAdmin";
-import { ListAdmins } from "../pages/Admin/ListAdmins";
+import { DisciplineAdminList } from "../pages/DisciplineAdmin/List";
+import { AdminList } from "../pages/Admin/List";
 import { ProfileHome } from "../pages/Profile/Home";
 import { TabAdminNavigatorParamList } from "../types/types";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -17,6 +17,7 @@ export function TabAdminNavigator() {
   const theme = useTheme();
   return (
     <Tab.Navigator
+    initialRouteName="Início"
       screenOptions={{
         tabBarActiveTintColor: theme.colors.primary[500],
         tabBarInactiveTintColor: theme.colors.text,
@@ -54,7 +55,7 @@ export function TabAdminNavigator() {
       />
       <Tab.Screen
         name="Disciplinas"
-        component={ListDisciplineAdmin}
+        component={DisciplineAdminList}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (
@@ -70,7 +71,7 @@ export function TabAdminNavigator() {
       />
       <Tab.Screen
         name="Admins"
-        component={ListAdmins}
+        component={AdminList}
         options={{
           headerShown: false,
           tabBarIcon: (props) => (

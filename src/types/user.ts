@@ -38,6 +38,23 @@ declare module "User" {
     enrollmentSemester: number;
     enrollmentYear: number;
   }
-
+  
   type Student = AccountInfo & GeneralInformation;
+
+  interface AdminParam {
+    id: string;
+  }
+
+  interface AdminInfo {
+    id: String;
+    email: String;
+    lastname: String;
+    name: String;
+    username: String;
+  }
+
+  
+
+
+  
 }

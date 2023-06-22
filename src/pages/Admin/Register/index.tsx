@@ -16,7 +16,7 @@ import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatus
 import * as yup from "yup";
 import { Formik } from "formik";
 
-export function DisciplineRegisterAdmin() {
+export function AdminRegister() {
   const theme = useTheme();
   const [isOptional, setIsOptional] = useState(true);
 

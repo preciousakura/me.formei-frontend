@@ -12,6 +12,7 @@ interface InputRadioProps {
   touched?: boolean;
   isValid?: boolean;
   errors?: string;
+  onChange?: (value: any) => void;
   orientation?: "vertical" | "horizontal";
 }
 
@@ -24,6 +25,7 @@ export function InputRadio({
   touched,
   isValid,
   errors,
+  onChange,
 }: InputRadioProps) {
   const theme = useTheme();
 
@@ -51,6 +53,7 @@ export function InputRadio({
         {...config}
         name="groupRadio"
         accessibilityLabel="favorite colorscheme"
+        onChange={onChange}
       >
         {orientation === "vertical" ? (
           <VStack space={2}>{radioMap()}</VStack>

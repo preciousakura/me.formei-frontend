@@ -2,6 +2,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AdditionalHour } from "AdditionalHours";
 import { Discipline } from "Discipline";
 import { AccountInfo } from "User";
+import { AdminParam } from "User";
 
 export type UserLoginNavigatorParamList = {
   Login: undefined;
@@ -10,7 +11,7 @@ export type UserLoginNavigatorParamList = {
   SucessRegister: undefined;
   FailedRegister: undefined;
   Tab: undefined;
-  Admin: undefined;
+  TabAdmin: undefined;
 };
 
 export type UserLoginNavigationProp =
@@ -60,12 +61,9 @@ export type HourParamList = {
 export type HourProp = NativeStackNavigationProp<HourParamList>;
 
 export type DisciplineAdminParamList = {
-  DisciplineAdminHome: undefined;
-  DisciplineDetails: Discipline;
-  AddDisciplineAdmin: undefined
-  ListDisciplineAdmin: undefined;
-  DisciplineHomeAdmin: undefined;
-  DisciplineRegisterAdmin: undefined;
+  DisciplineAdminDetails: Discipline;
+  DisciplineAdminList: undefined;
+  DisciplineAdminRegister: undefined;
 };
 
 export type DisciplineAdminProp = NativeStackNavigationProp<DisciplineAdminParamList>;
@@ -89,8 +87,9 @@ export type ProfileParamList = {
 export type ProfileProp = NativeStackNavigationProp<ProfileParamList>;
 
 export type AdminParamList = {
-  ListAdmins: undefined;
-  AdminsDetails: Discipline;
+  AdminList: undefined;
+  AdminDetails: AdminParam;
+  AdminRegister: undefined;
 };
 
-export type AdminsProp = NativeStackNavigationProp<AdminParamList>;
+export type AdminProp = NativeStackNavigationProp<AdminParamList>;

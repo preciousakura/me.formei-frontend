@@ -15,9 +15,9 @@ import { useNavigation } from "@react-navigation/native";
 import { DisciplineByPeriod } from "Discipline";
 import { DisciplineAdminProp } from "../../../types/types"
 
-export function ListDisciplineAdmin() {
+export function DisciplineAdminList() {
   const { theme } = useTheme();
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<DisciplineAdminProp>();
 
   const HeaderElement = () => {
     return (
@@ -42,7 +42,8 @@ export function ListDisciplineAdmin() {
             ]}
           />
           <CreateButton
-            onPress={() => navigation.navigate("DisciplineAdmin", { screen: "DisciplineRegisterAdmin"})}
+            // onPress={() => navigation.navigate("DisciplinesAdmin", { screen: "DisciplineAdminRegister"})}
+            onPress={() => navigation.navigate("DisciplineAdminList")}
           />
         </HStack>
       </VStack>

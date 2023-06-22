@@ -8,10 +8,11 @@ import AdditionalHoursNavigator from "./additionalHours";
 import PeriodsNavigator from "./periods";
 import HourNavigator from "./hour";
 import DisciplineNavigator from "./disciplines";
-import DisciplineAdminNavigator from "./disciplineAdmin";
+import DisciplineAdminNavigator from "./disciplinesAdmin";
 import ProfileNavigator from "./profile";
 import { ProgressDetail } from "../pages/ProgressDetail";
-import  DisciplineAdmin from "./disciplineAdmin";
+import  DisciplineAdmin from "./disciplinesAdmin";
+import AdminNavigator from  "./admin";
 
 const Navigation = createNativeStackNavigator();
 
@@ -25,7 +26,7 @@ export default function Routes() {
           options={{ headerShown: false }}
         />
         <Navigation.Screen
-          name="Admin"
+          name="TabAdmin"
           component={TabAdminNavigator}
           options={{ headerShown: false }}
         />
@@ -67,6 +68,11 @@ export default function Routes() {
         <Navigation.Screen
           name="Profile"
           component={ProfileNavigator}
+          options={{ headerShown: false }}
+        />
+        <Navigation.Screen
+          name="Admins"
+          component={AdminNavigator}
           options={{ headerShown: false }}
         />
       </Navigation.Navigator>
