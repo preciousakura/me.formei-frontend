@@ -23,14 +23,14 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    checkLoggedIn();
-  }, [user]);
+    const res = async () => {
+      await userSave.get().then((user) => {
+        if (user) setUser(user);
+      });
+    };
 
-  const checkLoggedIn = async () => {
-    await userSave.get().then((user) => {
-      if (user) setUser(user);
-    });
-  };
+    res();
+  }, []);
 
   const deleteUser = async (toBack: () => void) => {
     setLoading(true);
@@ -44,22 +44,8 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
   };
 
   const handleUser = async (user: User) => {
-    const u = {
-      isAdmin: user.isAdmin,
-      token: user.token,
-      user: {
-        adminId: user.user.adminId,
-        city: user.user.city,
-        email: user.user.email,
-        id: user.user.id,
-        lastname: user.user.lastname,
-        name: user.user.name,
-        state: user.user.state,
-        username: user.user.username,
-      },
-    };
-    setUser(u);
-    await userSave.set(u);
+    setUser(user);
+    await userSave.set(user);
   };
 
   const providerValue = useMemo(

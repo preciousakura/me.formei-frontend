@@ -50,6 +50,8 @@ export function ProfileHome() {
     );
   }
 
+  const { user } = useUser();
+
   return (
     <Container
       showsVerticalScrollIndicator={false}
@@ -83,7 +85,7 @@ export function ProfileHome() {
         <VStack space={3}>
           <View marginBottom={5}>
             <Subtitle align="center" color={theme.colors.text} size={25}>
-              Isabel Cristina
+              {user?.user.name} {user?.user.lastname}
             </Subtitle>
             <H5
               align="center"
@@ -91,7 +93,7 @@ export function ProfileHome() {
               size={18}
               weight="regular"
             >
-              Ciência da Computação
+              {user?.user.course.name}
             </H5>
             <H5
               align="center"
@@ -99,7 +101,8 @@ export function ProfileHome() {
               size={18}
               weight="regular"
             >
-              2023.1 - 7° Período
+              {user?.user.enrollmentYear}.{user?.user.enrollmentSemester} -{" "}
+              {user?.user.currentSemester}° Período
             </H5>
           </View>
           {options.map(renderCard)}

@@ -10,7 +10,11 @@ export function useAuth() {
     setLoading(true);
     auth
       .postStudent(data)
-      .catch((error) => setError(error.message))
+      .catch((error) =>
+        error.response
+          ? setError(error.response.data.message)
+          : setError(error.message)
+      )
       .finally(() => setLoading(false));
   }
 

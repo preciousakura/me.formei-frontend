@@ -4,7 +4,7 @@ import { User, UserLogin } from "User";
 import { useUser } from "../hooks/useUser";
 
 export function useSignin() {
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<User>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 

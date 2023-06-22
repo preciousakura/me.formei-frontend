@@ -1,17 +1,33 @@
 declare module "User" {
   interface User {
-    isAdmin: boolean;
-    token: string;
     user: {
-      adminId: string;
-      city: string;
-      email: string;
       id: string;
-      lastname: string;
       name: string;
-      state: string;
+      email: string;
+      registration: string;
+      curriculumId: string;
+      course: {
+        id: string;
+        name: string;
+      };
+      currentSemester: number;
+      enrollmentSemester: number;
+      enrollmentYear: number;
+      lastname: string;
+      studentId: string;
+      university: {
+        id: string;
+        name: string;
+        abv: string;
+        city: string;
+        state: string;
+      };
       username: string;
+      city: string;
+      state: string;
     };
+    token: string;
+    isAdmin: boolean;
   }
 
   interface UserLogin {

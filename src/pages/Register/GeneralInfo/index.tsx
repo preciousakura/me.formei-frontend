@@ -189,6 +189,7 @@ export default function GeneralInfo() {
                   isDisabled={!isValid}
                   marginTop={30}
                   onPress={() => handleSubmit()}
+                  isLoading={loading}
                 >
                   <H5 color={theme.colors.white}>Criar</H5>
                 </Button>

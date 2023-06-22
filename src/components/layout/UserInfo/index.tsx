@@ -8,6 +8,7 @@ import { useUser } from "../../../hooks/useUser";
 export function UserInfo() {
   const theme = useTheme();
   const { user } = useUser();
+  console.log(user);
 
   return (
     <Container>
@@ -19,17 +20,19 @@ export function UserInfo() {
             color={theme.colors.white}
           />
           <View>
-            <Subtitle color={theme.colors.white}>{user?.user.name} {user?.user.lastname}</Subtitle>
+            <Subtitle color={theme.colors.white}>
+              {user?.user.name} {user?.user.lastname}
+            </Subtitle>
             <H5 color={theme.colors.white}>
               Curso:{" "}
               <H5 color={theme.colors.white} weight="regular">
-                Ciência da Computação
+                {user?.user.course.name}
               </H5>
             </H5>
             <H5 color={theme.colors.white}>
               Ano de entrada:{" "}
               <H5 color={theme.colors.white} weight="regular">
-                2020.1
+                {user?.user.enrollmentYear}.{user?.user.enrollmentSemester}
               </H5>
             </H5>
           </View>
