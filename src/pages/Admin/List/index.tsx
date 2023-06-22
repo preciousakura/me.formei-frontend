@@ -14,7 +14,7 @@ import { H5 } from "../../../components/shared/text";
 
 export function AdminList() {
   const { theme } = useTheme();
-  const navigation = useNavigation<AdminProp>();
+  const navigation = useNavigation<any>();
 
   const dataTeste: AdminParam[] = [
     { id: '1' },
@@ -59,7 +59,7 @@ export function AdminList() {
         <HStack space={2}>
         <SearchInput title="administrador" />
         <CreateButton
-          onPress={() => navigation.navigate("AdminRegister")}
+          onPress={() => navigation.navigate("Admins", { screen: "AdminRegister"})}
         />
         </HStack>
       </VStack>

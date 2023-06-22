@@ -17,7 +17,7 @@ import { DisciplineAdminProp } from "../../../types/types"
 
 export function DisciplineAdminList() {
   const { theme } = useTheme();
-  const navigation = useNavigation<DisciplineAdminProp>();
+  const navigation = useNavigation<any>();
 
   const HeaderElement = () => {
     return (
@@ -42,8 +42,7 @@ export function DisciplineAdminList() {
             ]}
           />
           <CreateButton
-            // onPress={() => navigation.navigate("DisciplinesAdmin", { screen: "DisciplineAdminRegister"})}
-            onPress={() => navigation.navigate("DisciplineAdminList")}
+             onPress={() => navigation.navigate("DisciplinesAdmin", { screen: "DisciplineAdminRegister"})}
           />
         </HStack>
       </VStack>

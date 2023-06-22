@@ -16,29 +16,31 @@ import {
 import { H5 } from "../../../components/shared/text";
 import { BorderedContent } from "../styles";
 import { Container } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export function DisciplineAdminRegister() {
   const theme = useTheme();
-  const [isOptional, setIsOptional] = useState(true);
   const [showInputPeriod, setShowInputPeriod] = useState(false);
+  const navigation = useNavigation();
 
   let registerValidationSchema = yup.object().shape({
     name: yup.string().required("O nome da disciplina é obrigatório."),
-    bibliography: yup.string().required("A bibliografia é obrigatória."),
-    workload: yup.string().required("A carga horária é obrigatória."), // Precisa alterar
+    workload: yup.string().required("A carga horária é obrigatória."),
+    menu: yup.string().required("A ementa é obrigatória."),
+    bibliography: yup.string(),
   });
 
-
 const handleOnChange = (value: any) => {
-  console.log("teste");
-  console.log(`${value}`);
   if(value==="Optativa") {
     setShowInputPeriod(false);
   } else {
     setShowInputPeriod(true);
   }
-
   return {};
+}
+
+const handlePress = () => {
+  navigation.goBack();
 }
 
 return (
@@ -61,7 +63,8 @@ return (
         initialValues={{
           name: "",
           bibliography: "",
-          workload: ""
+          workload: "",
+          menu: "",
         }}
         validateOnMount={true}
         // onSubmit={(values) => navigation.navigate("GeneralInfo", values)}
@@ -127,6 +130,18 @@ return (
                   onChangeText: handleChange("bibliography"),
                   onBlur: handleBlur("bibliography"),
                   value: values.bibliography,
+                }}
+              />
+              <InputText
+                label="Ementa"
+                touched={touched.menu}
+                errors={errors.menu}
+                config={{
+                  multiline: true,
+                  placeholder: "Digite a ementa da disciplina",
+                  onChangeText: handleChange("menu"),
+                  onBlur: handleBlur("menu"),
+                  value: values.menu,
                 }}
               />
               <SelectMultiple
@@ -196,7 +211,7 @@ return (
                 <Button flex={1} marginTop={30} mt="5">
                   <H5 color={theme.colors.white}>Adicionar</H5>
                 </Button>
-                <Button flex={1} variant="outline" marginTop={30} mt="5">
+                <Button flex={1} variant="outline" marginTop={30} mt="5" onPress={handlePress}>
                   <H5 color={theme.colors.text}>Cancelar</H5>
                 </Button>
               </HStack>

@@ -54,7 +54,7 @@ export default function Login() {
   };
 
   const submit = async (values: UserLogin) => {
-    navigation.navigate('Admin');
+    navigation.navigate('TabAdmin');
     //await signin(values, toHome);
   };
 

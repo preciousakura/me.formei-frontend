@@ -21,9 +21,11 @@ export function AdminRegister() {
   const [isOptional, setIsOptional] = useState(true);
 
   let registerValidationSchema = yup.object().shape({
-    name: yup.string().required("O nome da disciplina é obrigatório."),
-    bibliography: yup.string().required("A bibliografia é obrigatória."),
-    workload: yup.string().required("A carga horária é obrigatória."), // Precisa alterar
+    name: yup.string().required("O nome é obrigatório."),
+    lastName: yup.string().required("O sobrenome é obrigatório."),
+    email: yup.string().required("O email é obrigatório."),
+    userName: yup.string().required("O userName é obrigatório."), 
+    password: yup.string().required("O senha é obrigatória."), 
   });
 
 
@@ -33,7 +35,6 @@ export function AdminRegister() {
     } else { 
     setIsOptional(true)
   }
-  console.log("mudou");
   return (<></>);
 }
 
@@ -57,8 +58,10 @@ return (
       <Formik
         initialValues={{
           name: "",
-          bibliography: "",
-          workload: ""
+          lastName: "",
+          userName: "",
+          email: "",
+          password: "",
         }}
         validateOnMount={true}
         // onSubmit={(values) => navigation.navigate("GeneralInfo", values)}
@@ -76,131 +79,60 @@ return (
         }) => (
           <BorderedContent>
             <VStack space={6} mt="5" paddingBottom={30}>
-              <InputSelect
-                config={{ placeholder: "Selecione o curso", defaultValue: "Ciência da Computação" }}
-                values={[
-                  { label: "Ciência da Computação", value: "Ciência da Computação" },
-                ]}
-                label="Curso"
-              />
-              <InputText
-                label="Carga Horária"
-                touched={touched.workload}
-                errors={errors.workload}
-                config={{
-                  placeholder: "Digite a carga horária da disciplina",
-                  onChangeText: handleChange("workload"),
-                  onBlur: handleBlur("workload"),
-                  value: values.workload,
-                }}
-              />
               <InputText
                 label="Nome"
                 touched={touched.name}
                 errors={errors.name}
                 config={{
-                  placeholder: "Digite o nome da disciplina",
+                  placeholder: "Digite a carga horária da disciplina",
                   onChangeText: handleChange("name"),
                   onBlur: handleBlur("name"),
                   value: values.name,
                 }}
               />
-              <InputSelect
+               <InputText
+                label="Sobrenome"
+                touched={touched.lastName}
+                errors={errors.lastName}
                 config={{
-                  placeholder: "Selecione uma opção",
-                  onValueChange: (e) => handleValueChange(e)
+                  placeholder: "Digite a carga horária da disciplina",
+                  onChangeText: handleChange("lastName"),
+                  onBlur: handleBlur("lastName"),
+                  value: values.lastName,
                 }}
-                values={[
-                  { label: "Optativa", value: "Optativa" },
-                  { label: "Obrigatória", value: "Obrigatória" },
-                ]}
-                label="Caráter"
               />
-              {!isOptional && (
-                <InputSelect
-                  config={{ placeholder: "Selecione o período da disciplina" }}
-                  values={[
-                    { label: "Período 1", value: "Período 1" },
-                    { label: "Período 2", value: "Período 2" },
-                  ]}
-                  label="Período"
-                />
-              )}
-
               <InputText
-                label="Bibliografia"
-                touched={touched.bibliography}
-                errors={errors.bibliography}
+                label="Username"
+                touched={touched.userName}
+                errors={errors.userName}
                 config={{
-                  multiline: true,
-                  placeholder: "Digite a bibliografia da disciplina",
-                  onChangeText: handleChange("bibliography"),
-                  onBlur: handleBlur("bibliography"),
-                  value: values.bibliography,
+                  placeholder: "Digite a carga horária da disciplina",
+                  onChangeText: handleChange("userName"),
+                  onBlur: handleBlur("userName"),
+                  value: values.userName,
                 }}
               />
-              <SelectMultiple
-                data={[
-                  {
-                    id: 0,
-                    name: "Aprendizado de Máquina",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 1,
-                    name: "Processamento de Imagens",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 2,
-                    name: "Teoria da Computação",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 3,
-                    name: "Construção e Análise de Algoritmos",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 4,
-                    name: "Circuitos Digitais",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 5,
-                    name: "Programação",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 6,
-                    name: "Engenharia de Software",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 7,
-                    name: "Computação Gráfica",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 8,
-                    name: "Lógica para Ciência da computação",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 9,
-                    name: "Seminário em Computação",
-                    cod: "CK0215",
-                  },
-                  {
-                    id: 10,
-                    name: "Informática e Sociedade",
-                    cod: "CK0215",
-                  },
-                ]}
-                label="Pré-requisitos"
-                onChange={() => console.log()}
-                placeholder="Selecione a disciplina"
-                max={3}
+              <InputText
+                label="email"
+                touched={touched.email}
+                errors={errors.email}
+                config={{
+                  placeholder: "Digite a carga horária da disciplina",
+                  onChangeText: handleChange("email"),
+                  onBlur: handleBlur("email"),
+                  value: values.email,
+                }}
+              />
+              <InputText
+                label="Senha"
+                touched={touched.password}
+                errors={errors.password}
+                config={{
+                  placeholder: "Digite a carga horária da disciplina",
+                  onChangeText: handleChange("password"),
+                  onBlur: handleBlur("password"),
+                  value: values.password,
+                }}
               />
               <HStack space={3}>
                 <Button flex={1} marginTop={30} mt="5">

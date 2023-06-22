@@ -31,7 +31,7 @@ export default function Routes() {
           options={{ headerShown: false }}
         />
         <Navigation.Screen
-          name="DisciplineAdmin"
+          name="DisciplinesAdmin"
           component={DisciplineAdminNavigator}
           options={{ headerShown: false }}
         />
