@@ -19,7 +19,13 @@ const service = () => {
     return response;
   }
 
-  return { postStudent, signin };
+  async function session() {
+    const path = `${resource}/session`;
+    const response = await callService(() => api.get<boolean>(path));
+    return response.data;
+  }
+
+  return { postStudent, signin, session };
 };
 
 export const auth = service();

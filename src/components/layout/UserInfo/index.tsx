@@ -8,7 +8,6 @@ import { useUser } from "../../../hooks/useUser";
 export function UserInfo() {
   const theme = useTheme();
   const { user } = useUser();
-  console.log(user);
 
   return (
     <Container>
