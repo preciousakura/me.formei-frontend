@@ -19,9 +19,15 @@ const service = () => {
     return response;
   }
 
-  async function session() {
+  async function session(token?: string) {
     const path = `${resource}/session`;
-    const response = await callService(() => api.get<boolean>(path));
+    const response = await callService(() =>
+      api.get<boolean>(path, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+    );
     return response.data;
   }
 

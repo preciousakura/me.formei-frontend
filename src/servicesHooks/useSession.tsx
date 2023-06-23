@@ -1,24 +1,22 @@
 import { useMemo, useState, useEffect } from "react";
 import { auth } from "../service/auth";
 
-export function useSession() {
+export function useSession(token?: string) {
   const [session, setSession] = useState<boolean>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string[]>();
 
-  useEffect(() => {
+  function isTokenValid(token: string) {
     setLoading(true);
     auth
-      .session()
+      .session(token)
       .then((res) => {
         setSession(res);
       })
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
-  }, []);
+    return session;
+  }
 
-  return useMemo(
-    () => ({ loading, error, session }),
-    [loading, error, session]
-  );
+  return useMemo(() => ({ loading, error, isTokenValid }), [loading, error]);
 }

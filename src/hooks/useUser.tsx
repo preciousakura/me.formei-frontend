@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { userSave } from "../utils/storange";
+import { useSession } from "../servicesHooks/useSession";
 
 export interface IUserContext {
   user?: User;
@@ -22,10 +23,14 @@ export function UserContextProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(false);
 
+  const { isTokenValid } = useSession(user?.token);
+
   useEffect(() => {
     const res = async () => {
       await userSave.get().then((user) => {
-        if (user) setUser(user);
+        if (user) {
+          if (isTokenValid(user.token)) setUser(user);
+        }
       });
     };
 
