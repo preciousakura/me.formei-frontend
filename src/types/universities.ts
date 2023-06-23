@@ -10,4 +10,10 @@ declare module "University" {
   interface Universities {
     universities: University[];
   }
+
+  interface Courses {
+    id: string;
+    name: string;
+    curriculumId: string;
+  }
 }
