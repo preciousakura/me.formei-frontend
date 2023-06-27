@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://192.168.0.111:3000/",
+  baseURL: "https://meformei-backend-production.up.railway.app/",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Credentials": true,
