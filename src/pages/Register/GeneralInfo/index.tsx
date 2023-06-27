@@ -15,6 +15,7 @@ import { Formik } from "formik";
 import { Student } from "User";
 import { useAuth } from "../../../servicesHooks/useAuth";
 import { Platform } from "react-native";
+import { useState } from "react";
 
 export default function GeneralInfo() {
   const theme = useTheme();
@@ -34,7 +35,7 @@ export default function GeneralInfo() {
     enrollmentYear: yup.string().required("O ano de entrada é obrigatório."),
   });
 
-  const { loading, postStudent, error } = useAuth();
+  const { loading, postStudent } = useAuth();
 
   const currentYear = new Date().getFullYear();
 
@@ -61,6 +62,17 @@ export default function GeneralInfo() {
     .map((v, i) => {
       return { label: String(v.label + i), value: String(v.value + i) };
     });
+
+  const [state, setState] = useState<string>();
+  const [city, setCity] = useState<string>();
+
+  const onChangeState = (value: string) => {
+    setState(value);
+  };
+
+  const onChangeCity = (value: string) => {
+    setCity(value);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -89,14 +101,7 @@ export default function GeneralInfo() {
           onSubmit={(values) => submit(values)}
           validationSchema={registerValidationSchema}
         >
-          {({
-            handleChange,
-            handleSubmit,
-            values,
-            touched,
-            errors,
-            isValid,
-          }) => (
+          {({ handleChange, handleSubmit, values, isValid }) => (
             <ContentForm>
               <Subtitle align="center">Informações gerais</Subtitle>
               <VStack space={3} mt="5" paddingBottom={30}>
@@ -106,8 +111,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("state"),
                     selectedValue: values.state,
                   }}
-                  touched={touched.state}
-                  errors={errors.state}
                   values={[{ label: "Ceará", value: "Ceará" }]}
                   label="Estado"
                 />
@@ -118,8 +121,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("city"),
                     selectedValue: values.city,
                   }}
-                  touched={touched.city}
-                  errors={errors.city}
                   values={[{ label: "Fortaleza", value: "Fortaleza" }]}
                   label="Município"
                 />
@@ -130,8 +131,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("university"),
                     selectedValue: values.university,
                   }}
-                  touched={touched.university}
-                  errors={errors.university}
                   values={[
                     {
                       label: "Universidade Federal do Ceará",
@@ -147,8 +146,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("course"),
                     selectedValue: values.course,
                   }}
-                  touched={touched.course}
-                  errors={errors.course}
                   values={[
                     {
                       label: "Ciência da Computação",
@@ -164,8 +161,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("enrollmentYear"),
                     selectedValue: values.enrollmentYear,
                   }}
-                  touched={touched.enrollmentYear}
-                  errors={errors.enrollmentYear}
                   values={years}
                   label="Ano de entrada"
                 />
@@ -176,8 +171,6 @@ export default function GeneralInfo() {
                     onValueChange: handleChange("enrollmentSemester"),
                     selectedValue: values.enrollmentSemester,
                   }}
-                  touched={touched.enrollmentSemester}
-                  errors={errors.enrollmentSemester}
                   values={[
                     { label: "1", value: "1" },
                     { label: "2", value: "2" },

@@ -2,13 +2,28 @@ import { Student } from "User";
 import api from "./config/api";
 import { callService } from "./config/service";
 import { Courses, Universities } from "University";
+import { ensureAxiosParamOptions } from "../utils/params";
+
+type UniversitiesProps = {
+  state?: string;
+  city?: string;
+};
 
 const service = () => {
   const resource = "universities";
 
-  async function getUniversities() {
+  async function getUniversities({ state, city }: UniversitiesProps) {
     const path = `${resource}`;
-    const response = await callService(() => api.get<Universities>(path));
+    const options = ensureAxiosParamOptions({
+      params: {
+        state,
+        city,
+      },
+    });
+    const response = await callService(() =>
+      api.get<Universities>(path, options)
+    );
+
     return response.data;
   }
 

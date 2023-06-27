@@ -17,7 +17,6 @@ export function InputText({
   label,
   config,
   touched,
-  isValid,
   errors,
 }: InputTextProps) {
   const theme = useTheme();

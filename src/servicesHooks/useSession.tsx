@@ -1,7 +1,7 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { auth } from "../service/auth";
 
-export function useSession(token?: string) {
+export function useSession() {
   const [session, setSession] = useState<boolean>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string[]>();
