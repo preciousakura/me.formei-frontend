@@ -1,7 +1,11 @@
 import { Container, ContentForm } from "../styles";
 import { Header } from "../../../components/layout";
 import { Button, KeyboardAvoidingView, VStack } from "native-base";
-import { InputSelect } from "../../../components/layout/UI";
+import {
+  InputSelect,
+  SelectCourse,
+  SelectUniversity,
+} from "../../../components/layout/UI";
 import { H5, Subtitle } from "../../../components/shared/text";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import {
@@ -12,10 +16,9 @@ import { useTheme } from "styled-components";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { Student } from "User";
+import { Student, User } from "User";
 import { useAuth } from "../../../servicesHooks/useAuth";
 import { Platform } from "react-native";
-import { useState } from "react";
 
 export default function GeneralInfo() {
   const theme = useTheme();
@@ -39,7 +42,17 @@ export default function GeneralInfo() {
 
   const currentYear = new Date().getFullYear();
 
-  function submit(values: any) {
+  const toHome = (user: any) => {
+  console.log(user)
+    const to = user ? "SucessRegister" : "FailedRegister";
+    navigation.navigate(to);
+    navigation.reset({
+      index: 0,
+      routes: [{ name: to }],
+    });
+  };
+
+  async function submit(values: any) {
     const calculatedSemester =
       ((currentYear - Number(values.enrollmentYear)) * 12) / 6 + 1;
 
@@ -49,9 +62,10 @@ export default function GeneralInfo() {
       currentSemester: calculatedSemester,
       enrollmentYear: Number(values.enrollmentYear),
       enrollmentSemester: Number(values.enrollmentSemester),
+      curriculumId: values.course,
     };
 
-    postStudent(student);
+    await postStudent(student, toHome);
   }
 
   const years = new Array(currentYear - 2015 + 1)
@@ -62,17 +76,6 @@ export default function GeneralInfo() {
     .map((v, i) => {
       return { label: String(v.label + i), value: String(v.value + i) };
     });
-
-  const [state, setState] = useState<string>();
-  const [city, setCity] = useState<string>();
-
-  const onChangeState = (value: string) => {
-    setState(value);
-  };
-
-  const onChangeCity = (value: string) => {
-    setCity(value);
-  };
 
   return (
     <KeyboardAvoidingView
@@ -125,34 +128,23 @@ export default function GeneralInfo() {
                   label="Município"
                 />
 
-                <InputSelect
+                <SelectUniversity
                   config={{
                     placeholder: "Selecione sua univerdade",
                     onValueChange: handleChange("university"),
                     selectedValue: values.university,
                   }}
-                  values={[
-                    {
-                      label: "Universidade Federal do Ceará",
-                      value: "Universidade Federal do Ceará",
-                    },
-                  ]}
-                  label="Universidade"
+                  city={values.city}
+                  state={values.state}
                 />
 
-                <InputSelect
+                <SelectCourse
+                  id={values.university}
                   config={{
                     placeholder: "Selecione seu curso",
                     onValueChange: handleChange("course"),
                     selectedValue: values.course,
                   }}
-                  values={[
-                    {
-                      label: "Ciência da Computação",
-                      value: "Ciência da Computação",
-                    },
-                  ]}
-                  label="Curso"
                 />
 
                 <InputSelect

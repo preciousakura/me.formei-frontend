@@ -14,7 +14,7 @@ export function useUniversity(state?: string, city?: string) {
       .then((res) => setData(res.universities))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [state, city]);
 
   return useMemo(() => ({ loading, error, data }), [loading, error, data]);
 }

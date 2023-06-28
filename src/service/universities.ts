@@ -29,7 +29,7 @@ const service = () => {
 
   async function getCourses(id: string) {
     const path = `${resource}/${id}/courses`;
-    const response = await callService(() => api.get<Courses[]>(path));
+    const response = await callService(() => api.get<Courses>(path));
     return response.data;
   }
 

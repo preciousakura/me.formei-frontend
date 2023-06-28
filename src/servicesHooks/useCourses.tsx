@@ -3,7 +3,7 @@ import { Courses } from "University";
 import { university } from "../service/universities";
 
 export function useCourses(id: string) {
-  const [data, setData] = useState<Courses[]>();
+  const [data, setData] = useState<Courses>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string[]>();
 
@@ -14,7 +14,7 @@ export function useCourses(id: string) {
       .then((res) => setData(res))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
   return useMemo(() => ({ loading, error, data }), [loading, error, data]);
 }

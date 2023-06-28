@@ -10,7 +10,7 @@ const service = () => {
 
     const response = await callService(() => api.post(path, value));
 
-    return response;
+    return response.data;
   }
 
   async function signin(value: UserLogin) {

@@ -6,3 +6,5 @@ export { InputCNPJ } from "./InputCNPJ";
 export { InputRadio } from "./InputRadio";
 export { InputNumber } from "./InputNumber";
 export { InputDate } from "./InputDate";
+export { SelectUniversity } from "./SelectUniversity";
+export { SelectCourse } from "./SelectCourse";
