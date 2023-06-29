@@ -54,8 +54,7 @@ export default function Login() {
   };
 
   const submit = async (values: UserLogin) => {
-    navigation.navigate('Admin');
-    //await signin(values, toHome);
+    await signin(values, toHome);
   };
 
   return (
@@ -80,7 +79,7 @@ export default function Login() {
         </ContainerLogo>
 
         <Formik
-          initialValues={{ username: "username", password: "password" }}
+          initialValues={{ username: "", password: "" }}
           onSubmit={(values) => submit(values)}
           validateOnMount
           validationSchema={loginValidationSchema}
