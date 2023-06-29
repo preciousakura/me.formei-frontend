@@ -8,10 +8,10 @@ import AdditionalHoursNavigator from "./additionalHours";
 import PeriodsNavigator from "./periods";
 import HourNavigator from "./hour";
 import DisciplineNavigator from "./disciplines";
-import DisciplineAdminNavigator from "./disciplinesAdmin";
+import DisciplineAdminNavigator from "./disciplineAdmin";
 import ProfileNavigator from "./profile";
 import { ProgressDetail } from "../pages/ProgressDetail";
-import AddDisciplineAdmin from "../pages/DisciplineAdmin/AddDisciplineAdmin"
+import  DisciplineAdmin from "./disciplineAdmin";
 
 const Navigation = createNativeStackNavigator();
 
@@ -67,11 +67,6 @@ export default function Routes() {
         <Navigation.Screen
           name="Profile"
           component={ProfileNavigator}
-          options={{ headerShown: false }}
-        />
-        <Navigation.Screen
-          name="AddDisciplineAdmin"
-          component={AddDisciplineAdmin}
           options={{ headerShown: false }}
         />
       </Navigation.Navigator>

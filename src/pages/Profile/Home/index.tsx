@@ -20,10 +20,6 @@ export function ProfileHome() {
       linkTo: "AdditionalHours",
     },
     {
-      name: "Editar período atual",
-      linkTo: "AdditionalHours",
-    },
-    {
       name: "Sair",
       onPress: deleteUser,
       root: "Account",

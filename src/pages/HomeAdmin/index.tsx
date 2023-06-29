@@ -1,5 +1,4 @@
 import { Container, Content, TopContent } from "./styles";
-import { UserInfo } from "../../components/layout";
 import { ButtonHomeCard } from "../../components/layout/ButtonHomeCard";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
@@ -10,33 +9,19 @@ import { UserInfoAdmin } from "../../components/layout/UserInfoAdmin";
 export function HomeAdmin() {
   const options = [
     {
-      name: "Cadastrar Disciplinas",
-      icon: MaterialCommunityIcons,
-      nameIcon: "book-open-outline",
-      root: "AddDisciplineAdmin",
-      linkTo: "AddDisciplineAdmin",
-    },
+        name: "Mensagens",
+        icon: MaterialCommunityIcons,
+        nameIcon: "message-outline",
+        root: "Periods",
+        linkTo: "PeriodsHome",
+      },
     {
-      name: "Mensagens",
-      icon: MaterialCommunityIcons,
-      nameIcon: "message-outline",
-      root: "Periods",
-      linkTo: "PeriodsHome",
-    },
-    {
-      name: "Períodos",
-      icon: MaterialCommunityIcons,
-      nameIcon: "book-open-outline",
-      root: "Periods",
-      linkTo: "PeriodsHome",
-    },
-    {
-      name: "Cursos",
-      icon: MaterialCommunityIcons,
-      nameIcon: "book-open-outline",
-      root: "Periods",
-      linkTo: "PeriodsHome",
-    },
+        name: "Cursos",
+        icon: MaterialCommunityIcons,
+        nameIcon: "book-open-outline",
+        root: "Periods",
+        linkTo: "PeriodsHome",
+      },
   ];
 
   function renderCard(

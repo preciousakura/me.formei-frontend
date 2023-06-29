@@ -6,13 +6,14 @@ import {
   InputSelectedItem,
   DisciplineTitle,
 } from "./styles";
-import { TouchableOpacity, Modal, FlatList } from "react-native";
+import { TouchableOpacity, Modal, FlatList, Text } from "react-native";
 import { useEffect, useState } from "react";
-import { HStack, Icon, VStack, useTheme as useNativeTheme } from "native-base";
+import { FormControl, HStack, Icon, VStack, useTheme as useNativeTheme } from "native-base";
 import { useTheme } from "../../../hooks/useTheme";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { CustomizedStatusBar } from "../CustomizedStatusBar";
 import { SearchInput } from "../SearchInput";
+const { Label } = FormControl;
 
 interface Discipline {
   name: string;
@@ -21,6 +22,7 @@ interface Discipline {
 }
 
 interface SelectMultipleProps {
+  label?: String,
   data: Discipline[];
   onChange: () => void;
   defaultValue?: Discipline[];
@@ -29,6 +31,7 @@ interface SelectMultipleProps {
 }
 
 export function SelectMultiple({
+  label,
   data,
   onChange,
   defaultValue = [],
@@ -117,79 +120,86 @@ export function SelectMultiple({
   const filteredList =
     termo.length > 0
       ? options.filter(
-          (d) =>
-            d.name.toLowerCase().includes(termo.toLowerCase()) ||
-            d.cod.toLowerCase().includes(termo.toLowerCase())
-        )
+        (d) =>
+          d.name.toLowerCase().includes(termo.toLowerCase()) ||
+          d.cod.toLowerCase().includes(termo.toLowerCase())
+      )
       : [];
 
   return (
-    <Container onPress={() => setVisible(true)}>
-      {selected.length > 0 ? (
-        <VStack space={2}>
-          {selected.map((item, i) => {
-            return (
-              <InputSelectedItem key={i}>
-                <H5 numberOfLines={1}>{item.name}</H5>
-              </InputSelectedItem>
-            );
-          })}
-        </VStack>
-      ) : (
-        <H5 color={colors.trueGray[400]} weight="regular">
-          {placeholder}
+    <VStack>
+      <Label>
+        <H5 color={theme.colors.primary[500]} size={14} style={{ paddingBottom: 10 }}>
+          {label}
         </H5>
-      )}
-
-      <Icon as={Entypo} name="chevron-down" size={4} />
-      <Modal
-        animationType="slide"
-        onRequestClose={() => setVisible(false)}
-        visible={visible}
-      >
-        <CustomizedStatusBar />
-        <Content>
+      </Label>
+      <Container onPress={() => setVisible(true)}>
+        {selected.length > 0 ? (
           <VStack space={2}>
-            <HStack justifyContent="space-between" alignItems="center">
-              <TouchableOpacity
-                onPress={() => {
-                  setVisible(false);
-                  setTemporarySelected(selected);
-                }}
-              >
-                <Icon
-                  as={Entypo}
-                  name="chevron-left"
-                  color={theme.colors.text}
-                  size={36}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
-                  setVisible(false);
-                  setSelected(temporarySelected);
-                }}
-              >
-                <H5 color={theme.colors.primary[500]} size={22}>
-                  OK
-                </H5>
-              </TouchableOpacity>
-            </HStack>
-            <SearchInput
-              title="disciplina"
-              config={{ defaultValue: termo, onChangeText: setTermo }}
-              onClear={setTermo}
-            />
+            {selected.map((item, i) => {
+              return (
+                <InputSelectedItem key={i}>
+                  <H5 numberOfLines={1}>{item.name}</H5>
+                </InputSelectedItem>
+              );
+            })}
           </VStack>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            style={{ marginTop: 65 }}
-            keyExtractor={(_, i) => `${i}`}
-            data={termo.length > 0 ? filteredList : list}
-            renderItem={({ item, index }) => renderItem(item, index)}
-          />
-        </Content>
-      </Modal>
-    </Container>
+        ) : (
+          <H5 color={colors.trueGray[400]} weight="regular">
+            {placeholder}
+          </H5>
+        )}
+
+        <Icon as={Entypo} name="chevron-down" size={4} />
+        <Modal
+          animationType="slide"
+          onRequestClose={() => setVisible(false)}
+          visible={visible}
+        >
+          <CustomizedStatusBar />
+          <Content>
+            <VStack space={2}>
+              <HStack justifyContent="space-between" alignItems="center">
+                <TouchableOpacity
+                  onPress={() => {
+                    setVisible(false);
+                    setTemporarySelected(selected);
+                  }}
+                >
+                  <Icon
+                    as={Entypo}
+                    name="chevron-left"
+                    color={theme.colors.text}
+                    size={36}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    setVisible(false);
+                    setSelected(temporarySelected);
+                  }}
+                >
+                  <H5 color={theme.colors.primary[500]} size={22}>
+                    OK
+                  </H5>
+                </TouchableOpacity>
+              </HStack>
+              <SearchInput
+                title="disciplina"
+                config={{ defaultValue: termo, onChangeText: setTermo }}
+                onClear={setTermo}
+              />
+            </VStack>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              style={{ marginTop: 65 }}
+              keyExtractor={(_, i) => `${i}`}
+              data={termo.length > 0 ? filteredList : list}
+              renderItem={({ item, index }) => renderItem(item, index)}
+            />
+          </Content>
+        </Modal>
+      </Container>
+    </VStack>
   );
 }

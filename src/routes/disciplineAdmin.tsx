@@ -3,13 +3,14 @@ import { DisciplineAdminParamList } from "../types/types";
 import { DisciplineHome } from "../pages/Discipline/Home";
 import { ListDisciplineAdmin } from "../pages/DisciplineAdmin/ListDisciplineAdmin";
 import  AddDisciplineAdmin  from "../pages/DisciplineAdmin/AddDisciplineAdmin";
+import { DisciplineRegisterAdmin }  from "../pages/DisciplineAdmin/DisciplineRegisterAdmin";
 import { DisciplineDetails } from "../pages/Discipline/Details";
 
 const DisciplineAdmin = createNativeStackNavigator<DisciplineAdminParamList>();
 
 export default function DisciplineAdminNavigator() {
   return (
-    <DisciplineAdmin.Navigator initialRouteName="DisciplineHomeAdmin">
+    <DisciplineAdmin.Navigator initialRouteName="ListDisciplineAdmin">
       <DisciplineAdmin.Screen
         name="DisciplineHomeAdmin"
         component={DisciplineHome}
@@ -28,6 +29,11 @@ export default function DisciplineAdminNavigator() {
        <DisciplineAdmin.Screen
         name="AddDisciplineAdmin"
         component={AddDisciplineAdmin}
+        options={{ headerShown: false }}
+      />
+      <DisciplineAdmin.Screen
+        name="DisciplineRegisterAdmin"
+        component={DisciplineRegisterAdmin}
         options={{ headerShown: false }}
       />
     </DisciplineAdmin.Navigator>
