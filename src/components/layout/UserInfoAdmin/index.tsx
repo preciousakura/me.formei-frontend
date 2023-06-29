@@ -3,9 +3,11 @@ import { Container, Row } from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { H5, Subtitle } from "../../shared/text";
 import { useTheme } from "styled-components";
+import { useUser } from "../../../hooks/useUser";
 
 export function UserInfoAdmin() {
   const theme = useTheme();
+  const { user } = useUser();
   return (
     <Container>
       <Row>
@@ -16,10 +18,12 @@ export function UserInfoAdmin() {
             color={theme.colors.white}
           />
           <View>
-            <Subtitle color={theme.colors.white}>Isabel Cristina</Subtitle>
+            <Subtitle color={theme.colors.white}>
+              {user?.user.name} {user?.user.lastname}
+            </Subtitle>
             <H5 color={theme.colors.white}>
               <H5 color={theme.colors.white} weight="regular">
-              Adminstrador
+                Adminstrador
               </H5>
             </H5>
           </View>

@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { IIconProps } from "native-base";
 import { useTheme } from "../../hooks/useTheme";
 import { CustomizedStatusBar } from "../../components/layout/CustomizedStatusBar";
+import { UserInfoAdmin } from "../../components/layout/UserInfoAdmin";
 
 export function HomeAdmin() {
   const options = [
@@ -60,7 +61,7 @@ export function HomeAdmin() {
     >
       <CustomizedStatusBar backgroundColor={theme.colors.primary[500]} />
       <TopContent>
-        <UserInfo />
+        <UserInfoAdmin />
       </TopContent>
       <Content>{options.map(renderCard)}</Content>
     </Container>

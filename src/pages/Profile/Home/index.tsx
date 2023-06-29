@@ -87,23 +87,28 @@ export function ProfileHome() {
             <Subtitle align="center" color={theme.colors.text} size={25}>
               {user?.user.name} {user?.user.lastname}
             </Subtitle>
-            <H5
-              align="center"
-              color={theme.colors.text}
-              size={18}
-              weight="regular"
-            >
-              {user?.user.course.name}
-            </H5>
-            <H5
-              align="center"
-              color={theme.colors.text}
-              size={18}
-              weight="regular"
-            >
-              {user?.user.enrollmentYear}.{user?.user.enrollmentSemester} -{" "}
-              {user?.user.currentSemester}° Período
-            </H5>
+
+            {!user?.isAdmin && (
+              <>
+                <H5
+                  align="center"
+                  color={theme.colors.text}
+                  size={18}
+                  weight="regular"
+                >
+                  {user?.user.course.name}
+                </H5>
+                <H5
+                  align="center"
+                  color={theme.colors.text}
+                  size={18}
+                  weight="regular"
+                >
+                  {user?.user.enrollmentYear}.{user?.user.enrollmentSemester} -{" "}
+                  {user?.user.currentSemester}° Período
+                </H5>
+              </>
+            )}
           </View>
           {options.map(renderCard)}
           <View>
