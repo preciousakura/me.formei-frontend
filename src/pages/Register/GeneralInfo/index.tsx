@@ -16,7 +16,7 @@ import { useTheme } from "styled-components";
 import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import * as yup from "yup";
 import { Formik } from "formik";
-import { Student, User } from "User";
+import { Student } from "User";
 import { useAuth } from "../../../servicesHooks/useAuth";
 import { Platform } from "react-native";
 
@@ -43,7 +43,6 @@ export default function GeneralInfo() {
   const currentYear = new Date().getFullYear();
 
   const toHome = (user: any) => {
-  console.log(user)
     const to = user ? "SucessRegister" : "FailedRegister";
     navigation.navigate(to);
     navigation.reset({

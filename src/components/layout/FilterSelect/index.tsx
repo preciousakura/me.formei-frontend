@@ -13,13 +13,14 @@ interface SelectProps {
 interface FilterSelectProps {
   values: SelectProps[];
   config?: ISelectProps;
+  flex?: number;
 }
 
-export function FilterSelect({ values, config }: FilterSelectProps) {
+export function FilterSelect({ values, config, flex = 1 }: FilterSelectProps) {
   const { theme, isDark } = useTheme();
 
   return (
-    <View flex={1}>
+    <View flex={flex}>
       <SelectComponent
         borderColor={isDark ? theme.colors.black : theme.colors.white}
         backgroundColor={isDark ? theme.colors.black : theme.colors.white}

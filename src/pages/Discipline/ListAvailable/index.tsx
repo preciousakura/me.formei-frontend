@@ -6,201 +6,121 @@ import {
   DisciplinesByPeriod,
   FilterSelect,
   Header,
+  Loading,
   SearchInput,
 } from "../../../components/layout";
 import { FlatList, VStack, View } from "native-base";
 import { ListRenderItemInfo, Platform } from "react-native";
-import { DisciplineByPeriod } from "Discipline";
+import { Discipline } from "Discipline";
+import { useDisciplines } from "../../../servicesHooks/useDisciplines";
+import { H5 } from "../../../components/shared/text";
+import { useState } from "react";
 
 export function ListAvailable() {
   const { theme } = useTheme();
 
-  const HeaderElement = () => {
-    return (
-      <VStack space={3}>
-        <Header
-          isSpaced={false}
-          backButton
-          colorIcon={theme.colors.text}
-          colorText={theme.colors.white}
-        />
-        <SearchInput title="hora complementar" />
+  const [termo, setTermo] = useState("");
+  const [isOptional, setIsOptional] = useState(false);
 
-        <FilterSelect
-          config={{
-            placeholder: "Selecione um filtro",
-            defaultValue: "Obrigatória",
-          }}
-          values={[
-            { label: "Optativa", value: "optativa" },
-            { label: "Obrigatória", value: "Obrigatória" },
-          ]}
-        />
-        <AdminContactCard />
-      </VStack>
-    );
-  };
-
-  function renderCard(itens: ListRenderItemInfo<DisciplineByPeriod>) {
+  function renderCard(itens: ListRenderItemInfo<Discipline>) {
     const { item } = itens;
 
     return (
       <DisciplinesByPeriod
         data={item}
-        key={`${item.period}_${itens.index}`}
+        key={`${item}_${itens.index}`}
         {...item}
       />
     );
   }
 
-  const data: DisciplineByPeriod[] = [
-    {
-      period: "1",
-      disciplines: [
-        {
-          name: "Cálculo Diferencial e Integral I",
-          prerequisites: [],
-          workload: 96,
-          cod: "CB0534",
-          isOptional: false,
-          
-          bibliography: [],
-        },
-        {
-          name: "Seminário em Computação",
-          prerequisites: [],
-          workload: 32,
-          cod: "CB0534",
-          isOptional: false,
-          
-          bibliography: [],
-        },
-        {
-          name: "Matemática Discreta",
-          prerequisites: [],
-          workload: 96,
-          cod: "CB0534",
-          isOptional: false,
-          
-          bibliography: [],
-        },
-        {
-          name: "Fundamentos de Programação",
-          prerequisites: [],
-          workload: 64,
-          cod: "CB0534",
-          isOptional: false,
-          
-          bibliography: [],
-        },
-      ],
-    },
-    {
-      period: "2",
-      disciplines: [
-        {
-          name: "Programação",
-          prerequisites: [
-            {
-              name: "Fundamentos de Programação",
-              prerequisites: [],
-              workload: 64,
-              cod: "CB0534",
-              isOptional: false,
-              
-              bibliography: [],
-            },
-          ],
-          workload: 64,
-          cod: "CB0534",
-          isOptional: false,
-          
-          bibliography: [],
-        },
-        {
-          name: "Cálculo Diferencial e Integral II ",
-          prerequisites: [
-            {
-              name: "Cálculo Diferencial e Integral I",
-              prerequisites: [],
-              workload: 96,
-              cod: "CB0534",
-              isOptional: false,
-              
-              bibliography: [],
-            },
-          ],
-          workload: 96,
-          cod: "CB0535",
-          isOptional: false,
-          bibliography: [],
-        },
-        {
-          name: "Álgebra Linear",
-          prerequisites: [],
-          workload: 64,
-          cod: "CB0534",
-          isOptional: false,
-          bibliography: [],
-        },
-        {
-          name: "Estrutura de Dados",
-          prerequisites: [
-            {
-              name: "Matemática Discreta",
-              prerequisites: [],
-              workload: 96,
-              cod: "CB0534",
-              isOptional: false,
-              bibliography: [],
-            },
-            {
-              name: "Fundamentos de Programação",
-              prerequisites: [],
-              workload: 64,
-              cod: "CB0534",
-              isOptional: false,
-              bibliography: [],
-            },
-          ],
-          workload: 64,
-          cod: "CK0209",
-          isOptional: false,
-          menu: "Introdução, Listas Lineares, Árvores, Árvores balanceadas, Listas de prioridades, Tabelas de dispersão.",
-          bibliography: [
-            "CORMEN, T.; LEISERSON, C.; RIVEST, R.; STEIN, C. Algoritmos - Teoria e Prática. 3o edição, Editora Campus, 2012. ISBN-13: 978-8535236996",
-            "MARKENZON, L.; SZWARCFITER, J. Estruturas de Dados e Seus Algoritmos, LTC, 3a Edição, 2010. ISBN-13: 978-8521610144",
-            "SEDGEWICK, R.; WAYNE, K. Algorithms. Addison-Wesley Professional; 4th edition, 2011. ISBN-13: 978-0321573513.",
-          ],
-        },
-        {
-          name: "Transmissão de Dados",
-          prerequisites: [],
-          workload: 64,
-          cod: "CK0170",
-          isOptional: false,
-          bibliography: [],
-        },
-      ],
-    },
-  ];
+  const { data, loading } = useDisciplines();
+
+  const filteredList =
+    termo.length > 0
+      ? data?.disciplines
+          .map((d) => {
+            return {
+              ...d,
+              disciplines: d.disciplines.filter(
+                (dc) =>
+                  dc.name.toLowerCase().includes(termo.toLowerCase()) ||
+                  dc.cod.toLowerCase().includes(termo.toLowerCase())
+              ),
+            };
+          })
+          .filter((d) => d.disciplines.length > 0)
+      : data?.disciplines;
+
+  const filtered = filteredList
+    ? filteredList.map((d) => {
+        return {
+          ...d,
+          disciplines: d.disciplines.filter(
+            (df) => df.isOptional === isOptional
+          ),
+        };
+      })
+    : [];
 
   return (
     <Container>
-      <CustomizedStatusBar backgroundColor={theme.colors.background} />
-      <Content>
-        <FlatList
-          contentContainerStyle={{
-            paddingBottom: Platform.OS === "ios" ? 70 : 0,
-          }}
-          data={data}
-          renderItem={renderCard}
-          ListHeaderComponent={HeaderElement}
-          keyExtractor={(item, i) => `${item.period}_${i}`}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-        />
-      </Content>
+      {loading ? (
+        <Loading opacity={false} />
+      ) : (
+        <>
+          <CustomizedStatusBar backgroundColor={theme.colors.background} />
+          <Content>
+            <VStack space={3}>
+              <Header
+                isSpaced={false}
+                backButton
+                colorIcon={theme.colors.text}
+                colorText={theme.colors.white}
+              />
+              <SearchInput
+                flex={0}
+                config={{ defaultValue: termo, onChangeText: setTermo }}
+                onClear={setTermo}
+                title="disciplina"
+              />
+
+              <FilterSelect
+                flex={0}
+                config={{
+                  onValueChange: (value: string) => {
+                    setIsOptional(value === "optativa");
+                  },
+                  placeholder: "Selecione um filtro",
+                  defaultValue: "obrigatória",
+                }}
+                values={[
+                  { label: "Optativa", value: "optativa" },
+                  { label: "Obrigatória", value: "obrigatória" },
+                ]}
+              />
+              <AdminContactCard />
+            </VStack>
+
+            {filtered.length > 0 ? (
+              <FlatList
+                contentContainerStyle={{
+                  paddingBottom: Platform.OS === "ios" ? 350 : 0,
+                }}
+                data={filtered.filter((d) => d.disciplines.length > 0)}
+                renderItem={renderCard}
+                keyExtractor={(item, i) => `${item.period}_${i}`}
+                showsVerticalScrollIndicator={false}
+                ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+              />
+            ) : (
+              <View justifyContent="center" alignItems="center" marginTop={20}>
+                <H5>Nenhum resultado foi encontrado</H5>
+              </View>
+            )}
+          </Content>
+        </>
+      )}
     </Container>
   );
 }

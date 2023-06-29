@@ -1,9 +1,10 @@
 import { Dimensions, Platform } from "react-native";
 import styled from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.View<{ isOpacity?: boolean }>`
   flex: 1;
-  background: rgba(0, 19, 32, 0.5);
+  background: ${(props) =>
+    props.isOpacity ? "rgba(0, 19, 32, 0.5)" : props.theme.colors.background};
   top: 0;
   height: ${Dimensions.get("window").height}px;
   width: ${Dimensions.get("window").width}px;

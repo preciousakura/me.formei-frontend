@@ -3,6 +3,7 @@ import api from "./config/api";
 import { callService } from "./config/service";
 import { Courses, Universities } from "University";
 import { ensureAxiosParamOptions } from "../utils/params";
+import { DisciplineByPeriod, DisciplineData } from "Discipline";
 
 type UniversitiesProps = {
   state?: string;
@@ -33,6 +34,24 @@ const service = () => {
     return response.data;
   }
 
+  async function getDisciplines(idUniversity?: string, idCourse?: string) {
+    const path = `${resource}/${idUniversity}/courses/${idCourse}/disciplines`;
+    const response = await callService(() => api.get<DisciplineByPeriod>(path));
+    return response.data;
+  }
+
+  async function getDisciplinesByCod(
+    idUniversity?: string,
+    idCourse?: string,
+    ids?: string[]
+  ) {
+    const path = `${resource}/${idUniversity}/courses/${idCourse}/disciplines/cod`;
+    const response = await callService(() =>
+      api.get<{ disciplines: DisciplineData[] }>(path, { data: { cods: ids } })
+    );
+    return response.data;
+  }
+
   async function postStudent(value: Student) {
     const path = `${resource}/signup/student`;
 
@@ -41,7 +60,13 @@ const service = () => {
     return response;
   }
 
-  return { postStudent, getUniversities, getCourses };
+  return {
+    postStudent,
+    getUniversities,
+    getCourses,
+    getDisciplines,
+    getDisciplinesByCod,
+  };
 };
 
 export const university = service();

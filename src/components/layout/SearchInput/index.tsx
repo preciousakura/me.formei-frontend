@@ -8,14 +8,20 @@ interface SearchInputProps {
   title?: string;
   config?: IInputProps;
   onClear?: (value: string) => void;
+  flex?: number;
 }
 
-export function SearchInput({ title, config, onClear }: SearchInputProps) {
+export function SearchInput({
+  title,
+  config,
+  onClear,
+  flex = 1,
+}: SearchInputProps) {
   const theme = useTheme();
   const { isDark } = Theme();
 
   return (
-    <Container>
+    <Container flex={flex}>
       <Input
         borderColor={isDark ? theme.colors.black : theme.colors.white}
         backgroundColor={isDark ? theme.colors.black : theme.colors.white}

@@ -3,12 +3,18 @@ import { useTheme } from "../../../hooks/useTheme";
 import { CustomizedStatusBar } from "../CustomizedStatusBar";
 import { Container } from "./styles";
 
-export function Loading() {
+interface LoadingProps {
+  opacity?: boolean;
+}
+export function Loading({ opacity = true }: LoadingProps) {
   const { theme } = useTheme();
   return (
-    <Container>
+    <Container isOpacity={opacity}>
       <CustomizedStatusBar backgroundColor={theme.colors.red[500]} />
-      <ActivityIndicator size="large" color={theme.colors.white} />
+      <ActivityIndicator
+        size="large"
+        color={opacity ? theme.colors.white : theme.colors.text}
+      />
     </Container>
   );
 }

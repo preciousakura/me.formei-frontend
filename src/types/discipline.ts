@@ -1,19 +1,25 @@
 declare module "Discipline" {
   type Status = "Aprovado" | "Reprovado" | "Trancado";
 
-  interface Discipline {
+  interface DisciplineData {
+    id: string;
     name: string;
-    menu?: string;
-    bibliography: string[];
-    workload: number;
     cod: string;
+    menu: string;
+    curriculumId: string;
+    description: string;
     isOptional: boolean;
-    prerequisites: Discipline[];
-    status?: Status;
+    bibliography: string[];
+    prerequisites: string[];
+    hours: number;
+  }
+
+  interface Discipline {
+    period: string;
+    disciplines: DisciplineData[];
   }
 
   interface DisciplineByPeriod {
-    period: string;
     disciplines: Discipline[];
   }
 

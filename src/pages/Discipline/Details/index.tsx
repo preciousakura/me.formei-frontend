@@ -26,7 +26,7 @@ export function DisciplineDetails() {
   const navigation = useNavigation<DisciplineProp>();
 
   const values = [
-    { title: "CARGA HORÁRIA", value: `${params.workload}h` },
+    { title: "CARGA HORÁRIA", value: `${params.hours}h` },
     {
       title: "EMENTA",
       value: params.menu ?? "NENHUM",
@@ -101,18 +101,12 @@ export function DisciplineDetails() {
             ) : (
               params.prerequisites.map((pr, i) => {
                 return (
-                  <DisciplineButtonStyle
-                    underlayColor={theme.colors.background}
-                    key={i}
-                    onPress={() => navigation.navigate("DisciplineDetails", pr)}
-                  >
-                    <HStack alignItems="center" space={2}>
-                      <Icon as={Entypo} name="chevron-right" />
-                      <H5 size={16} weight="regular">
-                        {pr.name.toUpperCase()}
-                      </H5>
-                    </HStack>
-                  </DisciplineButtonStyle>
+                  <HStack key={i} alignItems="center" space={2}>
+                    <Icon as={Entypo} name="chevron-right" />
+                    <H5 size={16} weight="regular">
+                      {pr}
+                    </H5>
+                  </HStack>
                 );
               })
             )}
