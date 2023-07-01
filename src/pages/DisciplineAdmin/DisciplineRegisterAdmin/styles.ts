@@ -1,7 +1,7 @@
-import { ScrollView } from "native-base";
 import styled from "styled-components/native";
+import { VirtualizedScrollView } from "../../../components/layout";
 
-export const Container = styled(ScrollView)`
+export const Container = styled(VirtualizedScrollView)`
   flex: 1;
   background: ${(props) => props.theme.colors.background};
 `;
