@@ -1,9 +1,9 @@
+import { DisciplineByPeriod, DisciplineData } from "Discipline";
+import { Courses, Universities } from "University";
 import { Student } from "User";
+import { ensureAxiosParamOptions } from "../utils/params";
 import api from "./config/api";
 import { callService } from "./config/service";
-import { Courses, Universities } from "University";
-import { ensureAxiosParamOptions } from "../utils/params";
-import { DisciplineByPeriod, DisciplineData } from "Discipline";
 
 type UniversitiesProps = {
   state?: string;
@@ -34,10 +34,17 @@ const service = () => {
     return response.data;
   }
 
+  type ResponseDisciplines = {
+    disciplines: DisciplineByPeriod[];
+  };
+
   async function getDisciplines(idUniversity?: string, idCourse?: string) {
     const path = `${resource}/${idUniversity}/courses/${idCourse}/disciplines`;
-    const response = await callService(() => api.get<DisciplineByPeriod>(path));
-    return response.data;
+    const response = await callService(() =>
+      api.get<ResponseDisciplines>(path)
+    );
+
+    return response.data.disciplines;
   }
 
   async function getDisciplinesByCod(

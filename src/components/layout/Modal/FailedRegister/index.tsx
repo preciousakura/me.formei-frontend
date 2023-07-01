@@ -1,16 +1,19 @@
-import { Dimensions } from "react-native";
-import { Container, IconContent, TextContent } from "./styles";
-import { H5, Subtitle, Title } from "../../../shared/text";
-import { Button, Icon } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { UserLoginNavigationProp } from "../../../../types/types";
+import { Button, Icon } from "native-base";
+import { Dimensions } from "react-native";
 import { useTheme } from "styled-components";
+import { UserLoginNavigationProp } from "../../../../types/types";
+import { H5, Subtitle, Title } from "../../../shared/text";
 import { CustomizedStatusBar } from "../../CustomizedStatusBar";
+import { Container, IconContent, TextContent } from "./styles";
 
 export function FailedRegister() {
   const navigation = useNavigation<UserLoginNavigationProp>();
   const theme = useTheme();
+
+  // const { params } =
+  //   useRoute<RouteProp<UserLoginNavigatorParamList, "GeneralInfo">>();
 
   return (
     <Container>
@@ -32,8 +35,7 @@ export function FailedRegister() {
           size={14}
           color={theme.colors.text}
         >
-          Seu cadastro não pôde ser finalizado devido a uma falha no nosso
-          sistema.
+          Seu cadastro não pôde ser finalizado. Usuário já existe.
         </Subtitle>
         <Button
           onPress={() => navigation.navigate("Login")}

@@ -1,7 +1,7 @@
-import { ISelectProps, Select, Icon, View } from "native-base";
-import { SelectComponent } from "./styles";
-import { useTheme } from "../../../hooks/useTheme";
 import { Entypo } from "@expo/vector-icons";
+import { ISelectProps, Icon, Select, View } from "native-base";
+import { useTheme } from "../../../hooks/useTheme";
+import { SelectComponent } from "./styles";
 
 const { Item } = Select;
 
@@ -34,6 +34,7 @@ export function FilterSelect({ values, config, flex = 1 }: FilterSelectProps) {
           <Icon as={Entypo} name="chevron-down" size={4} right={2} />
         }
       >
+        
         {values.map((value) => {
           return <Item key={value.label} {...value} />;
         })}

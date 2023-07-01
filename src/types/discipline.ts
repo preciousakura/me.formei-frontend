@@ -11,17 +11,17 @@ declare module "Discipline" {
     isOptional: boolean;
     bibliography: string[];
     prerequisites: string[];
-    hours: number;
-  }
-
-  interface Discipline {
-    period: string;
-    disciplines: DisciplineData[];
+    workload: number;
   }
 
   interface DisciplineByPeriod {
-    disciplines: Discipline[];
+    period: number;
+    disciplines: DisciplineData[];
   }
+
+  // interface DisciplineByPeriod {
+  //   disciplines: Discipline[];
+  // }
 
   interface Hour {
     start: number;

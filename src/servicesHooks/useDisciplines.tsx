@@ -1,10 +1,12 @@
-import { useMemo, useState, useEffect } from "react";
-import { university } from "../service/universities";
 import { DisciplineByPeriod } from "Discipline";
+import { useEffect, useMemo, useState } from "react";
 import { useUser } from "../hooks/useUser";
+import { GetDisciplinesPeriodByStatusParams, GetDisciplinesPeriodTodoParams, students } from "../service/students";
+import { university } from "../service/universities";
 
 export function useDisciplines() {
-  const [data, setData] = useState<DisciplineByPeriod>();
+  const [data, setData] = useState<DisciplineByPeriod[]>([]);
+  const [disciplines, setDisciplines] = useState<DisciplineByPeriod[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string[]>();
 
@@ -19,5 +21,23 @@ export function useDisciplines() {
       .finally(() => setLoading(false));
   }, [user]);
 
-  return useMemo(() => ({ loading, error, data }), [loading, error, data]);
+  function getDisciplinesPeriodByStatus(data: GetDisciplinesPeriodByStatusParams) {
+    setLoading(true);
+    students.getDisciplinesPeriodByStatus(data)
+    .then((res) => setDisciplines(res))
+    .catch((err) => setError(err))
+    .finally(() => setLoading(false));
+  }
+
+  function getDisciplinesPeriodTodo(data: { curriculumId: string } & GetDisciplinesPeriodTodoParams) {
+    setLoading(true);
+    students.getDisciplinesPeriodTodo(data)
+    .then((res) => setDisciplines(res))
+    .catch((err) => setError(err))
+    .finally(() => setLoading(false));
+  }
+
+
+
+  return useMemo(() => ({ loading, error, data, getDisciplinesPeriodByStatus, getDisciplinesPeriodTodo, disciplines }), [loading, error, data, disciplines]);
 }

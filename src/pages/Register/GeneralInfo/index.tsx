@@ -1,24 +1,24 @@
-import { Container, ContentForm } from "../styles";
-import { Header } from "../../../components/layout";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { StudentSignup } from "Auth";
+import { Formik } from "formik";
 import { Button, KeyboardAvoidingView, VStack } from "native-base";
+import { Platform } from "react-native";
+import { useTheme } from "styled-components";
+import * as yup from "yup";
+import { Header } from "../../../components/layout";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
 import {
   InputSelect,
   SelectCourse,
   SelectUniversity,
 } from "../../../components/layout/UI";
 import { H5, Subtitle } from "../../../components/shared/text";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import { useAuth } from "../../../servicesHooks/useAuth";
 import {
   UserLoginNavigationProp,
   UserLoginNavigatorParamList,
 } from "../../../types/types";
-import { useTheme } from "styled-components";
-import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import * as yup from "yup";
-import { Formik } from "formik";
-import { Student } from "User";
-import { useAuth } from "../../../servicesHooks/useAuth";
-import { Platform } from "react-native";
+import { Container, ContentForm } from "../styles";
 
 export default function GeneralInfo() {
   const theme = useTheme();
@@ -44,6 +44,7 @@ export default function GeneralInfo() {
 
   const toHome = (user: any) => {
     const to = user ? "SucessRegister" : "FailedRegister";
+    
     navigation.navigate(to);
     navigation.reset({
       index: 0,
@@ -52,13 +53,12 @@ export default function GeneralInfo() {
   };
 
   async function submit(values: any) {
-    const calculatedSemester =
-      ((currentYear - Number(values.enrollmentYear)) * 12) / 6 + 1;
+    // const calculatedSemester =
+    //   ((currentYear - Number(values.enrollmentYear)) * 12) / 6 + 1;
 
-    const student: Student = {
+    const student: StudentSignup = {
       ...params,
       ...values,
-      currentSemester: calculatedSemester,
       enrollmentYear: Number(values.enrollmentYear),
       enrollmentSemester: Number(values.enrollmentSemester),
       curriculumId: values.course,

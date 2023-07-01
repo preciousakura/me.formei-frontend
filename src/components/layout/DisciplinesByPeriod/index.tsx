@@ -1,13 +1,13 @@
-import { Container } from "./styles";
-import { Divider, HStack, VStack, useTheme } from "native-base";
-import { H5 } from "../../shared/text";
-import { Discipline } from "Discipline";
-import { DisciplineCard } from "../DisciplineCard";
 import { useNavigation } from "@react-navigation/native";
+import { DisciplineByPeriod, DisciplineData } from "Discipline";
+import { Divider, HStack, VStack, useTheme } from "native-base";
 import { DisciplineProp } from "../../../types/types";
+import { H5 } from "../../shared/text";
+import { DisciplineCard } from "../DisciplineCard";
+import { Container } from "./styles";
 
 interface DisciplinesByPeriodProps {
-  data: Discipline;
+  data: DisciplineByPeriod;
 }
 
 export function DisciplinesByPeriod({ data }: DisciplinesByPeriodProps) {
@@ -23,7 +23,7 @@ export function DisciplinesByPeriod({ data }: DisciplinesByPeriodProps) {
           </H5>
           <Divider />
         </HStack>
-        {data.disciplines.map((d, i) => {
+        {data.disciplines.map((d: DisciplineData, i: any) => {
           const props = { data: d };
           return (
             <DisciplineCard

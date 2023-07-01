@@ -1,20 +1,23 @@
+import { StudentSignup } from "Auth";
 import { useMemo, useState } from "react";
 import { auth } from "../service/auth";
-import { Student } from "User";
 
 export function useAuth() {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string[]>();
+  const [error, setError] = useState<any>(null);
 
-  function postStudent(data: Student, toHome: (user: any) => void) {
+  function postStudent(data: StudentSignup, toHome: (user: any) => void) {
     setLoading(true);
     auth
       .postStudent(data)
-      .then(() => toHome(error))
-      .catch((error) =>
-        error.response
-          ? setError(error.response.data.message)
-          : setError(error.message)
+      .then(() => 
+        toHome(true)
+      )
+      .catch(() =>
+       toHome(error)
+        // error.response
+        //   ? setError(error.response.data.message)
+        //   : setError(error.message)
       )
       .finally(() => {
         setLoading(false);

@@ -1,14 +1,5 @@
-import {
-  BorderedContent,
-  ScrollContainer,
-  DisciplineButtonStyle,
-} from "../styles";
-import { useTheme } from "../../../hooks/useTheme";
-import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
-import { Header } from "../../../components/layout";
+import { Entypo } from "@expo/vector-icons";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { DisciplineParamList, DisciplineProp } from "../../../types/types";
-import { H5, Subtitle } from "../../../components/shared/text";
 import {
   Divider,
   HStack,
@@ -16,7 +7,15 @@ import {
   VStack,
   useTheme as useThemeNative,
 } from "native-base";
-import { Entypo } from "@expo/vector-icons";
+import { Header } from "../../../components/layout";
+import { CustomizedStatusBar } from "../../../components/layout/CustomizedStatusBar";
+import { H5, Subtitle } from "../../../components/shared/text";
+import { useTheme } from "../../../hooks/useTheme";
+import { DisciplineParamList, DisciplineProp } from "../../../types/types";
+import {
+  BorderedContent,
+  ScrollContainer
+} from "../styles";
 
 export function DisciplineDetails() {
   const { colors } = useThemeNative();
@@ -26,7 +25,7 @@ export function DisciplineDetails() {
   const navigation = useNavigation<DisciplineProp>();
 
   const values = [
-    { title: "CARGA HORÁRIA", value: `${params.hours}h` },
+    { title: "CARGA HORÁRIA", value: `${params.workload}h` },
     {
       title: "EMENTA",
       value: params.menu ?? "NENHUM",

@@ -1,11 +1,12 @@
-import { Student, User, UserLogin } from "User";
+import { StudentSignup } from "Auth";
+import { User, UserLogin } from "User";
 import api from "./config/api";
 import { callService } from "./config/service";
 
 const service = () => {
   const resource = "auth";
 
-  async function postStudent(value: Student) {
+  async function postStudent(value: StudentSignup) {
     const path = `${resource}/signup/student`;
 
     const response = await callService(() => api.post(path, value));
